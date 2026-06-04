@@ -1251,5 +1251,361 @@ const examsData = {
                 "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) Required under International Financial Reporting Standards (IFRS).</strong><br><br>طريقة المجهودات الناجحة (SE) هي الطريقة الأساسية والملزمة دولياً؛ حيث إنها **مطلوبة ومفروضة إجبارياً بموجب المعايير الدولية لإعداد التقارير المالية (IFRS)** وتحديداً معيار IFRS 6، والمعايير دي بتحظر وتمنع تماماً استخدام طريقة التكلفة الكلية (FC) لأنها بتعتبرها بتداري الخسائر وبتنفخ الميزانية بأصول وهمية."
             }
         ]
+    },
+    "all_consolidated_questions": {
+        "title": "البنك الموحد الشامل لقطاع البترول",
+        "description": "جميع أسئلة البوكلت والسكاشن والامتحانات السابقة مدمجة مع زتونة البصمجة السريعة",
+        "questions": [
+            {
+                "id": 1,
+                "text": "The type of oil company that is involved primarily in only E&P activities is classified as:",
+                "options": [
+                    { "id": "a", "text": "a. An integrated oil company" },
+                    { "id": "b", "text": "b. A consolidated oil company" },
+                    { "id": "c", "text": "c. A specialized oil company" },
+                    { "id": "d", "text": "d. A subsidiary oil company" },
+                    { "id": "e", "text": "e. An independent oil company" }
+                ],
+                "correct": "e",
+                "basmaga": "تلمح E&P activities يعني مرحلة بحث وإنتاج بس على قدها، علمها بـ independent (مستقلة) عل طول.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (e) An independent oil company</strong><br><br>شركات البترول في قطاع المنبع بتنقسم لنوعين حسب نطاق الشغل: الشركات المستقلة (Independent) ودي شركات متخصصة بتركز كل مجهودها وفلوسها في مرحلة البحث والاستكشاف والإنتاج بس اللي بنسميها (E&P - Exploration and Production). أما الشركات المتكاملة (Integrated) دي الحيتان الكبيرة اللي بتجيب السلسلة من أول الحفر لغاية محطات البيع."
+            },
+            {
+                "id": 2,
+                "text": "The connectability of pores which determines the ability of petroleum to flow through rocks is called:",
+                "options": [
+                    { "id": "a", "text": "a. Dentistry" },
+                    { "id": "b", "text": "b. Permeability" },
+                    { "id": "c", "text": "c. Porosity" },
+                    { "id": "d", "text": "d. Liquidity" },
+                    { "id": "e", "text": "e. Complexity" }
+                ],
+                "correct": "b",
+                "basmaga": "مفتاح السوال كلمة connectability (ترابط) و flow (تدفق وتمرير الزيت)، دي النفاذية Permeability.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) Permeability</strong><br><br>الشرط الجيولوجي لحركة البترول هو النفاذية (Permeability)؛ ودي معناها إن الفراغات والمسام اللي جوة الصخرة مش بس موجودة، لأ دي كمان متصلة ومفتوحة على بعضها (Connectability) وده اللي بيسمح للبترول والغاز إنه يتدفق ويتحرك من خلال الصخور."
+            },
+            {
+                "id": 3,
+                "text": "The petroleum industry in Egypt is managed and supervised directly by the:",
+                "options": [
+                    { "id": "a", "text": "a. Ministry of Petroleum and Mineral Resources" },
+                    { "id": "b", "text": "b. Ministry of trade" },
+                    { "id": "c", "text": "c. Ministry of Environmental affairs" },
+                    { "id": "d", "text": "d. Trade committee" },
+                    { "id": "e", "text": "e. No regulator bodies" }
+                ],
+                "correct": "a",
+                "basmaga": "سؤال وطني وبديهي: صناعة البترول في مصر تدار بمين؟ أكيد وزارة البترول Ministry of Petroleum.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) Ministry of Petroleum and Mineral Resources</strong><br><br>إدارة الثروة البترولية والاتفاقيات المشتركة في مصر بتخضع بالكامل للإشراف والسيادة القانونية لوزارة البترول والثروة المعدنية المصرية بالتنسيق مع الهيئة العامة للبترول (EGPC)."
+            },
+            {
+                "id": 4,
+                "text": "Costs incurred in preparing proved reserves for production is classified as:",
+                "options": [
+                    { "id": "a", "text": "a. Acquisition costs" },
+                    { "id": "b", "text": "b. Exploration costs" },
+                    { "id": "c", "text": "c. Development costs" },
+                    { "id": "d", "text": "d. G&G costs" },
+                    { "id": "e", "text": "e. Production costs" }
+                ],
+                "correct": "c",
+                "basmaga": "لغز السوال كلمة preparing proved reserves (تجهيز الاحتياطي المؤكد)، ودي مرحلة التطوير والتنمية Development.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) Development costs</strong><br><br>طالما قالك إحنا بنجهز (Preparing) احتياطي خلاص مؤكد ومضمون (Proved reserves) عشان يبدأ مرحلة الإنتاج الفعلي، يبقى إحنا دخلنا في مرحلة التطوير والتنمية (Development) وتكاليفها دايماً بتترسمل كأصل ثابت بترولي."
+            },
+            {
+                "id": 5,
+                "text": "Costs incurred in acquiring the rights to explore, drill and produce oil and gas is classified as:",
+                "options": [
+                    { "id": "a", "text": "a. Acquisition costs" },
+                    { "id": "b", "text": "b. Exploration costs" },
+                    { "id": "c", "text": "c. Development costs" },
+                    { "id": "d", "text": "d. G&G costs" },
+                    { "id": "e", "text": "e. Production costs" }
+                ],
+                "correct": "a",
+                "basmaga": "تطابق لفظي صريح من الجذر اللغوي: تلاقي كلمة acquiring اختار أختها Acquisition عل طول.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) Acquisition costs</strong><br><br>الفلوس اللي بنصرفها عشان نشتري أو ناخد 'الحق القانوني والامتياز العقاري والجغرافي' (Acquiring the rights) للتنقيب والحفر في أرض معينة زي مكافآت التوقيع، بتتصنف دايماً تحت بند تكاليف الاستحواذ (Acquisition costs)."
+            },
+            {
+                "id": 6,
+                "text": "Costs incurred in gathering, treating, and storing the oil is classified as:",
+                "options": [
+                    { "id": "a", "text": "a. Acquisition costs" },
+                    { "id": "b", "text": "b. Exploration costs" },
+                    { "id": "c", "text": "c. Development costs" },
+                    { "id": "d", "text": "d. G&G costs" },
+                    { "id": "e", "text": "e. Production costs" }
+                ],
+                "correct": "e",
+                "basmaga": "شفت كلمة gathering (تجميع) و treating (معالجة) وفصل الزيت على السطح = إنتاج تشغيلي جاري Production.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (e) Production costs</strong><br><br>المصاريف اليومية والدورية اللي بتتصرف بعد ما البترول يطلع بالسلامة على السطح عشان تجميعه (Gathering) ومعالجته وفصله (Treating) وتخزينه في التانكات (Storing) هي مصاريف تشغيل جارية بنسميها تكاليف الإنتاج (Production costs)."
+            },
+            {
+                "id": 7,
+                "text": "Type of costs that are universally expensed under both full costing and successful efforts methods are:",
+                "options": [
+                    { "id": "a", "text": "a. Acquisition costs" },
+                    { "id": "b", "text": "b. Exploration costs" },
+                    { "id": "c", "text": "c. Development costs" },
+                    { "id": "d", "text": "d. G&G costs" },
+                    { "id": "e", "text": "e. Production costs" }
+                ],
+                "correct": "e",
+                "basmaga": "المصروف المطرود والمتفق عليه كلياً كمصروف فترة (universally expensed under both) هو تكاليف الإنتاج Production.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (e) Production costs</strong><br><br>تريكة المقارنة الكبرى؛ البند الوحيد اللي مفيش عليه أي خناقة ولا خلاف فلسفي بين طريقتي المجهودات الناجحة (SE) والتكلفة الكلية (FC) هو تكاليف الإنتاج (Production costs)؛ الطريقتين متفقين إنها مصروف فترة جاري (Expensed)."
+            },
+            {
+                "id": 8,
+                "text": "The geological characteristic that means rocks have lots of pore space between grains is defined as:",
+                "options": [
+                    { "id": "a", "text": "a. Dentistry" },
+                    { "id": "b", "text": "b. Permeability" },
+                    { "id": "c", "text": "c. Porosity" },
+                    { "id": "d", "text": "d. Liquidity" },
+                    { "id": "e", "text": "e. Complexity" }
+                ],
+                "correct": "c",
+                "basmaga": "تلاقي كلمة pore space يعني مسافات وفراغات تخزينية جوه صخور السفنجة اختار مسامية Porosity.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) Porosity</strong><br><br>وجود مسافات وفراغات بين حبيبات الصخور (Pore space) عشان تشيل وتخزن جواها السوائل زي السفنجة بالظبط، ده التعريف العلمي للمسامية (Porosity). وافتكر دايماً المسامية سعة تخزينية، والنفاذية حركة وتدفق."
+            },
+            {
+                "id": 9,
+                "text": "A direct relation between costs incurred and reserves discovered is not required under:",
+                "options": [
+                    { "id": "a", "text": "a. Full costing" },
+                    { "id": "b", "text": "b. ABC costing" },
+                    { "id": "c", "text": "c. Fixed costing" },
+                    { "id": "d", "text": "d. variable costing" },
+                    { "id": "e", "text": "e. Successful efforts costing" }
+                ],
+                "correct": "a",
+                "basmaga": "مين اللي مش بيشترط علاقة مباشرة (not required) وبيرسمل كله؟ الطريقة المتفائلة الكلية Full costing.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) Full costing</strong><br><br>طريقة التكلفة الكلية (Full Costing) دي الطريقة المتفائلة اللي بتقولك الفشل جزء من رحلة النجاح، وعشان كده مش بتشترط وجود علاقة مباشرة بين المصاريف وبين البترول المكتشف، وبتلم كل التكاليف (حتى الآبار الفاضية الجافة) وترسملها كأصل."
+            },
+            {
+                "id": 10,
+                "text": "To be commercially viable and economic, a petroleum reservoir must strictly have:",
+                "options": [
+                    { "id": "a", "text": "a. Adequate porosity and permeability" },
+                    { "id": "b", "text": "b. A sufficient physical area of rock that contains hydrocarbons." },
+                    { "id": "c", "text": "c. Geological and geophysical data" },
+                    { "id": "d", "text": "d. Answers a and b" },
+                    { "id": "e", "text": "e. Answers a, b and c" }
+                ],
+                "correct": "d",
+                "basmaga": "عشان الخزان يكون مجدي تجارياً لازم يتوفر فيه (المسامية والنفاذية + المساحة الكبيرة) اختار Answers a and b.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (d) Answers a and b</strong><br><br>عشان الخزان يكون مجدي واقتصادي والشركة تكسب منه، لازم يتوفر شرطين معاً: صخور فيها مسامية ونفاذية كافية لتدفق الزيت (a)، ومساحة جغرافية ضخمة وممتدة من الصخور شايلة كميات بترولية تجارية (b)."
+            },
+            {
+                "id": 11,
+                "text": "Oil and gas pipeline transportation systems are internationally considered as:",
+                "options": [
+                    { "id": "a", "text": "a. Midstream activities" },
+                    { "id": "b", "text": "b. Upstream activities" },
+                    { "id": "c", "text": "c. On the floor activities" },
+                    { "id": "d", "text": "d. Downstream activities" },
+                    { "id": "e", "text": "e. Mixedstream activities" }
+                ],
+                "correct": "a",
+                "basmaga": "خطوط الأنابيب والمواسير الكبيرة (pipeline) بتنقل في نص السلسلة يبقى مرحلة وسطى Midstream.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) Midstream activities</strong><br><br>مرحلة نقل البترول والغاز الطبيعي من الحقول عبر شبكات الأنابيب الضخمة (Pipelines) والمراكب بتتصنف دايماً في وسيط السلسلة كـ مرحلة وسطى (Midstream)."
+            },
+            {
+                "id": 12,
+                "text": "Marketing, refining, and distribution of petroleum production to end consumers is classified as:",
+                "options": [
+                    { "id": "a", "text": "a. Midstream activities" },
+                    { "id": "b", "text": "b. Upstream activities" },
+                    { "id": "c", "text": "c. On the floor activities" },
+                    { "id": "d", "text": "d. Downstream activities" },
+                    { "id": "e", "text": "e. Mixedstream activities" }
+                ],
+                "correct": "d",
+                "basmaga": "التسويق والتكرير وتوزيع البنزين (Marketing, refining) للمستهلك دي تحت خالص في المصب Downstream.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (d) Downstream activities</strong><br><br>المرحلة النهائية اللي بتتعامل مع المستهلك وتكرير الخام في المصافي وتوزيعه وتسويقه كمشتقات (بنزين، سولار) هي مرحلة المصب (Downstream)."
+            },
+            {
+                "id": 13,
+                "text": "Core industrial activities involved directly in finding, drilling, and producing oil and gas are classified as:",
+                "options": [
+                    { "id": "a", "text": "a. Midstream activities" },
+                    { "id": "b", "text": "b. Upstream activities" },
+                    { "id": "c", "text": "c. On the floor activities" },
+                    { "id": "d", "text": "d. Downstream activities" },
+                    { "id": "e", "text": "e. Mixedstream activities" }
+                ],
+                "correct": "b",
+                "basmaga": "البحث والاستكشاف وحفر الآبار في المنشأ وباطن الأرض فوق خالص في المنبع Upstream.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) Upstream activities</strong><br><br>مرحلة المنبع (Upstream) هي روح صناعة البترول الأساسية (E&P)، وهي اللي بتشمل البحث والاستكشاف وحفر الآبار واستخراج الزيت الخام من باطن الأرض."
+            },
+            {
+                "id": 14,
+                "text": "Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:",
+                "options": [
+                    { "id": "a", "text": "a. $85,000" },
+                    { "id": "b", "text": "b. $35,000" },
+                    { "id": "c", "text": "c. $55,000" },
+                    { "id": "d", "text": "d. ($5,000)" },
+                    { "id": "e", "text": "e. $60,000" }
+                ],
+                "correct": "b",
+                "basmaga": "حسبة دخل فهد الكلي: مبيعات 150 ألف - مصاريف (الإنتاج 25 ألف + إهلاك الموازنة الكلية FC بـ 90 ألف) = 35,000 ربح.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) $35,000</strong><br><br>في طريقة الـ Full Costing، بنطرح من الإيراد مصاريف الإنتاج (25,000) زائد إهلاك الطريقة الكلية DD&A FC فقط (90,000) لأن الآبار الجافة بتترسمل كأصل ومبتروحش قائمة الدخل: 150,000 - 115,000 = 35,000 دولار."
+            },
+            {
+                "id": 15,
+                "text": "Based on Fahd Company data, if the company uses the full costing (FC) method, the net asset value equals:",
+                "options": [
+                    { "id": "a", "text": "a. $1,070,000" },
+                    { "id": "b", "text": "b. $1,050,000" },
+                    { "id": "c", "text": "c. $1,020,000" },
+                    { "id": "d", "text": "d. $890,000" },
+                    { "id": "e", "text": "e. $990,000" }
+                ],
+                "correct": "c",
+                "basmaga": "صافي أصول فهد الكلية: نجمع كل المصاريف الرأسمالية (50k+30k+130k+400k+500k) ونطرح الإهلاك المجمع الكلي 90k تطلع 1,020,000.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) $1,020,000</strong><br><br>الطريقة الكلية بترسمل كل مليم اتصرف في الحفر والبحث والاستحواذ: الاستحواذ (50,000) + الدراسات G&G (30,000) + الاستكشاف الجاف (130,000) + الاستكشاف الناجح (400,000) + التطوير (500,000) = 1,110,000 دولار إجمالي الأصول. نطرح الإهلاك المتراكم الخاص بها (90,000) فينتج 1,020,000 دولار."
+            },
+            {
+                "id": 16,
+                "text": "Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net income or loss equals:",
+                "options": [
+                    { "id": "a", "text": "a. ($75,000)" },
+                    { "id": "b", "text": "b. ($1,245,000)" },
+                    { "id": "c", "text": "c. $5,000" },
+                    { "id": "d", "text": "d. $12,000" },
+                    { "id": "e", "text": "e. $35,000" }
+                ],
+                "correct": "a",
+                "basmaga": "دخل فهد الناجحة: طريقة قاسية ومتحفظة بتطرد الفاشل والدراسات مصروف؛ مبيعات 150k - مصاريف (30k+130k+25k+40k) = خسارة (75,000).",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) ($75,000) خسارة</strong><br><br>قائمة دخل المجهودات الناجحة (SE) بتخصم كل بند فشل أو دراسات استكشافية فوراً: مبيعات 150,000 - مصاريف [دراسات 30,000 + بلوك جاف 130,000 + إنتاج 25,000 + إهلاك الناجحة 40,000] = خسارة صافية قدرها (75,000) دولار."
+            },
+            {
+                "id": 17,
+                "text": "Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net asset value equals:",
+                "options": [
+                    { "id": "a", "text": "a. $910,000" },
+                    { "id": "b", "text": "b. $940,000" },
+                    { "id": "c", "text": "c. $1,070,000" },
+                    { "id": "d", "text": "d. $1,020,000" },
+                    { "id": "e", "text": "e. $935,000" }
+                ],
+                "correct": "a",
+                "basmaga": "صافي أصول فهد الناجحة: نجمع البنود الناجحة بس (50k استحواذ + 400k ناجح + 500k تطوير) ونطرح إهلاك SE الـ 40k تطلع 910,000.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) $910,000</strong><br><br>تحت طريقة (SE) بنرسمل الناجح والمضمون فقط: الاستحواذ (50,000) + الاستكشاف الناجح (400,000) + التطوير (500,000) = 950,000 دولار أصول إجمالية. نطرح الإهلاك المتراكم الخاص بها (40,000) ليكون صافي قيمة الأصول المتبقية 910,000 دولار."
+            },
+            {
+                "id": 18,
+                "text": "A company spends $200,000 on G&G activities to locate and explore an oil prospect. The journal entry would include:",
+                "options": [
+                    { "id": "a", "text": "a. Acquisition expenses" },
+                    { "id": "b", "text": "b. G&G expense" },
+                    { "id": "c", "text": "c. G&G cost" },
+                    { "id": "d", "text": "d. Production expenses" },
+                    { "id": "e", "text": "e. Explanatory expenses" }
+                ],
+                "correct": "b",
+                "basmaga": "صرف مبالغ على أنشطة ومسوحات الـ G&G قبل الحفر تروح فوراً حساب مصروف مدين G&G expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) G&G expense</strong><br><br>أي مبالغ بتتصرف على أعمال المسح الجيولوجي والجيوفيزيائي قبل الحفر عشان ندور على مؤشرات تواجده، بتعتبر مصروف فترة جاري فوراً في طريقة المجهودات الناجحة، وبنفتح ليها حساب اسمه حساب مصروفات جيولوجية وجيوفيزيائية في الجانب المدين **G&G expense**."
+            },
+            {
+                "id": 19,
+                "text": "A company signed an agreement to conduct G&G studies and paid $105,000. The journal entry for this transaction would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. Legal expense" },
+                    { "id": "b", "text": "b. G&G expense - depreciation" },
+                    { "id": "c", "text": "c. G&G expense" },
+                    { "id": "d", "text": "d. Unproved property" },
+                    { "id": "e", "text": "e. Test well contribution expense" }
+                ],
+                "correct": "c",
+                "basmaga": "توقيع اتفاقية ودفع كاش لعمل بحوث ودراسات مسحية (G&G studies) يروح مدين حساب المصروف G&G expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) G&G expense</strong><br><br>توقيع اتفاقية ودفع 105 ألف دولار لعمل دراسات وبحوث مسحية أولية هو مصروف استكشافي جاري مكانه قائمة الدخل مدين تحت حساب **G&G expense**."
+            },
+            {
+                "id": 20,
+                "text": "A company acquired a 400 Sq. Km lease paying a $300 per Sq. Km bonus. The journal entry would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. G&G expense" },
+                    { "id": "b", "text": "b. Test well contribution expense" },
+                    { "id": "c", "text": "c. Legal expense" },
+                    { "id": "d", "text": "d. Unproved property" },
+                    { "id": "e", "text": "e. Wells and related E & F" }
+                ],
+                "correct": "d",
+                "basmaga": "دفع عربون وشراء حق رخصة عقد أرض فضاء لسه مجهولة الاحتياطي يروح أصل مؤقت عقارات غير مؤكدة Unproved property.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (d) Unproved property</strong><br><br>لما بندفع مكافأة عقد (Bonus) عشان نشتري حق الامتياز والتنقيب في مساحة أرض جغرافية معينة، ده بيعتبر تكلفة استحواذ رأسمالية. وطالما الأرض لسه في الأول ومش متأكدين جيويلوجياً فيها بترول ولا لأ، بنسجلها كأصل مؤقت في الجانب المدين تحت حساب عقارات غير مؤكدة **Unproved property**."
+            },
+            {
+                "id": 21,
+                "text": "A company drilled a dry exploratory well at a cost of $500,000. The journal entry for this transaction would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. G&G expense" },
+                    { "id": "b", "text": "b. Unproved property" },
+                    { "id": "c", "text": "c. Legal expense" },
+                    { "id": "d", "text": "d. Wells and related E & F" },
+                    { "id": "e", "text": "e. Dry hole expense" }
+                ],
+                "correct": "e",
+                "basmaga": "تلمح كلمة بير استكشاف جاف وفاضي (dry exploratory well) اقفل حساباته فوراً في مصروف خسارة البير الجاف Dry hole expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (e) Dry hole expense</strong><br><br>حفرنا بير استكشافي (Exploratory well) وللأسف طلع جاف وفاضي (Dry hole). طالما طلع فاشل في مدرسة المجهودات الناجحة، بنقفل حساباته الجارية المؤقتة ونرمي التكلفة كلها خسارة فورية ومصروف في الجانب المدين لحساب مصاريف بئر جاف **Dry hole expense**."
+            },
+            {
+                "id": 22,
+                "text": "A company drilled a successful exploratory well at a cost of $600,000. The journal entry would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. Proved property" },
+                    { "id": "b", "text": "b. Wells and related E & F" },
+                    { "id": "c", "text": "c. G&G expense" },
+                    { "id": "d", "text": "d. Legal expense" },
+                    { "id": "e", "text": "e. Unproved property" }
+                ],
+                "correct": "b",
+                "basmaga": "البير الاستكشافي نجح ولقى زيت (successful exploratory)، بنقفل الـ WIP ونحوله لأصل إنتاجي دائم Wells and related E & F.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) Wells and related E & F</strong><br><br>لو البير الاستكشافي نجح ولقينا جوه صخوره كميات بترولية تجارية مؤكدة، بنقفل حساب الحفر تحت التنفيذ ونحول التكلفة بالكامل لحساب الأصول البترولية الدائمة في الجانب المدين تحت حساب آبار ومنشآت ومعدات خطوط التدفق **Wells and related E & F**."
+            },
+            {
+                "id": 23,
+                "text": "A company paid Ad valorem taxes for the amount of $5,000. The journal entry for this transaction would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. Ad valorem tax expense" },
+                    { "id": "b", "text": "b. Legal expense" },
+                    { "id": "c", "text": "c. G&G expense" },
+                    { "id": "d", "text": "d. Delay rental expense" },
+                    { "id": "e", "text": "e. Records maintenance expense" }
+                ],
+                "correct": "a",
+                "basmaga": "تطابق لفظي ودفتري صريح للضرائب العقارية للأرض فضاء: تلمح Ad valorem taxes اختار أختها Ad valorem tax expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (a) Ad valorem tax expense</strong><br><br>الضرائب العقارية وضريبة الأملاك المفروضة على قيمة الأرض غير المطورة (Ad valorem taxes) بتتصنف محاسبياً كـ تكاليف احتفاظ بالأرض (Carrying costs)، وهي مصاريف دورية بتترمى مصروف في الجانب المدين لحساب **Ad valorem tax expense**."
+            },
+            {
+                "id": 24,
+                "text": "A company paid $12,000 for title defense in connection with the property lease. The journal entry would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. Wells and related E & F" },
+                    { "id": "b", "text": "b. Unproved property" },
+                    { "id": "c", "text": "c. Legal expense" },
+                    { "id": "d", "text": "d. Records maintenance expense" },
+                    { "id": "e", "text": "e. G&G expense - operating costs" }
+                ],
+                "correct": "c",
+                "basmaga": "مصاريف المحامين والقضايا للدفاع عن سلامة رخصة العقد وقانونية الأرض تروح حساب مصاريف قانونية Legal expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (c) Legal expense</strong><br><br>أتعاب المحامين والقضايا للدفاع عن سلامة وصحة ملكية العقد (Title defense) بعد الاستحواذ بتُعتبر مصاريف قانونية دورية جارية ومكانها القيد في الجانب المدين لحساب مصاريف قانونية وقضائية **Legal expense**."
+            },
+            {
+                "id": 25,
+                "text": "A company paid a delay rental of $5,200 to retain the undeveloped lease. The journal entry would include a debit to:",
+                "options": [
+                    { "id": "a", "text": "a. Wells and related E & F" },
+                    { "id": "b", "text": "b. G&G expense - operating costs" },
+                    { "id": "c", "text": "c. Legal expense" },
+                    { "id": "d", "text": "d. Records maintenance expense" },
+                    { "id": "e", "text": "e. Delay rental expense" }
+                ],
+                "correct": "e",
+                "basmaga": "تطابق صريح لغرامة تأخير الحفر السنوية: تلمح كلمة delay rental اختار حساب المصروف التابع Delay rental expense.",
+                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (e) Delay rental expense</strong><br><br>غرامة التأخير السنوية اللي الشركة بتدفعها للملاك عشان تأجل الحفر سنة كمان وتحتفظ بالعقد (Delay rental) هي برضه من تكاليف الاحتفاظ (Carrying costs) وبتتسجل مصروف فترة مدين في حساب مصاريف تأخير الإيجار **Delay rental expense**."
+            }
+        ]
     }
 }

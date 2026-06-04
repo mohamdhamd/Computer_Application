@@ -706,7 +706,44 @@
             user-select: none;
         }
 
-        /* ===== BOOKMARK BUTTON ===== */
+        /* ===== BASMAGA BOX ===== */
+        .basmaga-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-right: 5px solid #d97706;
+            border-radius: 0.75rem;
+            padding: 0.9rem 1rem;
+            margin-bottom: 1rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .basmaga-box > i {
+            font-size: 1.25rem;
+            color: #d97706;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .basmaga-label {
+            font-size: 0.72rem;
+            font-weight: 900;
+            color: #92400e;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .basmaga-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+
         .bookmark-bar {
             display: flex;
             align-items: center;
@@ -2103,6 +2140,42 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 4 — بصمجة الأسئلة -->
+                <div class="exam-card" style="border-color: #d97706; border-width: 2px;">
+                    <div class="exam-card-header" style="background: linear-gradient(135deg, #92400e, #d97706);">
+                        <div class="bg-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div class="exam-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                        <div class="exam-card-title">بصمجة الأسئلة ⚡</div>
+                        <div class="exam-card-sub">حفظ سريع وزتونة ذكية للمراجعة الأخيرة</div>
+                    </div>
+                    <div class="exam-card-body">
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1.5px solid #f59e0b; border-radius: 0.75rem; padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; font-weight: 700; color: #78350f; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-lightbulb" style="color: #d97706;"></i>
+                            كل سؤال جنبه زتونة بصمجة للحفظ السريع
+                        </div>
+                        <div class="exam-stats">
+                            <div class="exam-stat">
+                                <i class="fa-solid fa-list-ol" style="color:#d97706"></i>
+                                <div class="label">الأسئلة</div>
+                                <div class="value" id="q-count-4">-- سؤال</div>
+                            </div>
+                            <div class="exam-stat">
+                                <i class="fa-solid fa-brain" style="color:#92400e"></i>
+                                <div class="label">النوع</div>
+                                <div class="value">بنك موحد</div>
+                            </div>
+                        </div>
+                        <div class="exam-btns">
+                            <button class="btn btn-primary" onclick="startExam('all_consolidated_questions', false)" style="background: linear-gradient(135deg, #d97706, #92400e); box-shadow: 0 2px 8px rgba(217,119,6,0.4);">
+                                <i class="fa-solid fa-rocket"></i> اختبر نفسك
+                            </button>
+                            <button class="btn btn-dark" onclick="startExam('all_consolidated_questions', true)">
+                                <i class="fa-solid fa-bolt-lightning"></i> دراسة وبصمجة
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- History -->
             <div id="history-section" class="history-section hidden">
@@ -2729,7 +2802,12 @@
             if (studyMode || answered !== null) {
                 explanationLock.classList.add('hidden');
                 explanationContent.classList.remove('blurred');
-                explanationContent.innerHTML = q.explanation;
+                let panelHTML = '';
+                if (q.basmaga) {
+                    panelHTML += `<div class="basmaga-box"><i class="fa-solid fa-bolt-lightning"></i><div><div class="basmaga-label">زتونة البصمجة ⚡</div><div class="basmaga-text">${q.basmaga}</div></div></div>`;
+                }
+                panelHTML += q.explanation || 'لا يوجد شرح مفصل متاح لهذا السؤال.';
+                explanationContent.innerHTML = panelHTML;
                 runMathJax();
 
                 if (bookmarkBar) bookmarkBar.style.display = 'flex';
@@ -3120,6 +3198,11 @@
                 if (examsData['specialized_institutions_final_exam']) {
                     const cnt = examsData['specialized_institutions_final_exam'].questions.length;
                     const el = document.getElementById('q-count-2');
+                    if (el) el.textContent = cnt + ' سؤال';
+                }
+                if (examsData['all_consolidated_questions']) {
+                    const cnt = examsData['all_consolidated_questions'].questions.length;
+                    const el = document.getElementById('q-count-4');
                     if (el) el.textContent = cnt + ' سؤال';
                 }
             }
