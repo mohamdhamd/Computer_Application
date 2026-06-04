@@ -2475,8 +2475,11 @@
                                             <ul>
                                                 <li><span class="ar-label">المعاملة الأولى (مصاريف الـ G&G):</span> الشركة صرفت 450 ألف دولار دراسات مسح. طالما لسه ممسكناش بريمة وحفرنا، يبقى دي تكاليف ما قبل الحفر (Pre-drilling). قاعدة المجهودات الناجحة واضحة: ارميها فوراً مصروف في الجانب المدين (Debit) واقفله كاش في الدائن (Credit).</li>
                                                 <li><span class="ar-label">المعاملة الثانية (حسبة مكافأة عقد الاستحواذ):</span> الشركة لقت المؤشرات حلوة، فراحت مأجرة 450 كم مربع من الملاك أو الحكومة، ودفعت مكافأة (Bonus) قيمتها 300 دولار لكل كم مربع. 
-                                                    <br><strong>خطوة الحسبة الحتمية:</strong> نضرب المساحة في سعر الكيلومتر: $450 \times 300 = 135,000$ دولار. الفلوس دي بتديك "حق قانوني" فبنعتبرها أصل Speculative (محتمل)، فبنفتح حساب أصل اسمه **Unproved Property** ونخليه مدين بـ 135 ألف، والنقدية دائن بنفس المبلغ.
-                                                </li>
+<br><strong>خطوة الحسبة الحتمية:</strong> نضرب المساحة في سعر الكيلومتر:
+<br><br>
+$$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
+<br><br>
+الفلوس دي بتديك "حق قانوني" فبنعتبرها أصل Speculative (محتمل)، فبنفتح حساب أصل اسمه **Unproved Property** ونخليه مدين بـ 135 ألف، والنقدية دائن بنفس المبلغ.                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -3296,8 +3299,11 @@
                                                 <li><span class="ar-label">طبيعة المعاملة:</span> الشركة اشترت حق تصوير ومسح زلزالي فقط (Shooting Rights Only) لمساحة 600 كم مربع في الصحراء الغربية ودفت 120 ألف دولار، ومن غير ما يكون معاها حق خيار للإيجار.</li>
                                                 <li><span class="ar-label">المعالجة والقيد الأول:</span> طالما مفيش عقد إيجار ولا حق خيار، الفلوس دي مدفوعة بس عشان نشتري "معلومات" (Information Gathering). مدرسة المجهودات الناجحة بتقولك ارميها فوراً في المصاريف؛ بنخلي حساب **Geological and Geophysical Expense** مدين (Debit) بـ 120 ألف، وحساب **Cash** دائن (Credit) بنفس المبلغ.</li>
                                                 <li><span class="ar-label">قرار الإدارة (Decision 1):</span> الإدارة درست الخرائط وقررت مش هأجر ولا متر في منطقة ألفا دي. <strong>الحل المحاسبي:</strong> No Entry (لا يُجرى قيد إضافي)، لأننا أصلاً رمينا الـ 120 ألف دولار في المصاريف من أول خطوة ومفيش أصل مفتوح في الدفاتر عشان نقفله!</li>
-                                                <li class="bg-purple-50 p-2 rounded text-sm font-semibold text-purple-900">💡 تريكة الفاينال المخبأة: الرقم ده ($120,000 \div 600 \text{ كم} = 200 \text{ دولار للكم}$) هو المرجع والمفتاح الجيولوجي اللي هنحل بيه منطقة بيتا زي ما هتشوف حالا!</li>
-                                            </ul>
+<li class="bg-purple-50 p-2 rounded text-sm font-semibold text-purple-900">
+    💡 تريكة الفاينال المخبأة: الرقم ده هو المرجع والمفتاح الجيولوجي اللي هنحل بيه منطقة بيتا زي ما هتشوف حالا!
+    <br><br>
+    $$\text{Benchmark Rate} = \frac{\$120,000}{600 \text{ Sq. Km}} = \$200 \text{ / Sq. Km}$$
+</li>                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -5440,52 +5446,58 @@ ${fullContent}
             bookmarks.forEach((bm, idx) => {
                 const card = document.createElement('div');
                 const isLec = (bm.type === 'lecture');
-                const borderHex = '#a855f7';
-                const hoverShadow = '0 8px 24px rgba(168,85,247,0.15)';
-                const headerBg = '#faf5ff';
+                const borderHex = '#7c3aed';
+                const hoverShadow = '0 10px 25px rgba(124,58,237,0.12)';
+                const headerBg = '#fbfbfe';
                 const mainIcon = 'fa-solid fa-graduation-cap';
-                const mainIconColor = '#7e22ce';
-                const mainIconBg = '#f3e8ff';
-                const mainIconBorder = '#e9d5ff';
+                const mainIconColor = '#7c3aed';
+                const mainIconBg = '#f5f3ff';
+                const mainIconBorder = '#ddd6fe';
 
-                card.style.cssText = `background:white; border-radius:1rem; border:2px solid ${borderHex}; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:box-shadow 0.2s;`;
-                card.onmouseover = () => card.style.boxShadow = hoverShadow;
-                card.onmouseout = () => card.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)';
+                card.style.cssText = `background:white; border-radius:1rem; border:1px solid #e2e8f0; border-right:4px solid ${borderHex}; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.04); transition:all 0.25s ease-in-out; margin-bottom: 0.75rem;`;
+                card.onmouseover = () => {
+                    card.style.boxShadow = hoverShadow;
+                    card.style.transform = 'translateY(-2px)';
+                };
+                card.onmouseout = () => {
+                    card.style.boxShadow = '0 4px 15px rgba(0,0,0,0.04)';
+                    card.style.transform = 'translateY(0)';
+                };
 
                 if (isLec) {
                     const cleanTitle = (bm.lectureTitle || '').replace('المحاضرة ', 'محاضرة ');
                     const cardTitle = (bm.cardTitle || '').replace(/<[^>]+>/g, '');
                     card.innerHTML = `
-                        <div onclick="toggleBookmarkCard(${idx})" style="display:flex; align-items:flex-start; justify-content:space-between; gap:0.6rem; padding:0.85rem 1rem; cursor:pointer; background:${headerBg};">
-                            <div style="display:flex; align-items:flex-start; gap:0.6rem; min-width:0; flex:1;">
-                                <div style="width:2rem; height:2rem; min-width:2rem; background:${mainIconBg}; border:1.5px solid ${mainIconBorder}; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; color:${mainIconColor}; font-size:0.85rem; margin-top:0.1rem;">
+                        <div onclick="toggleBookmarkCard(${idx})" style="display:flex; align-items:flex-start; justify-content:space-between; gap:0.6rem; padding:1rem; cursor:pointer; background:${headerBg}; border-bottom: 1px solid #f1f5f9; direction:rtl;">
+                            <div style="display:flex; align-items:flex-start; gap:0.75rem; min-width:0; flex:1;">
+                                <div style="width:2.2rem; height:2.2rem; min-width:2.2rem; background:${mainIconBg}; border:1.5px solid ${mainIconBorder}; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; color:${mainIconColor}; font-size:0.95rem; margin-top:0.1rem; flex-shrink:0;">
                                     <i class="${mainIcon}"></i>
                                 </div>
-                                <div style="flex:1; min-width:0;">
-                                    <div style="display:flex; align-items:center; gap:0.35rem; margin-bottom:0.3rem; flex-wrap:wrap;">
-                                        <span style="font-size:0.62rem; font-weight:900; background:#f3e8ff; color:#6b21a8; padding:0.1rem 0.4rem; border-radius:0.3rem; white-space:nowrap;">شرح للمراجعة</span>
-                                        <span style="font-size:0.62rem; font-weight:800; background:#f0fdf4; color:#166534; padding:0.1rem 0.4rem; border-radius:0.3rem; border:1px solid #86efac; white-space:nowrap;">${cleanTitle}</span>
-                                        <span style="font-size:0.6rem; color:#94a3b8; font-weight:600;">${bm.savedAt || ''}</span>
+                                <div style="flex:1; min-width:0; text-align:right;">
+                                    <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap; justify-content:flex-start;">
+                                        <span style="font-size:0.68rem; font-weight:800; background:#f3e8ff; color:#6b21a8; padding:0.15rem 0.5rem; border-radius:0.35rem; white-space:nowrap; border:1px solid #e9d5ff;">شرح للمراجعة</span>
+                                        <span style="font-size:0.68rem; font-weight:800; background:#ecfdf5; color:#047857; padding:0.15rem 0.5rem; border-radius:0.35rem; border:1px solid #a7f3d0; white-space:nowrap;">${cleanTitle}</span>
+                                        <span style="font-size:0.65rem; color:#94a3b8; font-weight:600;"><i class="fa-regular fa-clock ml-1"></i>${bm.savedAt || ''}</span>
                                     </div>
-                                    <div style="font-size:0.85rem; font-weight:800; color:#1e293b; direction:rtl; text-align:right; word-break:break-word; line-height:1.45;">${cardTitle || ''}</div>
+                                    <div style="font-size:0.92rem; font-weight:800; color:#1e293b; direction:rtl; text-align:right; word-break:break-word; line-height:1.5;">${cardTitle || ''}</div>
                                 </div>
                             </div>
-                            <div style="display:flex; align-items:center; gap:0.3rem; flex-shrink:0; padding-top:0.05rem;">
-                                <button onclick="event.stopPropagation(); navigateToLectureCardByIdx(${idx})" title="عرض في المحاضرة" style="width:1.7rem; height:1.7rem; border-radius:0.4rem; border:1.5px solid #c084fc; background:#faf5ff; color:#7e22ce; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.72rem;" onmouseover="this.style.background='#f3e8ff'" onmouseout="this.style.background='#faf5ff'">
+                            <div style="display:flex; align-items:center; gap:0.4rem; flex-shrink:0; padding-top:0.1rem;">
+                                <button onclick="event.stopPropagation(); navigateToLectureCardByIdx(${idx})" title="عرض في المحاضرة" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #c084fc; background:#faf5ff; color:#7e22ce; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#f3e8ff'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#faf5ff'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
-                                <button onclick="event.stopPropagation(); openAIChatForBookmarkByIdx(${idx})" title="اسأل AI" style="width:1.7rem; height:1.7rem; border-radius:0.4rem; border:1.5px solid #10b981; background:#ecfdf5; color:#047857; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.72rem;" onmouseover="this.style.background='#d1fae5'" onmouseout="this.style.background='#ecfdf5'">
+                                <button onclick="event.stopPropagation(); openAIChatForBookmarkByIdx(${idx})" title="اسأل AI" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #86efac; background:#f0fdf4; color:#047857; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#d1fae5'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#f0fdf4'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-robot"></i>
                                 </button>
-                                <button onclick="event.stopPropagation(); deleteBookmarkByIdx(${idx})" title="حذف" style="width:1.7rem; height:1.7rem; border-radius:0.4rem; border:1.5px solid #fca5a5; background:#fff5f5; color:#dc2626; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.72rem;" onmouseover="this.style.background='#fee2e2'" onmouseout="this.style.background='#fff5f5'">
+                                <button onclick="event.stopPropagation(); deleteBookmarkByIdx(${idx})" title="حذف" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #fca5a5; background:#fff5f5; color:#dc2626; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#fff5f5'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
-                                <i id="bm-chevron-${idx}" class="fa-solid fa-chevron-down" style="color:#94a3b8; font-size:0.78rem; transition:transform 0.3s;"></i>
+                                <i id="bm-chevron-${idx}" class="fa-solid fa-chevron-down" style="color:#94a3b8; font-size:0.8rem; transition:transform 0.3s; margin-right:0.4rem;"></i>
                             </div>
                         </div>
-                        <div id="bm-body-${idx}" style="display:none; padding:1rem; border-top:1.5px solid #f3e8ff; background:#fff;">
-                            ${bm.enText ? `<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.6rem; padding:0.85rem; font-size:0.82rem; font-weight:600; color:#334155; line-height:1.75; overflow-x:auto; direction:ltr; text-align:left; word-break:break-word;">${bm.enText}</div>` : ''}
-                            ${bm.arText ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:0.6rem; padding:0.85rem; font-size:0.83rem; font-weight:700; color:#78350f; line-height:1.8; direction:rtl; text-align:right; margin-top:0.65rem; word-break:break-word;">${bm.arText}</div>` : ''}
+                        <div id="bm-body-${idx}" style="display:none; padding:1.25rem; border-top:1px solid #f1f5f9; background:#fafafa;">
+                            ${bm.enText ? `<div class="content-en" style="margin:0; padding:1.25rem; border-radius:0.75rem; font-size:0.82rem; overflow-x:auto;">${bm.enText}</div>` : ''}
+                            ${bm.arText ? `<div class="content-ar" style="margin-top:0.75rem; padding:1.25rem; border-radius:0.75rem; font-size:0.85rem; overflow-x:auto;">${bm.arText}</div>` : ''}
                         </div>
                     `;
                 }
