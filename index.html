@@ -1223,18 +1223,51 @@
             transform: scale(1) translateY(0);
         }
 
+        /* Mobile: slide up from bottom */
         @media (max-width: 640px) {
-            #bookmarks-modal-content {
-                max-height: 95vh;
-                border-radius: 16px;
-            }
             #bookmarks-modal-overlay {
-                padding: 0.4rem;
+                padding: 0;
                 align-items: flex-end;
             }
             #bookmarks-modal-content {
-                border-radius: 16px 16px 0 0;
-                max-height: 92vh;
+                width: 100%;
+                max-width: 100%;
+                height: 93vh;
+                max-height: 93vh;
+                border-radius: 20px 20px 0 0;
+            }
+            /* Modal header wraps on very small screens */
+            #bookmarks-modal-content .bm-modal-header {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0.85rem 1rem !important;
+            }
+            #bookmarks-modal-content .bm-modal-header h3 {
+                font-size: 0.9rem !important;
+            }
+            #bookmarks-modal-content .bm-modal-header .bm-header-actions {
+                gap: 0.4rem;
+            }
+            #bookmarks-modal-content .bm-modal-header .bm-clear-btn {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+            /* Bookmark card items on mobile */
+            .bm-card-header {
+                padding: 0.75rem !important;
+            }
+            .bm-card-meta {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            .bm-card-actions {
+                flex-wrap: nowrap;
+                gap: 0.3rem;
+            }
+            .bm-card-actions button {
+                width: 1.65rem !important;
+                height: 1.65rem !important;
+                font-size: 0.72rem !important;
             }
         }
 
@@ -1347,22 +1380,22 @@
             <div id="bookmarks-modal-overlay">
                 <div id="bookmarks-modal-content">
                     <!-- Modal Header -->
-                    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-4 flex items-center justify-between shadow-md z-10">
-                        <div class="flex items-center gap-3">
-                            <span class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-lg">
+                    <div class="bm-modal-header bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md z-10" style="padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; direction:rtl; flex-shrink:0;">
+                        <div style="display:flex; align-items:center; gap:0.65rem; min-width:0;">
+                            <span style="width:2.4rem; height:2.4rem; min-width:2.4rem; background:rgba(255,255,255,0.2); border-radius:0.75rem; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
                                 <i class="fa-solid fa-bookmark text-amber-300"></i>
                             </span>
-                            <div>
-                                <h3 class="font-bold text-base sm:text-lg" style="margin:0;">محفوظاتي للمراجعة</h3>
-                                <p class="text-xs text-purple-200 font-medium" id="bm-modal-subtitle" style="margin:0;">0 عناصر محفوظة</p>
+                            <div style="min-width:0;">
+                                <h3 class="font-bold" style="margin:0; font-size:clamp(0.85rem,3.5vw,1.1rem); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">محفوظاتي للمراجعة</h3>
+                                <p class="text-purple-200 font-medium" id="bm-modal-subtitle" style="margin:0; font-size:0.7rem;">0 عناصر محفوظة</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <button onclick="clearAllBookmarks()" class="text-xs font-bold bg-red-500/20 hover:bg-red-500/30 border border-red-400/40 text-red-200 py-1.5 px-3 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer">
-                                <i class="fa-solid fa-trash-can"></i> مسح الكل
+                        <div class="bm-header-actions" style="display:flex; align-items:center; gap:0.5rem; flex-shrink:0;">
+                            <button onclick="clearAllBookmarks()" class="bm-clear-btn" style="font-size:0.72rem; font-weight:700; background:rgba(239,68,68,0.2); border:1px solid rgba(248,113,113,0.4); color:#fca5a5; padding:0.35rem 0.7rem; border-radius:0.5rem; display:flex; align-items:center; gap:0.4rem; transition:all 0.2s; cursor:pointer; white-space:nowrap;" onmouseover="this.style.background='rgba(239,68,68,0.3)'" onmouseout="this.style.background='rgba(239,68,68,0.2)'">
+                                <i class="fa-solid fa-trash-can"></i> <span class="bm-clear-label">مسح الكل</span>
                             </button>
-                            <button onclick="closeBookmarksModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border-none">
-                                <i class="fa-solid fa-xmark text-lg"></i>
+                            <button onclick="closeBookmarksModal()" style="width:2.1rem; height:2.1rem; min-width:2.1rem; border-radius:50%; background:rgba(255,255,255,0.12); color:white; display:flex; align-items:center; justify-content:center; transition:all 0.2s; cursor:pointer; border:none; font-size:1rem;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+                                <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                     </div>
@@ -3348,13 +3381,24 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <p>دخلنا في منطقة بيتا في الدلتا، وهنا دفعنا 400 ألف دولار دفعة مشتركة مجمعة، والمسألة طالبة الحلين:</p>
                                             <ul>
                                                 <li><span class="ar-label">١. المدخل العملي المتبع في الشركات (Practical):</span> بنكبر دماغنا ومبنفرقش دلوقتي؛ بنعتبر الـ 400 ألف دولار كلهم أصل معلق مؤقت لحد ما نشوف هأجر ولا لأ. بنفتح حساب وسيط اسمه **Property Purchase Suspense** نخليه مدين بـ 400 ألف بالكامل، وحساب النقدية دائن.</li>
-                                                <li><span class="ar-label">٢. المدخل النظري الأكاديمي التفصيلي (Theoretical):</span> هنا الدكتور بيقولك طالما منطقة بيتا شبه منطقة ألفا جيويلوجياً، لازم تستخدم ألفا كـ "مقياس مرجعي" (Benchmark) وتفصل تمن التصوير عن تمن الخيار.
-                                                    <br><strong>خطوات الحسبة التفصيلية:</strong>
-                                                    <br>• تمن تكلفة تصوير الكيلومتر في ألفا = $120,000 \div 600 = 200$ دولار للكم مربع.
-                                                    <br>• التكلفة التقديرية للتصوير جوه بيتا = مساحة بيتا (1,000 كم) × 200 دولار = 200,000 دولار. (دي تروح مصروف جيو فوراً).
-                                                    <br>• المتبقي من الـ 400 ألف وهو قيمة حق الخيار النقي = $400,000 - 200,000 = 200,000$ دولار. (دي تترسمل كأصل معلق).
-                                                    <br><strong>صياغة القيد النظري:</strong> بنعمل قيد مدكورين؛ حساب المصروف **Geological and Geophysical Expense** مدين بـ 200 ألف، وحساب الأصل المعلق **Property Purchase Suspense** مدين بـ 200 ألف، والـ **Cash** دائن بـ 400 ألف دولار.
-                                                </li>
+<li><span class="ar-label">٢. المدخل النظري الأكاديمي التفصيلي (Theoretical):</span> هنا الدكتور بيقولك طالما منطقة بيتا شبه منطقة ألفا جيويلوجياً، لازم تستخدم ألفا كـ "مقياس مرجعي" (Benchmark) وتفصل تمن التصوير عن تمن الخيار.
+    <br><br>
+    <strong>خطوات الحسبة التفصيلية:</strong>
+    <br><br>
+    • تمن تكلفة تصوير الكيلومتر في منطقة ألفا المرجعية:
+    <br>
+    $$\text{Benchmark Rate} = \frac{\$120,000}{600 \text{ Sq. Km}} = \$200 \text{ / Sq. Km}$$
+    <br>
+    • التكلفة التقديرية المخصصة للتصوير جوه منطقة بيتا:
+    <br>
+    $$\text{G\&G Exploration Component} = 1,000 \text{ Sq. Km} \times \$200 = \$200,000 \quad \text{(Expense)}$$
+    <br>
+    • المتبقي من الـ 400 ألف وهو قيمة حق الخيار النقي بالاستنتاج والتتميم:
+    <br>
+    $$\text{Implied Option Component} = \$400,000 - \$200,000 = \$200,000 \quad \text{(Suspense Asset)}$$
+    <br>
+    <strong>صياغة القيد النظري:</strong> بنعمل قيد مدكورين؛ حساب المصروف **Geological and Geophysical Expense** مدين بـ 200 ألف، وحساب الأصل المعلق **Property Purchase Suspense** مدين بـ 200 ألف، والـ **Cash** دائن بـ 400 ألف دولار.
+</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -3373,15 +3417,26 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                             <div class="acc-body">
                                 <div class="acc-body-inner">
                                     <div class="acc-body-content">
-                                        <div class="content-en">
+<div class="content-en">
                                             <p><strong>Decision 2 Facts:</strong> Lease 20% (200 sq. km) of Area Beta, surrender 80% (800 sq. km). Paid an extra lease bonus of $200,000.</p>
                                             <p class="font-bold my-1 text-xs">Practical Approach Calculations (Suspense Balance = $400,000):</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li>Option portion to capitalize (20%) = $400,000 × 20% = $80,000</li>
-                                                <li>Option portion to expense as abandoned (80%) = $400,000 × 80% = $320,000</li>
-                                                <li>Extra Lease Bonus Paid = $200,000</li>
-                                                <li>Total Final Capitalized Unproved Property Cost = $200,000 (Bonus) + $80,000 (Option) = $280,000</li>
+                                            
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• Option portion to expense as abandoned (80%):
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$400,000 \times 80\% = \$320,000$$
+                                                </li>
+                                                <li>• Option portion to capitalize (20%):
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$400,000 \times 20\% = \$80,000$$
+                                                </li>
+                                                <li>• Extra Lease Bonus Paid = \$200,000</li>
+                                                <li>• Total Final Capitalized Unproved Property Cost:
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$200,000 \text{ (Bonus)} + \$80,000 \text{ (Option)} = \$280,000$$
+                                                </li>
                                             </ul>
+                                            
                                             <table class="min-w-full divide-y divide-gray-200 text-xs mt-2">
                                                 <thead class="bg-gray-50">
                                                     <tr><th>Date</th><th>Account Titles</th><th>Debit ($)</th><th>Credit ($)</th></tr>
@@ -3396,20 +3451,32 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="content-ar">
+<div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
                                             <p>ركز معايا جداً هنا عشان الحسبة دي فيها دمج بين رصيد الحساب المعلق القديم وبين شيك مكافأة الإيجار الجديد:</p>
                                             <ul>
                                                 <li><span class="ar-label">فهم فكرة القرار العملي:</span> إحنا كنا راميين في الخطوة اللي فاتت 400 ألف كاملة في حساب الـ Suspense. دلوقتي الإدارة قالت إحنا مش عايزين الأرض كلها؛ هنأجر 20% بس وهنرمي ونلغي الـ 80% الباقيين، وكمان هنروح ندفع لصاحب الأرض شيك جديد بـ 200 ألف دولار تمن مكافأة الإيجار (Lease Bonus) للجزء اللي أخدناه.</li>
                                                 <li><span class="ar-label">خطوات التفكيك الرياضي:</span>
-                                                    <br>• الجزء الخسران والملغي من المعلق القديم = $400,000 \times 80\% = 320,000$ دولار. (ده بيروح مصروف خسارة عقود متنازل عنها).
-                                                    <br>• الجزء الناجح والمستأجر من المعلق القديم = $400,000 \times 20\% = 80,000$ دولار. (ده بيتحول لأصل بترولي).
-                                                    <br>• تمن شيك مكافأة الإيجار الجديد المدفوع نقداً = 200,000 دولار. (وده أصل استحواذ برضه).
-                                                    <br>• إجمالي قيمة الأصل البترولي النهائي غير المؤكد (**Unproved Property**) = $200,000 \text{ مكافأة} + 80,000 \text{ نصيب الخيار} = 280,000$ دولار.
+                                                    <br><br>
+                                                    • الجزء الخسران والملغي من المعلق القديم (80%):
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$400,000 \times 80\% = \$320,000$$
+                                                    <br>
+                                                    • الجزء الناجح والمستأجر من المعلق القديم (20%):
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$400,000 \times 20\% = \$80,000$$
+                                                    <br>
+                                                    • تمن شيك مكافأة الإيجار الجديد المدفوع نقداً = \$200,000
+                                                    <br><br>
+                                                    • إجمالي قيمة الأصل البترولي النهائي غير المؤكد والمحمل دفترياً (**Unproved Property**):
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$200,000 \text{ (Bonus)} + \$80,000 \text{ (Option)} = \$280,000$$
                                                 </li>
                                                 <li><span class="ar-label">تفسير قيد اليومية المركب:</span> 
-                                                    <br>• بنحط في الجانب المدين (Debit): حساب الخسارة **Surrendered Lease Expense** بـ 320 ألف، وحساب الأصل النهائي **Unproved Property** بـ 280 ألف دولار.
-                                                    <br>• بنحط في الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم بـ 400 ألف كاملة عشان نلغيه من الدفاتر، وبنقفل حساب الـ **Cash** بـ 200 ألف دولار قيمة الشيك الجديد اللي طلع من الخزنة كـ Bonus.
+                                                    <br><br>
+                                                    • بنحط في الجانب المدين (Debit): حساب الخسارة **Surrendered Lease Expense** بـ 320 ألف، وحساب الأصل النهائي **Unproved Property** بـ 280 ألف دولار.
+                                                    <br><br>
+                                                    • بنحط في الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم بـ 400 ألف كاملة عشان نلغيه من الدفاتر، وبنقفل حساب الـ **Cash** بـ 200 ألف دولار قيمة الشيك الجديد اللي طلع من الخزنة كـ Bonus.
                                                 </li>
                                             </ul>
                                         </div>
@@ -3417,8 +3484,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                 </div>
                             </div>
                         </div>
-
-                        <div class="acc-card" id="l3-p2-acc4">
+<div class="acc-card" id="l3-p2-acc4">
                             <button class="acc-header l3-toggle" data-index="3">
                                 <div class="acc-icon" style="background:#e0f2fe;color:#0369a1">
                                     <i class="fa-solid fa-calculator"></i>
@@ -3431,12 +3497,21 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                     <div class="acc-body-content">
                                         <div class="content-en">
                                             <p class="font-bold my-1 text-xs">Theoretical Approach Calculations (Suspense Balance = $200,000):</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li>Remember: Standalone G&G ($200,000) was already expensed in Transaction 2!</li>
-                                                <li>Option portion to capitalize (20%) = $200,000 × 20% = $40,000</li>
-                                                <li>Option portion to expense as surrendered (80%) = $200,000 × 80% = $160,000</li>
-                                                <li>Lease Bonus Paid = $200,000</li>
-                                                <li>Total Final Capitalized Unproved Property Cost = $200,000 (Bonus) + $40,000 (Option) = $240,000</li>
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• Remember: Standalone G&G ($200,000) was already expensed in Transaction 2!</li>
+                                                <li>• Option portion to capitalize (20%):
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$200,000 \times 20\% = \$40,000$$
+                                                </li>
+                                                <li>• Option portion to expense as surrendered (80%):
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$200,000 \times 80\% = \$160,000$$
+                                                </li>
+                                                <li>• Lease Bonus Paid = \$200,000</li>
+                                                <li>• Total Final Capitalized Unproved Property Cost:
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$200,000 \text{ (Bonus)} + \$40,000 \text{ (Option)} = \$240,000$$
+                                                </li>
                                             </ul>
                                             <table class="min-w-full divide-y divide-gray-200 text-xs mt-2">
                                                 <thead class="bg-gray-50">
@@ -3458,14 +3533,26 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <ul>
                                                 <li><span class="ar-label">فهم الفارق النظري:</span> فاكر في الخطوة رقم ٢ إحنا كنا أصلاً عزلنا ورمينا 200 ألف دولار في المصاريف تمن التصوير، وسجلنا بس في حساب الـ Suspense المعلق قيمة الخيار الصافية وهي 200 ألف دولار بس. يعني إحنا بنشتغل النهاردة وعينينا على رصيد معلق قيمته 200 ألف مش 400 ألف!</li>
                                                 <li><span class="ar-label">خطوات الحسبة النظرية بالتفصيل:</span>
-                                                    <br>• نصيب المساحة المتنازل عنها (80%) من رصيد الخيار = $200,000 \times 80\% = 160,000$ دولار. (خسارة وعقود ضائعة).
-                                                    <br>• نصيب المساحة المستأجرة (20%) من رصيد الخيار = $200,000 \times 20\% = 40,000$ دولار. (أصل بترولي مرسمل).
-                                                    <br>• شيك مكافأة الإيجار الجديد = 200,000 دولار.
-                                                    <br>• إجمالي قيمة الأصل غير المؤكد (**Unproved Property**) في الدفاتر النظرية = $200,000 \text{ مكافأة} + 40,000 \text{ نصيب الخيار الصافي} = 240,000$ دولار.
+                                                    <br><br>
+                                                    • نصيب المساحة المتنازل عنها (80%) من رصيد الخيار:
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$200,000 \times 80\% = \$160,000$$
+                                                    <br>
+                                                    • نصيب المساحة المستأجرة (20%) من رصيد الخيار:
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$200,000 \times 20\% = \$40,000$$
+                                                    <br>
+                                                    • شيك مكافأة الإيجار الجديد المدفوع كاش = \$200,000
+                                                    <br><br>
+                                                    • إجمالي قيمة الأصل غير المؤكد والمحمل دفترياً (**Unproved Property**):
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$200,000 \text{ (Bonus)} + \$40,000 \text{ (Option)} = \$240,000$$
                                                 </li>
                                                 <li><span class="ar-label">تفسير قيد اليومية النظري:</span>
-                                                    <br>• الجانب المدين (Debit): حساب الخسارة **Surrendered Lease Expense** بـ 160 ألف، وحساب الأصل **Unproved Property** بـ 240 ألف دولار.
-                                                    <br>• الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم برصيده الفعلي الحالي وهو 200 ألف دولار، وبنقفل حساب الـ **Cash** بقيمة مكافأة الإيجار بـ 200 ألف دولار.
+                                                    <br><br>
+                                                    • الجانب المدين (Debit): حساب الخسارة **Surrendered Lease Expense** بـ 160 ألف، وحساب الأصل **Unproved Property** بـ 240 ألف دولار.
+                                                    <br><br>
+                                                    • الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم برصيده الفعلي الحالي وهو 200 ألف دولار، وبنقفل حساب الـ **Cash** بقيمة مكافأة الإيجار بـ 200 ألف دولار.
                                                 </li>
                                             </ul>
                                         </div>
@@ -3527,11 +3614,20 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                         <div class="content-en">
                                             <p><strong>Decision 3 Facts:</strong> Lease 50% (400 sq. km) of Area Gamma and surrender 50% (400 sq. km). Paid an extra lease bonus of $150,000.</p>
                                             <p class="font-bold my-1 text-xs">Calculations (Suspense Balance = $240,000):</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li>Option portion capitalized (50%) = $240,000 × 50% = $120,000</li>
-                                                <li>Option portion expensed as surrendered (50%) = $240,000 × 50% = $120,000</li>
-                                                <li>Extra Lease Bonus Paid = $150,000</li>
-                                                <li>Total Final Capitalized Unproved Property Cost = $150,000 (Bonus) + $120,000 (Option) = $270,000</li>
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• Option portion capitalized (50%):
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$240,000 \times 50\% = \$120,000$$
+                                                </li>
+                                                <li>• Option portion expensed as surrendered (50%):
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$240,000 \times 50\% = \$120,000$$
+                                                </li>
+                                                <li>• Extra Lease Bonus Paid = \$150,000</li>
+                                                <li>• Total Final Capitalized Unproved Property Cost:
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$150,000 \text{ (Bonus)} + \$120,000 \text{ (Option)} = \$270,000$$
+                                                </li>
                                             </ul>
                                             <table class="min-w-full divide-y divide-gray-200 text-xs mt-2">
                                                 <thead class="bg-gray-50">
@@ -3552,15 +3648,28 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <p>الإدارة درست خليج السويس وأصدرت القرار الثالث: هنأجر نص مساحة جاما (50%) وهنتنازل عن النص الباقي ونرميه، وهندفع شيك جديد لصاحب الأرض بـ 150 ألف دولار كـ Bonus:</p>
                                             <ul>
                                                 <li><span class="ar-label">خطوات التفكيك الرياضي لمنطقة جاما:</span>
-                                                    <br>• الرصيد المعلق القديم في الـ Suspense كان 240 ألف دولار.
-                                                    <br>• نصيب المساحة المتروكة والضائعة (50%) = $240,000 \times 50\% = 120,000$ دولار. (ده بيروح مصروف خسارة عقود متنازل عنها فوراً).
-                                                    <br>• نصيب المساحة المأخوذة والمستأجرة (50%) = $240,000 \times 50\% = 120,000$ دولار. (ده بيترسمل كأصل بترولي).
-                                                    <br>• شيك مكافأة الإيجار الجديد المدفوع كاش = 150,000 دولار.
-                                                    <br>• إجمالي قيمة الأصل البترولي النهائي غير المؤكد (**Unproved Property**) = $150,000 \text{ مكافأة جديد} + 120,000 \text{ نصيب الخيار المترسمل} = 270,000$ دولار بالمليم.
+                                                    <br><br>
+                                                    • الرصيد المعلق القديم في الـ Suspense كان 240 ألف دولار.
+                                                    <br><br>
+                                                    • نصيب المساحة المتروكة والضائعة جراء التنازل (50%):
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} = \$240,000 \times 50\% = \$120,000$$
+                                                    <br>
+                                                    • نصيب المساحة المأخوذة والمستأجرة من الخيار المعلق (50%):
+                                                    <br>
+                                                    $$\text{Capitalized Option Share} = \$240,000 \times 50\% = \$120,000$$
+                                                    <br>
+                                                    • شيك مكافأة الإيجار الجديد المدفوع كاش = \$150,000
+                                                    <br><br>
+                                                    • إجمالي القيمة الرأسمالية للأصل البترولي غير المطور الناتجة (**Unproved Property**):
+                                                    <br>
+                                                    $$\text{Total Unproved Property} = \$150,000 \text{ (Bonus)} + \$120,000 \text{ (Option)} = \$270,000$$
                                                 </li>
                                                 <li><span class="ar-label">تفسير وصياغة القيد الختامي لجاما:</span>
-                                                    <br>• الجانب المدين (Debit): بنسجل حساب الخسارة الدورية والمصروف **Surrendered Lease Expense** بـ 120 ألف، وحساب الأصل النهائي غير المطور والمؤكد **Unproved Property** بـ 270 ألف دولار.
-                                                    <br>• الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم بقيمته الكاملة وهي 240 ألف عشان يصفر، وبنقفل حساب النقدية **Cash** بقيمة الـ Bonus المدفوع بـ 150 ألف دولار.
+                                                    <br><br>
+                                                    • الجانب المدين (Debit): بنسجل حساب الخسارة الدورية والمصروف **Surrendered Lease Expense** بـ 120 ألف، وحساب الأصل النهائي غير المطور والمؤكد **Unproved Property** بـ 270 ألف دولار.
+                                                    <br><br>
+                                                    • الجانب الدائن (Credit): بنقفل حساب الـ **Property Purchase Suspense** القديم بقيمته الكاملة وهي 240 ألف عشان يصفر، وبنقفل حساب النقدية **Cash** بقيمة الـ Bonus المدفوع بـ 150 ألف دولار.
                                                 </li>
                                             </ul>
                                         </div>
@@ -3599,9 +3708,12 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 <li><span class="ar-label">المشكلة الاقتصادية للأصل غير المؤكد:</span> إحنا عمالين نرسمل في حساب الـ Unproved Property وبنقول أصل في الميزانية. بس في الحقيقة، الأصل ده لسه ما أثبتش وجود بترول تجاري جواه! المنفعة المستقبلية بتاعته مهزوزة ومش أكيدة. وعشان كده معايير المحاسبة بتجبر الشركات تعمل "تقييم دوري للهبوط" (Periodic Assessment for Impairment).</li>
                                                 <li><span class="ar-label">قاعدة التقييم الفردي:</span> لو الأرض أو العقد تكلفة الاستحواذ بتاعته "كبيرة ومهمة نسبياً" (Individually Significant)، المعايير بتشترط فحصها لوحدها عقد بعقد وعقار بعقار (Property-by-property basis)، والفحص ده لازم يتم **مرة واحدة على الأقل سنوياً** أو أقل من كده لو ظهرت ظروف طارئة.</li>
                                                 <li><span class="ar-label">المؤشرات الثلاثة الكبرى للهبوط (تأتي دائماً صح وغلط):</span> إمتى المحاسب يتأكد إن الأرض دي قيمتها باظت ولازم يخفضها ويعمل قيد هبوط؟ في 3 حالات كارثية:
-                                                    <br>&nbsp;&nbsp;• <strong>١. نتائج استكشاف فاشلة:</strong> حفرنا بير طلع جاف وفاضي (Dry Hole)، والشركة مفيش عندها أي نية ولا خطة مستقبلية إنها تحفر تاني في الأرض دي.
-                                                    <br>&nbsp;&nbsp;• <strong>٢. معلومات جيولوجية سلبية:</strong> فحصنا خرائط المسح الزلزالي (Seismic Data) ولقينا إن طبيعة الصخور والأرض جيويلوجياً غير مبشرة ومفيهاش مصايد بترول، فاحتمالية تواجده بقت قريبة من الصفر.
-                                                    <br>&nbsp;&nbsp;• <strong>٣. قرب انتهاء مدة العقد القانونية:</strong> المدة الأساسية للعقد (Primary Term) قربت تخلص وتنقضي (مثلاً فاضل شهرين على نهاية الـ 5 سنين المتفق عليها) وإحنا لسه حتى ممسكناش فأس ولا بدأنا حفر! هنا الأصل بيموت إكلينيكياً ولازم نعترف بالهبوط فوراً وخسارته في قائمة الدخل.
+                                                    <br><br>
+                                                    • <strong>١. نتائج استكشاف فاشلة:</strong> حفرنا بير طلع جاف وفاضي (Dry Hole)، والشركة مفيش عندها أي نية ولا خطة مستقبلية إنها تحفر تاني في الأرض دي.
+                                                    <br><br>
+                                                    • <strong>٢. معلومات جيولوجية سلبية:</strong> فحصنا خرائط المسح الزلزالي (Seismic Data) ولقينا إن طبيعة الصخور والأرض جيويلوجياً غير مبشرة ومفيهاش مصايد بترول، فاحتمالية تواجده بقت قريبة من الصفر.
+                                                    <br><br>
+                                                    • <strong>٣. قرب انتهاء مدة العقد القانونية:</strong> المدة الأساسية للعقد (Primary Term) قربت تخلص وتنقضي (مثلاً فاضل شهرين على نهاية الـ 5 سنين المتفق عليها) وإحنا لسه حتى ممسكناش فأس ولا بدأنا حفر! هنا الأصل بيموت إكلينيكياً ولازم نعترف بالهبوط فوراً وخسارته في قائمة الدخل.
                                                 </li>
                                             </ul>
                                         </div>
@@ -3609,7 +3721,6 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                 </div>
                             </div>
                         </div>
-
                         <!-- Back to Lectures Button -->
                         <div class="mt-8 flex justify-center">
                             <button onclick="showHomeView()" class="px-8 py-3 rounded-xl font-bold text-white shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700">
@@ -3763,8 +3874,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                 </div>
                             </div>
                         </div>
-
-                        <div class="acc-card" id="l3-p3-acc3">
+<div class="acc-card" id="l3-p3-acc3">
                             <button class="acc-header l3-toggle" data-index="2">
                                 <div class="acc-icon" style="background:#fee2e2;color:#dc2626">
                                     <i class="fa-solid fa-calculator"></i>
@@ -3786,8 +3896,9 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             </table>
 
                                             <p class="font-bold my-1 text-xs">2. Impairment Recognition Journal Entry (Dec 31, 2024):</p>
-                                            <p class="text-xs text-gray-600">Calculation: $400,000 \times 50\% = \$200,000$ Impairment Loss.</p>
-                                            <table class="min-w-full divide-y divide-gray-200 text-xs mb-3">
+                                            <p class="text-xs text-gray-600">Calculation:</p>
+                                            $$\text{Impairment Loss} = \$400,000 \times 50\% = \$200,000$$
+                                            <table class="min-w-full divide-y divide-gray-200 text-xs mb-3 mt-2">
                                                 <tbody class="bg-white divide-y divide-gray-200">
                                                     <tr><td>Dec 31, 2024</td><td>Lease Impairment Expense (Income Statement)<br>&nbsp;&nbsp;&nbsp;&nbsp;Allowance for Impairment (Contra-Asset)</td><td>200,000</td><td><br>200,000</td></tr>
                                                 </tbody>
@@ -3809,10 +3920,19 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <ul>
                                                 <li><span class="ar-label">خطوة شراء الأرض (مارس ٢٠٢٤):</span> الشركة اشترت عقد أرض فضاء في الصحراء الغربية بـ 400 ألف دولار كاش، ودي تكلفة فردية مهمة. بنسجل قيد أصل عادي جداً: من حساب **Unproved Property** مدين بـ 400 ألف، إلى حساب **Cash** دائن بـ 400 ألف دولار.</li>
                                                 <li><span class="ar-label">خطوة قياس وتسجيل الهبوط (ديسمبر ٢٠٢٤):</span> خلال السنة حفرنا 3 آبار استكشافية والتلاتة طلعوا آبار جافة فاضية (Dry holes). الإدارة قعدت وقررت إن الأرض دي خسرت 50% من قيمتها. 
-                                                    <br><strong>الحسبة الرياضية الحتمية:</strong> نضرب التكلفة الأصلية في نسبة الهبوط: $400,000 \times 50\% = 200,000$ دولار.
-                                                    <br><strong>قيد إثبات خسارة الهبوط:</strong> بنفتح حساب مصروف يروح قائمة الدخل ينقص الأرباح اسمه **Lease Impairment Expense** مدين بـ 200 ألف، وبنقفل الطرف الدائن في حساب المخصص العكسي **Allowance for Impairment** بـ 200 ألف دولار.
+                                                    <br><br>
+                                                    <strong>الحسبة الرياضية الحتمية:</strong> نضرب التكلفة الأصلية في نسبة الهبوط المستهدفة:
+                                                    <br>
+                                                    $$\text{Lease Impairment Expense} = \$400,000 \times 50\% = \$200,000$$
+                                                    <br>
+                                                    <strong>قيد إثبات خسارة الهبوط:</strong> بنفتح حساب مصروف يروح قائمة الدخل ينقص الأرباح اسمه **Lease Impairment Expense** مدين بـ 200 ألف، وبنقفل الطرف الدائن في حساب المخصص العكسي **Allowance for Impairment** بـ 200 ألف دولار.
                                                 </li>
-                                                <li><span class="ar-label">طريقة العرض في الميزانية (Balance Sheet):</span> في جانب الأصول، بنحط حساب الأرض بالتكلفة التاريخية الكاملة (400 ألف دولار)، وتحتها بنطرح حساب المخصص العكسي بـ (200 ألف)، عشان يظهر للمستثمرين والشركاء إن صافي القيمة الدفترية المتبقية للأصل (**Net Carrying Value**) هي 200 ألف دولار بس، وده تقدير الإدارة للمنافع اللي باقية من الأرض دي.</li>
+                                                <li><span class="ar-label">طريقة العرض في الميزانية (Balance Sheet):</span> في جانب الأصول، بنحط حساب الأرض بالتكلفة التاريخية الكاملة (400 ألف دولار)، وتحتها بنطرح حساب المخصص العكسي بـ (200 ألف)، عشان يظهر للمستثمرين والشركاء إن صافي القيمة الدفترية المتبقية للأصل بيساوي:
+                                                    <br>
+                                                    $$\text{Net Carrying Value} = \$400,000 - \$200,000 = \$200,000$$
+                                                    <br>
+                                                    وده تقدير الإدارة للمنافع الاقتصادية الحقيقية اللي باقية ومحتملة من الأرض دي.
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -3835,11 +3955,17 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <p><strong>Scenario 2 Facts:</strong> On Dec 31, 2024, BAPETCO holds a pool of insignificant unproved properties with a gross balance of <strong>$600,000</strong>. The Allowance for Impairment account currently has an existing credit balance of <strong>$120,000</strong>. Policy requires maintaining the allowance at <strong>50%</strong> of the gross asset balance based on Western Desert historical data.</p>
                                             
                                             <p class="font-bold my-1 text-xs">Step-by-Step Adjustment Calculations:</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li>Total Unproved Property Pool Balance = $600,000</li>
-                                                <li>Target Required Allowance Balance (50%) = $600,000 × 50% = $300,000</li>
-                                                <li>Less: Existing Allowance Balance already in books = ($120,000)</li>
-                                                <li><strong>Additional Impairment Expense Needed</strong> = $300,000 - $120,000 = <strong>$180,000</strong></li>
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• Total Unproved Property Pool Balance = \$600,000</li>
+                                                <li>• Target Required Allowance Balance (50%):
+                                                    <br>
+                                                    $$\text{Target Required Allowance} = \$600,000 \times 50\% = \$300,000$$
+                                                </li>
+                                                <li>• Less: Existing Allowance Balance already in books = (\$120,000)</li>
+                                                <li>• <strong>Additional Impairment Expense Needed</strong>:
+                                                    <br>
+                                                    $$\text{Additional Expense Needed} = \$300,000 - \$120,000 = \$180,000$$
+                                                </li>
                                             </ul>
 
                                             <p class="font-bold my-1 text-xs">Adjustment Journal Entry (Dec 31, 2024):</p>
@@ -3861,15 +3987,24 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
-                                            <p>ندخل على السيناريو الثاني لشركة "بابيتكو" (BAPETCO)، وده تطبيق على طريقة "الهبوط الجماعي المحفظي" وركز عشان الحسبة دي شبه تسويات الجرد المالي:</p>
+                                            <p>ندخل على السيناريو الثاني لشركة "بابيتكو" (BAPETCO)، وده تطبيق على طريقة "الهبوط الجماعي المحفظي" وركز عشان الحسبة دي شبه تسويات الجرد المالي للديون المشكوك فيها:</p>
                                             <ul>
                                                 <li><span class="ar-label">تفكيك بيانات دفاتر بابيتكو:</span> الشركة مجمعة عقود صغيرة كتير تمنهم الإجمالي في حساب الأصول 600 ألف دولار. الدفاتر بتقول إن عندنا رصيد قديم متبقي ومفتوح في المخصص العكسي (Credit Balance) بـ 120 ألف دولار من السنين اللي فاتت. سياسة الشركة المبنية على خبرتها التاريخية في الصحراء الغربية بتقول إن لازم المخصص الختامي يساوي 50% من إجمالي الأصول.</li>
                                                 <li><span class="ar-label">خطوات التسوية الجردية الحتمية:</span>
-                                                    <br>١. إحنا عايزين مخصص كلي يقفل كام السنة دي؟ $600,000 \times 50\% = 300,000$ دولار. ده الرصيد المستهدف (Required Balance).
-                                                    <br>٢. بنبص في الدفاتر نلاقي عندنا رصيد قديم متركن بـ 120 ألف. يبقى مش هنصرف الـ 300 ألف كلهم من جديد!
-                                                    <br>٣. <strong>حسبة التتميم والتسوية:</strong> نطرح المستهدف ناقص الموجود عشان نطلع الفرق اللي ناقص ومحتاجين نزوده: $300,000 - 120,000 = 180,000$ دولار. وده الرقم اللي هيتعمل بيه القيد.
+                                                    <br><br>
+                                                    ١. إحنا عايزين مخصص كلي يقفل كام في الميزانية السنة دي؟
+                                                    <br>
+                                                    $$\text{Target Required Allowance} = \$600,000 \times 50\% = \$300,000$$
+                                                    <br>
+                                                    ٢. بنبص في الدفاتر نلاقي عندنا رصيد قديم متركن ومحفوظ في ميزان المراجعة بـ 120 ألف. يبقى مش هنصرف الـ 300 ألف كلهم من جديد كخسارة فترة!
+                                                    <br><br>
+                                                    ٣. <strong>حسبة التتميم والتسوية الصافية:</strong> نطرح المستهدف المطلوب إثباته ناقص القديم المتاح عشان نطلع الفرق المستجد اللي ناقص ومحتاجين نزوده بقيد التسوية:
+                                                    <br>
+                                                    $$\text{Additional Adjustment Amount} = \$300,000 - \$120,000 = \$180,000$$
+                                                    <br>
+                                                    وده الرقم الدقيق بالمليم اللي هيتعمل بيه القيد الحسابي الجردي.
                                                 </li>
-                                                <li><span class="ar-label">قيد تسوية المخصص:</span> بنعمل قيد زيادة للمخصص بالفرق بس؛ بنخلي حساب المصروف **Lease Impairment Expense** مدين بـ 180 ألف، وحساب المخصص **Allowance for Impairment** دائن بـ 180 ألف دولار.</li>
+                                                <li><span class="ar-label">قيد تسوية المخصص الجماعي:</span> بنعمل قيد زيادة للمخصص بالفرق المستنتج بس؛ بنخلي حساب المصروف **Lease Impairment Expense** مدين بـ 180 ألف، وحساب المخصص **Allowance for Impairment** دائن بـ 180 ألف دولار.</li>
                                                 <li><span class="ar-label">الميزانية الختامية لبابيتكو:</span> بنعرض الحساب الإجمالي المجمع للأصول بـ 600 ألف، ونطرح منه المخصص الكلي الجديد بعد التعديل والتسوية وهو الـ (300 ألف كاملة)، فيطلع صافي القيمة الدفترية للمحفظة البترولية الجماعية بـ 300 ألف دولار.</li>
                                             </ul>
                                         </div>
@@ -3896,9 +4031,9 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                     <tr><th>Lease</th><th>Acquisition Cost (Asset)</th><th>Impairment Allowance Linked</th><th>Accounting Case</th></tr>
                                                 </thead>
                                                 <tbody class="bg-white divide-y divide-gray-200">
-                                                    <tr><td><strong>Lease X</strong> (Gulf of Suez)</td><td>$150,000</td><td>$150,000</td><td>Adequate Allowance Case</td></tr>
-                                                    <tr><td><strong>Lease Y</strong> (Western Desert)</td><td>$180,000</td><td>$80,000</td><td>Inadequate Allowance Case</td></tr>
-                                                    <tr><td><strong>Lease Z</strong> (Nile Delta)</td><td>$200,000</td><td>$0</td><td>No Allowance Case</td></tr>
+                                                    <tr  class="bg-green-50"><td><strong>Lease X</strong> (Gulf of Suez)</td><td>$150,000</td><td>$150,000</td><td>Adequate Allowance Case</td></tr>
+                                                    <tr  class="bg-blue-50"><td><strong>Lease Y</strong> (Western Desert)</td><td>$180,000</td><td>$80,000</td><td>Inadequate Allowance Case</td></tr>
+                                                    <tr  class="bg-red-50"><td><strong>Lease Z</strong> (Nile Delta)</td><td>$200,000</td><td>$0</td><td>No Allowance Case</td></tr>
                                                 </tbody>
                                             </table>
 
@@ -3909,7 +4044,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 </thead>
                                                 <tbody class="bg-white divide-y divide-gray-200">
                                                     <tr>
-                                                        <td><strong>Lease X</strong></td>
+                                                        <td class="bg-green-50"><strong>Lease X</strong></td>
                                                         <td>Allowance for Impairment<br>&nbsp;&nbsp;&nbsp;&nbsp;Unproved Property</td>
                                                         <td>150,000</td>
                                                         <td><br>150,000</td>
@@ -3933,11 +4068,14 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
                                             <p>دخلنا في تمرين ٣.٤ وده تمرين "وزاري جمهوري مجمّع" بيقيس تدمير وتصفية وإعادة تبويب الأراضي. نمسك الجزء الأول لشركة "جابكو" (GUPCO) لما قررت تتنازل وتتخلى نهائياً عن 3 أراضي منفردة ومهمة، وعندنا 3 حالات محاسبية مختلفة تماماً:</p>
                                             <ul>
-                                                <li><span class="ar-label">١. حالة عقد Lease X (مخصص كافي ومثالي):</span> الأرض تمنها في دفاتر الأصول 150 ألف، وإحنا كنا عاملين مخصص هبوط قديم ليها بـ 150 ألف كاملين. طالما المخصص مغطي التكلفة بالمليم، <strong>المعالجة قفل ومقاصة دفتيرية مباشرة:</strong> بنقفل المخصص العكسي في الجانب المدين بـ 150 ألف، وبنقفل حساب الأصل ونشيله من الدفاتر في الجانب الدائن بـ 150 ألف، ومفيش أي مصروف جديد بيظهر في قائمة الدخل لأننا اعترفنا بالخسارة زمان.</li>
-                                                <li><span class="ar-label">٢. حالة عقد Lease Y (مخصص غير كافي - تريكة الامتحان):</span> الأرض متسجلة أصل بـ 180 ألف دولار، بس المخصص المرتبط بيها جوه الدفاتر فيه 80 ألف بس! إحنا كده عندنا عجز وفارق خسارة غير مغطى قيمته $180,000 - 80,000 = 100,000$ دولار. 
-                                                    <br><strong>قيد تصفية العجز:</strong> بنقفل المخصص المتاح في المدين بـ 80 ألف، وبنرمي الفارق والعجز كـ خسارة فخرية حالية تحت حساب **Surrendered Lease Expense** مدين بـ 100 ألف، ونقفل حساب الأصل بالكامل في الدائن بـ 180 ألف دولار.
+                                                <li><span class="ar-label">١. حالة عقد Lease X (مخصص كافي ومثالي):</span> الأرض تمنها في دفاتر الأصول 150 ألف، وإحنا كنا عاملين مخصص هبوط قديم ليها بـ 150 ألف كاملين ومغطينها. طالما المخصص مغطي التكلفة بالمليم، <strong>المعالجة قفل ومقاصة دفتيرية مباشرة:</strong> بنقفل المخصص العكسي في الجانب المدين بـ 150 ألف، وبنقفل حساب الأصل ونشيله من الدفاتر في الجانب الدائن بـ 150 ألف، ومفيش أي مصروف جديد بيظهر في قائمة الدخل لأننا اعترفنا بالخسارة زمان وثبتناها.</li>
+                                                <li><span class="ar-label">٢. حالة عقد Lease Y (مخصص غير كافي - تريكة الامتحان):</span> الأرض متسجلة أصل بـ 180 ألف دولار، بس المخصص المرتبط بيها جوه الدفاتر فيه 80 ألف بس! إحنا كده عندنا عجز وفارق خسارة غير مغطى ومكشوف بيساوي:
+                                                    <br>
+                                                    $$\text{Uncovered Deficit Loss} = \$180,000 - \$80,000 = \$100,000$$
+                                                    <br>
+                                                    <strong>قيد تصفية العجز:</strong> بنقفل المخصص المتاح في المدين بـ 80 ألف عشان يصفر، وبنرمي الفارق والعجز كـ خسارة فخرية حالية تحت حساب **Surrendered Lease Expense** مدين بـ 100 ألف، ونقفل حساب الأصل بالكامل في الدائن بـ 180 ألف دولار عشان يختفي من الميزانية.
                                                 </li>
-                                                <li><span class="ar-label">٣. حالة عقد Lease Z (بدون مخصص نهائياً):</span> الأرض تمنها كأصل 200 ألف دولار، والشركة مكنتش عاملة ليها أي مخصص هبوط قبل كده خالص وسايباها على عماها. فجأة قررنا نتنازل عنها. طالما مفيش حصالة مخصص تحمينا، <strong>بنرمي التكلفة كلها خسارة فما فجائية:</strong> بنخلي حساب المصروف **Surrendered Lease Expense** مدين بـ 200 ألف كاملة، وحساب الأصل **Unproved Property** دائن بـ 200 ألف دولار عشان يختفي من الميزانية.</li>
+                                                <li><span class="ar-label">٣. حالة عقد Lease Z (بدون مخصص نهائياً):</span> الأرض تمنها كأصل 200 ألف دولار، والشركة مكنتش عاملة ليها أي مخصص هبوط قبل كده خالص وسايباها على عماها. فجأة قررنا نتنازل عنها. طالما مفيش حصالة مخصص تحمينا وتصفي الصدمة، <strong>بنرمي التكلفة الكلية خسارة فادحة فجائية:</strong> بنخلي حساب المصروف الفتري **Surrendered Lease Expense** مدين بـ 200 ألف كاملة، وحساب الأصل **Unproved Property** دائن بـ 200 ألف دولار عشان يصفر دفترياً.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -3978,15 +4116,24 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
-                                            <p>ركز معايا في الجزء الثاني لشركة "خالدة للبترول"، عشان هنا بنلعب لعبة "التتابع الزمني" (Sequential Logic) ودي تريكة فنية خطيرة في الحسابات الجماعية مجمعة التكلفة:</p>
+                                            <p>ركز معايا في الجزء الثاني لشركة "خالدة للبترول"، عشان هنا بنلعب لعبة "التتابع الحسابي الزمني" (Sequential Logic) ودي تريكة فنية خطيرة في الحسابات الجماعية مجمعة التكلفة:</p>
                                             <ul>
-                                                <li><span class="ar-label">فهم المنظومة والترتيب الحسابي:</span> شركة خالدة شغالة بنظام المحفظة الجماعية (Group Basis)، وعندها حصالة مخصص مجمعة لكل الأراضي الصغيرة فيها رصيد دائن بـ 60 ألف دولار. الشركة قررت تتنازل عن أرضين ورا بعض؛ أولاً عقد Lease M بـ 30 ألف، وبعدين عقد Lease N بـ 50 ألف. لازم تحل بالترتيب عشان الرصيد بيقل!</li>
+                                                <li><span class="ar-label">فهم المنظومة والترتيب الحسابي:</span> شركة خالدة شغالة بنظام المحفظة الجماعية (Group Basis)، وعندها حصالة مخصص مجمعة لكل الأراضي الصغيرة فيها رصيد دائن بـ 60 ألف دولار. الشركة قررت تتنازل عن أرضين ورا بعض؛ أولاً عقد Lease M بـ 30 ألف، وبعدين عقد Lease N بـ 50 ألف. لازم تحل بالترتيب التتابعي الصارم لأن رصيد الحصالة المشترك بيقل مع كل حركة!</li>
                                                 <li><span class="ar-label">الخطوة الأولى (التنازل عن الأرض M أولاً):</span> الأرض M تكلفتها 30 ألف دولار. بنجري نبص على حصالة المخصص المجمع نلاقي فيها 60 ألف. طالما الحصالة مغطية وزي الفل، بنسحب الـ 30 ألف من الحصالة مباشرة ومن غير ما نوجع قلب قائمة الدخل بمصاريف جديدة. 
-                                                    <br><strong>قيد الأرض M:</strong> من حساب **Allowance for Impairment** مدين بـ 30 ألف، إلى حساب **Unproved Property** دائن بـ 30 ألف دولار.
-                                                    <br><strong>الحسبة الوسيطة الإلزامية:</strong> الرصيد اللي باقي وحي جوه حصالة المخصص المجمع بعد الحركة دي بيساوي: $60,000 - 30,000 = 30,000$ دولار بس! وده الرقم الجديد اللي هندخل بيه الخطوة التانية.
+                                                    <br><br>
+                                                    <strong>قيد الأرض M:</strong> من حساب **Allowance for Impairment** مدين بـ 30 ألف، إلى حساب **Unproved Property** دائن بـ 30 ألف دولار.
+                                                    <br><br>
+                                                    <strong>الحسبة الوسيطة الإلزامية للرصيد الجاري المتبقي:</strong>
+                                                    <br>
+                                                    $$\text{Remaining Allowance Pool Balance} = \$60,000 - \$30,000 = \$30,000$$
+                                                    <br>
+                                                    وده الرقم الجديد الفعلي اللي هندخل بيه المعاملة التانية التابعة.
                                                 </li>
-                                                <li><span class="ar-label">الخطوة الثانية (التنازل عن الأرض N ثانياً - كمين الامتحان):</span> الأرض N تكلفتها 50 ألف دولار. بنروح نفتح حصالة المخصص نلاقي اللي باقي جواها ومتاح هو 30 ألف دولار بس! إحنا كده عندنا عجز كسر الحصالة قيمته $50,000 - 30,000 = 20,000$ دولار.
-                                                    <br><strong>قيد تصفية الأرض N:</strong> بنقفل بقية رصيد المخصص كله ونخليه مدين بـ 30 ألف عشان يصفر، وبناخد العجز والكسر اللي هو 20 ألف نرميه مصروف جاري في حساب **Surrendered Lease Expense** مدين، ونقفل حساب أصل الأرض N في الجانب الدائن بـ 50 ألف دولار كاملة.
+                                                <li><span class="ar-label">الخطوة الثانية (التنازل عن الأرض N ثانياً - كمين الامتحان):</span> الأرض N تكلفتها 50 ألف دولار. بنروح نفتح حصالة المخصص الجماعي نلاقي اللي باقي جواها ومتاح هو 30 ألف دولار بس! إحنا كده عندنا عجز كسر الحصالة وتعدى طاقتها وقيمته بيساوي هندسياً ومحاسبياً:
+                                                    <br>
+                                                    $$\text{Group Deficit Excess Loss} = \$50,000 - \$30,000 = \$20,000$$
+                                                    <br>
+                                                    <strong>قيد تصفية وجرف الأرض N:</strong> بنقفل بقية رصيد المخصص كله ونخليه مدين بـ 30 ألف عشان يصفر الحساب الجماعي، وبناخد العجز والكسر المكشوف اللي هو 20 ألف نرميه مصروف جاري في قائمة الدخل حساب **Surrendered Lease Expense** مدين، ونقفل حساب أصل الأرض N بالكامل في الجانب الدائن بـ 50 ألف دولار كاملة.
                                                 </li>
                                             </ul>
                                         </div>
@@ -4008,15 +4155,17 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                     <div class="acc-body-content">
                                         <div class="content-en">
                                             <p><strong>Part C Scenario:</strong> Petrobel discovered commercial proved reserves during 2024 and must reclassify the following properties from unproved to proved status:</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li><strong>Lease P</strong> (Individually Significant): Cost = $400,000; Linked Impairment Allowance = $100,000.
-                                                    <br>• *Rule:* Transfer at <strong>Net Carrying Value</strong> ($400,000 - $100,000 = $300,000). Ensures old impairment is never reversed.
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• <strong>Lease P</strong> (Individually Significant): Cost = \$400,000; Linked Impairment Allowance = \$100,000.
+                                                    <br>• *Rule:* Transfer at <strong>Net Carrying Value</strong>:
+                                                    <br>
+                                                    $$\text{Net Carrying Value Transfer} = \$400,000 - \$100,000 = \$300,000$$
                                                 </li>
-                                                <li><strong>Lease Q</strong> (Individually Significant): Cost = $30,000; Linked Impairment Allowance = $0.
-                                                    <br>• *Rule:* Transfer at Net Carrying Value ($30,000 - $0 = $30,000).
+                                                <li>• <strong>Lease Q</strong> (Individually Significant): Cost = \$30,000; Linked Impairment Allowance = \$0.
+                                                    <br>• *Rule:* Transfer at Net Carrying Value (\$30,000 - \$0 = \$30,000).
                                                 </li>
-                                                <li><strong>Lease R</strong> (Individually Insignificant): Cost = $80,000; Group Allowance Pool = $200,000.
-                                                    <br>• *Rule:* Transfer at <strong>Gross Acquisition Cost</strong> ($80,000). The group allowance remains with the unproved pool pool and is untouched.
+                                                <li>• <strong>Lease R</strong> (Individually Insignificant): Cost = \$80,000; Group Allowance Pool = \$200,000.
+                                                    <br>• *Rule:* Transfer at <strong>Gross Acquisition Cost</strong> (\$80,000). Group allowance stays in unproved pool pool.
                                                 </li>
                                             </ul>
                                             
@@ -4033,7 +4182,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                         <td><br><br>400,000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><strong>Lease Q</strong></td>
+                                                        <td  class="bg-green-50"><strong>Lease Q</strong></td>
                                                         <td>Proved Property<br>&nbsp;&nbsp;&nbsp;&nbsp;Unproved Property</td>
                                                         <td>30,000</td>
                                                         <td><br>30,000</td>
@@ -4046,22 +4195,29 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                            <p class="text-xs mt-2 text-gray-500">Note: The $200,000 group allowance for insignificant properties remains completely unchanged in the books.</p>
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
-                                            <p>تعال نفهم القواعد الخاصة بإعادة التبويب لشركة بتروبل (Petrobel) عند العثور على احتياطيات تجارية مؤكدة وتحويل الأراضي من غير مؤكدة إلى مؤكدة:</p>
+                                            <p>نقفل الفصل بالتريكة الأخيرة لشركة "بتروبل" (Petrobel) لما ربنا يكرمها وتلاقي بترول تجاري وتضطر تعمل "إعادة تبويب" (Reclassification) وتحول الأرض من غير مطورة لمطورة مؤكدة، وهنا فيه قاعدتين متناقضتين تماماً حسب نوع وأهمية الأصل البترولي:</p>
                                             <ul>
-                                                <li><span class="ar-label">أولاً: عقد Lease P (مهم فردياً وله مخصص):</span> الأرض تكلفتها التاريخية 400 ألف دولار ومخصص الهبوط المرتبط بها 100 ألف دولار. 
-                                                    <br>• <strong>القاعدة:</strong> يتم التحويل بـ <strong>صافي القيمة الدفترية</strong> (400,000 - 100,000 = 300,000 دولار) لضمان عدم عكس مخصص الهبوط القديم.
-                                                    <br>• <strong>القيد:</strong> من حساب **Proved Property** (مدين بـ 300 ألف)، وحساب **Allowance for Impairment** (مدين بـ 100 ألف لقفل المخصص)، إلى حساب **Unproved Property** (دائن بـ 400 ألف لقفل الأصل القديم).
+                                                <li><span class="ar-label">القاعدة الأولى للأصول الفردية الكبيرة (Lease P &amp; Q):</span> المعايير بتشترط لما نيجي ننقل أرض كبيرة ومهمة نسبياً من حساب غير مطور لمطور، <strong>لازم تنقلها بصافي القيمة الدفترية (Net Carrying Value)</strong> يعني بالتكلفة ناقص المخصص الشخصي المرتبط بيها. وده لضمان حتمي إن خسارة الهبوط اللي سجلناها زمان مابترجعش ومبتتعكسش كأرباح وهمية من خلال حركة التحويل.
+                                                    <br><br>
+                                                    • <strong>تطبيق الأرض P:</strong> تكلفتها 400 ألف وليها مخصص 100 ألف. الصافي بتاعها المحول بيساوي حتماً:
+                                                    <br>
+                                                    $$\text{Net Carrying Value Transfer} = \$400,000 - \$100,000 = \$300,000$$
+                                                    <br>
+                                                    بنعقد قيد تحويل مجمع: بنفتح الأصل الجديد الفعلي **Proved Property** مدين بالصافي بـ 300 ألف، وبنقفل حساب المخصص العكسي القديم ونخليه مدين بـ 100 ألف عشان نكنسله، ونقفل حساب الأصل القديم **Unproved Property** في الجانب الدائن بتكلفتها الأصلية الكاملة 400 ألف دولار.
+                                                    <br><br>
+                                                    • <strong>تطبيق الأرض Q:</strong> تكلفتها 30 ألف ومقضيالهاش مخصص هبوط (صفر). الصافي هو نفسه التكلفة الإجمالية: 30 ألف دولار. القيد ركبي مباشر بسيط: من حساب **Proved Property** مدين بـ 30 ألف، إلى حساب **Unproved Property** دائن بـ 30 ألف دولار.
                                                 </li>
-                                                <li><span class="ar-label">ثانياً: عقد Lease Q (مهم فردياً وبدون مخصص):</span> الأرض تكلفتها 30 ألف دولار ومخصصها صفر.
-                                                    <br>• <strong>القاعدة:</strong> يتم التحويل بكامل القيمة الدفترية (30,000 دولار).
-                                                    <br>• <strong>القيد:</strong> من حساب **Proved Property** مدين بـ 30 ألف، إلى حساب **Unproved Property** دائن بـ 30 ألف دولار.
-                                                </li>
-                                                <li><span class="ar-label">ثالثاً: عقد Lease R (غير مهم فردياً - جماعي):</span> الأرض تكلفتها 80 ألف دولار ومدرجة ضمن محفظة جماعية مخصصها الكلي 200 ألف.
-                                                    <br>• <strong>القاعدة:</strong> يتم التحويل بـ <strong>التكلفة التاريخية الإجمالية (Gross Cost)</strong> وهي 80 ألف دولار، ويبقى المخصص الجماعي كما هو في محفظة الأراضي غير المؤكدة دون تعديل.
-                                                    <br>• <strong>القيد:</strong> من حساب **Proved Property** مدين بـ 80 ألف، إلى حساب **Unproved Property** دائن بـ 80 ألف دولار.
+                                                <li><span class="ar-label">القاعدة الثانية للأصول الجماعية الصغيرة (Lease R - كمين الصح والغلط):</span> الأرض R تكلفتها 80 ألف دولار وهي حتة أرض صغيرة متقيمة تجميعياً ضمن المحفظة الجماعية الشاملة. الرصيد الإجمالي للمخصص الجماعي في الدفاتر 200 ألف دولار. 
+                                                    <br><br>
+                                                    <strong>القاعدة المحاسبية الحديدية للمحفظة:</strong> الأراضي الصغيرة التوافه لما بتنجح ونعيد تبويبها لمطورة، <strong>بتتنقل بالتكلفة التاريخية الإجمالية الكاملة (Gross Cost)</strong> يعني بالـ 80 ألف كاملين ومن غير ما نطرح ولا نمس مليم واحد من المخصص الجماعي المشترك!
+                                                    <br><br>
+                                                    • <strong>قيد الأرض الجماعية R:</strong> من حساب **Proved Property** مدين بـ 80 ألف، إلى حساب **Unproved Property** دائن بـ 80 ألف دولار.
+                                                    <br><br>
+                                                    • <strong>تريكة الامتحان الفاينال الصريحة:</strong> حساب مخصص الهبوط المجمع بتاع السلة (الـ 200 ألف دولار) بيفضل زي ما هو دائن وثابت ومابنطرحش ولا بنحرك منه مليم للأرض R الناجحة! لأنه بيخص وبيمثل بقية مئات الأراضي الصغيرة التانية اللي لسه فضاء وموجودة جوه السلة ومخرجتش منها لسه.
                                                 </li>
                                             </ul>
                                         </div>
@@ -4255,8 +4411,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                 </div>
                             </div>
                         </div>
-
-                        <div class="acc-card" id="l4-acc4">
+<div class="acc-card" id="l4-acc4">
                             <button class="acc-header l4-toggle" data-index="3">
                                 <div class="acc-icon" style="background:#e0f2fe;color:#0369a1">
                                     <i class="fa-solid fa-tree"></i>
@@ -4285,7 +4440,8 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
                                             <p>دي التريكة اللي بتخلص نص مشاكل التبويب في العملي والنظري؛ مجموعة الصمامات والمواسير اللي بتركب فوق رأس البير للتحكم في تدفق النفط بنسميها هندسياً ومحاسبياً **شجرة الكريسماس (Christmas Tree)**:</p>
                                             
-                                                                                        
+                                            
+                                            
                                             <ul>
                                                 <li><span class="ar-label">القاعدة الذهبية الصارمة للفصل:</span> العقد والمحاسبة بيعتبروا لحظة تركيب الشجرة دي هي خط فيصل قاطع بين مرحلتين:</li>
                                             </ul>
@@ -4302,19 +4458,27 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                     <br>**كل المبالغ والمصاريف** (سواء كانت عمالة، أو تانكات، أو مواسير نقل خطوط التدفق) بتتحول وتتسجل كلها حتة واحدة في حساب **Equipment (L&amp;WE)**.</p>
                                                 </div>
                                             </div>
-                                            <p class="mt-3 font-semibold text-sm">تعال نفصص الأمثلة التطبيقية الأربعة اللي في الكتاب عشان نثبت القاعدة:</p>
+                                            <p class="mt-3 font-semibold text-sm">تعال نفصص الأمثلة التطبيقية الأربعة اللي في الكتاب عشان نثبت القاعدة وطريقة حسابها:</p>
                                             <ul>
                                                 <li>• **مثال شركة جابكو (Casing):** اشتروا مواسير بـ 900 ألف، وادوا عمال تركيبها 120 ألف، الكلام ده حصل **قبل الشجرة**. 
-                                                    <br>⬅️ التبويب: الـ 120 ألف عمالة تروح **IDC**، والـ 900 ألف ثمن المواسير تروح **Equipment**.
+                                                    <br>⬅️ التبويب الحسابي:
+                                                    $$\text{Intangible Drilling Costs (IDC)} = \$120,000$$
+                                                    $$\text{Equipment (L\&WE)} = \$900,000$$
                                                 </li>
                                                 <li>• **مثال شركة بتروبل (Flow Line):** اشتروا خطوط أنابيب وتانكات بـ 330 ألف، ودفعوا عمال تركيبها 30 ألف، الكلام ده حصل **بعد الشجرة**.
-                                                    <br>⬅️ التبويب: الـ IDC بـ **صفر**، والـ **Equipment** بياخد المبلغ كله مجمع: $330,000 + 30,000 = 360,000$ دولار. (لأن العمالة تمت بعد تركيب الشجرة فتترسمل مع المعدة).
+                                                    <br>⬅️ التبويب الحسابي: الـ IDC بـ صفر، وحساب المعدات يدمج الكل تماشياً مع قاعدة ما بعد التركيب الحتمية:
+                                                    $$\text{Intangible Drilling Costs (IDC)} = \$0$$
+                                                    $$\text{Equipment (L\&WE)} = \$330,000 + \$30,000 = \$360,000$$
                                                 </li>
                                                 <li>• **مثال شركة إنبي (Access Road):** دفعوا 375 ألف عمالة لتمهيد طريق مدق للوصول لموقع البير **قبل الحفر والتركيب**.
-                                                    <br>⬅️ التبويب: يروح بالكامل **IDC** بقيمة 375 ألف، والـ Equipment بـ **صفر**.
+                                                    <br>⬅️ التبويب الحسابي: يروح بالكامل أصل معلق خدمات:
+                                                    $$\text{Intangible Drilling Costs (IDC)} = \$375,000$$
+                                                    $$\text{Equipment (L\&WE)} = \$0$$
                                                 </li>
-                                                <li>• **مثال الهيئة العامة (EGPC Road):** دفعوا 330 ألف عمالة لتمهيد طريق لبير منتج وخلاص شغال **بعد تركيب الشجرة**.
-                                                    <br>⬅️ التبويب: الـ IDC بـ **صفر**، والمبلغ كله يترسمل في حساب الـ **Equipment** بقيمة 330 ألف دولار.
+                                                <li>• **مثال الهيئة العامة (EGPC Road):** دفعوا 330 ألف عمالة لتمهيد طريق لبير منتج وخلاص شغال ومكتمل **بعد تركيب الشجرة**.
+                                                    <br>⬅️ التبويب الحسابي: يترسمل بالكامل كأصل معدات تانكات:
+                                                    $$\text{Intangible Drilling Costs (IDC)} = \$0$$
+                                                    $$\text{Equipment (L\&WE)} = \$330,000$$
                                                 </li>
                                             </ul>
                                         </div>
@@ -4346,7 +4510,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                     <br>• Bonus Entry: Reclassify leasehold asset: Dr. Proved Property | Cr. Unproved Property.
                                                 </li>
                                                 <li><strong>Step 4: Dry Hole Accounting (Failure):</strong> Unsuccessful wells are plugged and abandoned. Salvaged tools are taken out at fair value; the rest is expensed.
-                                                    <br>• Formula: $\text{Dry Hole Expense} = \text{WIP IDC} + (\text{WIP L\&WE} - \text{Salvage}) + \text{Plugging Costs}$.
+                                                    <br>• Formula: $$\text{Dry Hole Expense} = \text{WIP IDC} + (\text{WIP L\&WE} - \text{Salvage}) + \text{Plugging Costs}$$
                                                     <br>• Entry: Dr. Materials (Salvage) / Dr. Dry Hole Expense | Cr. WIP - IDC / Cr. WIP - L&amp;WE.
                                                 </li>
                                                 <li><strong>Step 5: Contract Surrender:</strong> If full leasehold rights are forfeited due to the dry hole, write off property.
@@ -4362,19 +4526,23 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 <li><span class="ar-label">الخطوة ١ (الرسملة المؤقتة):</span> أول ما نركب البريمة ونبدأ حفر، إحنا لسه مش عارفين الغيب فيه زيت ولا لأ. فبنفتح حسابين أصول مؤقتة "تحت التنفيذ" ونرمي فيهم التكاليف:
                                                     <br>• **Wells in Progress - IDC** للأشياء غير الملموسة.
                                                     <br>• **Wells in Progress - L&amp;WE** للمعدات والمواسير.
-                                                    <br><strong>القيد الثابت:</strong> بنخلي الحسابين دول مدين (Debit) وحساب النقدية أو الموردين دائن (Credit).
+                                                    <br><strong>القيد الثابت المشترك:</strong> بنخلي الحسابين دول مدين (Debit) وحساب النقدية أو الموردين دائن (Credit).
                                                 </li>
-                                                <li><span class="ar-label">الخطوة ٢ (التقييم الفني والهندسي):</span> وصلنا للعمق المطلوب، بينزل مهندسين البترول يعملوا اختبارات تدفق (Drill stem testing) وتحليل طبقات الصخور عشان يطلعوا بقرار فني معتمد بوجود احتياطي تجاري مؤكد.</li>
+                                                <li><span class="ar-label">الخطوة ٢ (التقييم الفني والهندسي):</span> وصلنا للعمق المطلوب، بينزل مهندسين البترول يعملوا اختبارات تدفق (Drill stem testing) وتحليل طبقات الصخور عشان يطلعوا بقرار فني معتمد بوجود احتياطي تجاري مؤكد وبدقة جيويلوجية.</li>
                                                 <li><span class="ar-label">الخطوة ٣ (حالة النجاح - التحويل للأصول المنتجة):</span> لقينا بترول الحمد لله! بنقفل حسابات "تحت التنفيذ" وننقل رصيدها لحساب الأصول الدائمة المنتجة:
-                                                    <br>• القيد: بنخلي حساب **Wells and Related E&F - IDC** وحساب **Wells and Related E&F - L&amp;WE** في الجانب المدين، ونقفل حسابات الـ **Wells in Progress** القديمة في الجانب الدائن.
-                                                    <br>• **التريكة الملحقة:** لو ده أول بير ناجح في الأرض دي، بنعمل قيد تحويل الأرض نفسها من غير مطورة لمطورة: من حـ/ **Proved Property** إلى حـ/ **Unproved Property** بقيمة عقد الاستحواذ التاريخي.
+                                                    <br>• القيد المعتمد: بنخلي حساب **Wells and Related E&F - IDC** وحساب **Wells and Related E&F - L&amp;WE** في الجانب المدين، ونقفل حسابات الـ **Wells in Progress** القديمة في الجانب الدائن.
+                                                    <br>• **التريكة الملحقة:** لو ده أول بير ناجح في الأرض دي، بنعمل قيد تحويل الأرض نفسها من غير مطورة لمطورة: من حـ/ **Proved Property** إلى حـ/ **Unproved Property** بقيمة عقد الاستحواذ التاريخي الشامل.
                                                 </li>
                                                 <li><span class="ar-label">الخطوة ٤ (حالة الفشل - محاسبة البير الجاف Dry Hole):</span> التقييم قال مفيش بترول، ولازم نسد البير ونمشي. 
                                                     <br>• أول حاجة بنشوف لو فيه مواسير أو معدات ينفع نخلعها وننقذها، بنسجلها بسعر السوق الحالي كـ خردة ومواد تحت حساب **Materials and Equipment (Salvage)** مدين.
-                                                    <br>• **حسبة خسارة البير الجاف:** بنجمع كل اللي اتصرف في حسابات الـ WIP ونطرح منه قيمة الخردة المستردة، ونزود عليه فلوس تمن سد البير بالإسمنت (Plugging costs). الرقم النهائي ده بيروح مصروف جاري خسارة في المدين تحت حساب **Dry Hole Expense**.
+                                                    <br><br>
+                                                    • <strong>المعادلة الحتمية لحساب خسارة البئر الجاف:</strong>
+                                                    $$\text{Dry Hole Expense} = \text{WIP IDC} + (\text{WIP L\&WE} - \text{Salvage}) + \text{Plugging Costs}$$
+                                                    <br>
+                                                    • <strong>القيد المالي الحاكم:</strong> بنخلي حساب الخردة مدين، وحساب **Dry Hole Expense** مدين بالخسارة الصافية، ونقفل حسابات الـ WIP في الجانب الدائن.
                                                 </li>
-                                                <li><span class="ar-label">الخطوة ٥ (التخلي عن العقد بالكامل):</span> لو البير الجاف ده دمر أملنا في الأرض دي وقررنا نسيب الرخصة ونمشي خالص. بنقفل تمن الأرض التاريخي غير المطور ونرميه خسارة: من حـ/ **Surrendered Lease Expense** (أو مخصص الهبوط لو موجود) إلى حـ/ **Unproved Property**.</li>
-                                                <li><span class="ar-label">الخطوة ٦ (الرقابة والإفصاح المستمر):</span> معايير المحاسبة الدولية (IFRS 6 و ASC 932) بتجبرنا نفصح بالتفصيل عن الآبار المعلقة (Suspended Wells) اللي بقالها أكتر من سنة مستنية قرار التقييم ومصاريفها لسه متعلقة في الميزانية عشان تضمن الشفافية للمستثمرين.</li>
+                                                <li><span class="ar-label">الخطوة ٥ (التخلي عن العقد بالكامل):</span> لو البير الجاف ده دمر أملنا في الأرض دي وقررنا نسيب الرخصة ونمشي خالص. بنقفل تمن الأرض التاريخي غير المطور ونرميه خسارة فادحة: من حـ/ **Surrendered Lease Expense** (أو مخصص الهبوط لو موجود) إلى حـ/ **Unproved Property** دائن.</li>
+                                                <li><span class="ar-label">الخطوة ٦ (الرقابة والإفصاح المستمر):</span> معايير المحاسبة الدولية (IFRS 6 و ASC 932) بتجبرنا نفصح بالتفصيل عن الآبار المعلقة (Suspended Wells) اللي بقالها أكتر من سنة مستنية قرار التقييم ومصاريفها لسه متعلقة في الميزانية عشان تضمن الشفافية للمستثمرين ومنع التلاعب بالأرباح.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -4408,20 +4576,30 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
-                                            <p>آبار التطوير (Development Wells) بتلعب في ملعب مضمون ومختلف تماماً عن الآبار الاستكشافية ولها منطق محاسبي مستقل:</p>
+                                            <p>آبار التطوير (Development Wells) بتلعب في ملعب مضمون ومختلف تماماً عن الآبار الاستكشافية ولها منطق محاسبي مستقل وثابت دفترياً:</p>
                                             <ul>
-                                                <li><span class="ar-label">التعريف الهندسي لبير التطوير:</span> بير بيتحفر جوة حدود حقل وبلوك "مؤكد" (Proved Area)، ورايح لعمق وطبقة أرض إحنا أصلاً بنطلع منها بترول وعارفين إنها شغالة، بغرض زيادة سحب وتدفق النفط. بتشمل كمان آبار الاختبار الطبقي التنموية وآبار الخدمة لحقن الضغط.</li>
-                                                <li><span class="ar-label">القاعدة الذهبية (الرسملة غير المشروطة):</span> في مدرسة المجهودات الناجحة، **كل مليم** بيتصرف على حفر وتجهيز آبار التطوير **بيترسمل كأصل دائم قطعي**، سواء البير ده طلع شغال وجاب زيت أو طلع جاف وفاضي (Dry Hole)! 
-                                                    <br><strong>السبب المحاسبي والمنطقي لرسملة الفشل التنموي:</span>
-                                                    <br>١. نسبة الشك هنا منخفضة لأننا شغالين في خزان مضمون.
-                                                    <br>٢. البير التنموي الجاف بيدي معلومات جيولوجية وهندسية غالية جداً حددت لنا نهاية حدود الخزان وفين منقربش تاني.
-                                                    <br>٣. البير ده جزء من منظومة شبكة حقل متكاملة (Integrated production system)، فالعبرة بإنتاجية الحقل ككل مش نجاح كل بير لوحده.
+                                                <li><span class="ar-label">التعريف الهندسي لبير التطوير:</span> بير بيتحفر جوة حدود حقل وبلوك "مؤكد" (Proved Area)، ورايح لعمق وطبقة أرض إحنا أصلاً بنطلع منها بترول وعارفين إنها شغالة، بغرض زيادة سحب وتدفق النفط وتكثيف الإنتاج الحركي. بتشمل كمان آبار الاختبار الطبقي التنموية وآبار الخدمة لحقن الضغط.</li>
+                                                <li><span class="ar-label">القاعدة الذهبية (الرسملة غير المشروطة القطعية):</span> في مدرسة المجهودات الناجحة، **كل مليم** بيتصرف على حفر وتجهيز آبار التطوير **بيترسمل كأصل دائم قطعي الميزانية**، سواء البير ده طلع شغال وجاب زيت أو طلع جاف وفاضي (Dry Hole) من غير أي تردد! 
+                                                    <br><br>
+                                                    <strong>السبب المحاسبي والمنطقي لرسملة الفشل التنموي:</strong>
+                                                    <br>
+                                                    ١. نسبة الشك والجهالة منخفضة تماماً لأننا شغالين في خزان مضمون وصريح الإنتاج.
+                                                    <br>
+                                                    ٢. البير التنموي الجاف بيدي داتا معلوماتية جيولوجية غالية جداً حددت للمهندسين نهاية حدود الخزان وفين منقربش تاني دفترياً.
+                                                    <br>
+                                                    ٣. البير ده جزء لا يتجزأ من منظومة شبكة حقل متكاملة (Integrated production system)، فالعبرة بإنتاجية وبناء الحقل ككل مش نجاح أو فشل كل بير لوحده.
                                                 </li>
-                                                <li><span class="ar-label">المعالجة وقيود التنمية:</span> أثناء الحفر بنرمي التكاليف عادي في حسابات الـ WIP. لما البير يخلص -حتى لو طلع جاف- بنقفل الـ WIP ونحوله لحساب الأصول الدائمة **Wells and Related E&F**. والتكلفة دي بتفضل قاعدة في الأصول وبتستهلك بنظام النفاذ (Unit-of-production method) على مدار عمر الحقل كله. حتى فلوس سد وإعدام البير التنموي الجاف بتترسمل وتتجمع على الأصل بقيد: من حـ/ **Wells and Related E&F - IDC** إلى حـ/ **Cash**.</li>
+                                                <li><span class="ar-label">المعالجة وقيود التنمية الختامية:</span> أثناء الحفر بنرمي التكاليف عادي في حسابات الـ WIP. لما البير يخلص -حتى لو طلع جاف- بنقفل الـ WIP ونحوله لحساب الأصول الدائمة المنتجة قطيعة الفشل:
+                                                    <br><br>
+                                                    $$\text{Wells and Related E\&F - IDC} \quad \text{(Capitalized Unconditionally)}$$
+                                                    $$\text{Wells and Related E\&F - L\&WE} \quad \text{(Capitalized Unconditionally)}$$
+                                                    <br>
+                                                    والتكلفة دي بتفضل قاعدة في الأصول وبتستهلك بنظام النفاذ (Unit-of-production method) على مدار عمر ومبيعات الحقل كله بالتوزيع المبرر. حتى فلوس سد وإعدام البير التنموي الجاف بتترسمل وتتجمع على أصل البير بقيد: من حـ/ **Wells and Related E&F - IDC** مدين، إلى حـ/ **Cash** دائن.
+                                                </li>
                                                 <li><span class="ar-label">معدات الدعم المشترك (Support Equipment):</span> زي برامات الحفر المملوكة للشركة، كرافانات وسكن العمال (Camp facilities)، والعربيات. تكلفتها بتترسمل وتهلك عادي. بس إهلاكها ومصاريف تشغيلها اليومية مبيقعدوش في المصاريف العمومية؛ بيتوزعوا حسب هما كانوا شغالين بيخدموا أنهي بير بالظبط:
-                                                    <br>• لو البريمة شغالة بتحفر بير استكشافي ⬅️ إهلاكها يروح حساب الـ **Wells in Progress - IDC** بتاع البير ده.
-                                                    <br>• لو شغالة بتحفر بير تنموي ⬅️ يروح حساب الـ **Wells and Related E&F - IDC** أصل دائم.
-                                                    <br>• لو بتعمل صيانة لبير بينتج فعلاً ⬅️ يترمي مصروف جاري تحت حساب **Production Expense**.
+                                                    <br>• لو البريمة شغالة بتحفر بير استكشافي ⬅️ إهلاكها يروح حساب الـ **Wells in Progress - IDC** بتاع البير ده (أصل معلق).
+                                                    <br>• لو شغالة بتحفر بير تنموي تطويري ⬅️ يروح حساب الـ **Wells and Related E&F - IDC** أصل رأسمالي دائم فوري.
+                                                    <br>• لو بتعمل صيانة لبير بينتج فعلاً ⬅️ يترمي مصروف جاري جرد الدخل تحت حساب **Production Expense**.
                                                 </li>
                                             </ul>
                                         </div>
@@ -4465,66 +4643,95 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                     <tr><td>12</td><td>Wells and Related E&F - L&amp;WE<br>&nbsp;&nbsp;&nbsp;&nbsp;Cash</td><td>480,000</td><td><br>480,000</td><td>Production tanks &amp; separators purchased ($450k) plus labor ($30k) incurred after Xmas tree = Equipment.</td></tr>
                                                 </tbody>
                                             </table>
- 
+
                                             <p><strong>Case Study 2: Petrobel Western Desert (Exploratory Dry Hole Scheme)</strong></p>
                                             <p class="text-xs text-gray-600">Same data through Tx 9, then declared dry. Equipment salvage value = $180,000; plugging costs = $225,000.</p>
-                                            <ul class="list-disc pl-4 text-xs space-y-1">
-                                                <li>WIP IDC Accumulated (Tx 2 to 9) = $150k + $525k + $135k + $2.7M + $195k + $135k + $60k = $3,855,000</li>
-                                                <li>WIP L&amp;WE Accumulated (Tx 4 to 9) = $90k + $180k + $750k + $90k = $1,110,000</li>
-                                                <li>$\text{Dry Hole Expense} = \$3,855,000 \text{ (IDC)} + (\$1,110,000 \text{ L\&WE} - \$180,000 \text{ Salvage}) + \$225,000 \text{ (Plugging)} = \$5,010,000$.</li>
+                                            <ul class="list-none pl-0 text-xs space-y-2">
+                                                <li>• WIP IDC Accumulated (Tx 2 to 9):
+                                                    <br>
+                                                    $$\text{Accumulated WIP IDC} = 150\text{k} + 525\text{k} + 135\text{k} + 2.7\text{M} + 195\text{k} + 135\text{k} + 60\text{k} = \$3,855,000$$
+                                                </li>
+                                                <li>• WIP L&amp;WE Accumulated (Tx 4 to 9):
+                                                    <br>
+                                                    $$\text{Accumulated WIP L\&WE} = 90\text{k} + 180\text{k} + 750\text{k} + 90\text{k} = \$1,110,000$$
+                                                </li>
+                                                <li>• Final Comprehensive Dry Hole Loss Account Formulation:
+                                                    <br>
+                                                    $$\text{Dry Hole Expense} = \$3,855,000 \text{ (IDC)} + (\$1,110,000 \text{ L\&WE} - \$180,000 \text{ Salvage}) + \$225,000 \text{ (Plugging)} = \$4,010,000$$
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
-                                            <p>هات ورقتك وقلمك يا بطل عشان دي المسألة الكبرى في الفصل الرابع واللي بتجمع كل التريكات والحسابات بالأرقام والمليم:</p>
+                                            <p>هات ورقتك وقلمك يا بطل عشان دي المسألة الكبرى في الفصل الرابع واللي بتجمع كل التريكات والحسابات بالأرقام والمليم الصريح:</p>
                                             
                                             <p class="font-bold text-sm text-purple-900">أولاً: تصفية وتفكيك مسألة شركة جابكو (البير الاستكشافي الناجح):</p>
                                             <ul>
                                                 <li>• **القيد ١ (ثمن الأرض):** دفعنا 2.4 مليون دولار تمن أصل غير مطور. القيد: من حـ/ **Unproved Property** إلى حـ/ **Cash** بـ 2,400,000.</li>
                                                 <li>• **القيد ٢ (الدراسات المرتبطة بالبير):** صرفنا 150 ألف دراسات جيو لتحديد نقطة الحفر دي بالذات، طالما دخلنا في مشروع حفر البير تترسمل مؤقتاً: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 150,000.</li>
-                                                <li>• **القيد ٣ (تمهيد الموقع والطريق):** دفعنا 525 ألف عمالة لتجهيز موقع البريمة وعمل مدق. دي بتتم **قبل شجرة الكريسماس** فبتروح: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 525,000.</li>
-                                                <li>• **القيد ٤ (حفر الحفرة ومواسير المية - تريكة الفصل):** دفعنا 135 ألف لحفر حفرة الطفلة (Mud pit) ودي غير ملموسة تروح IDC. واشترينا مواسير لخط المية بـ 90 ألف ودي ملموسة ولها خردة تروح L&amp;WE. 
-                                                    <br>⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (١٣٥ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٩٠ ألف) إلى حـ/ **Cash** (٢٢٥ ألف).
+                                                <li>• **القيد ٣ (تمهيد الموقع والطريق):** دفعنا 525 ألف عمالة لتجهيز موقع البريمة وعمل مدق للآلات. دي بتتم **قبل شجرة الكريسماس** فبتروح مدين: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 525,000.</li>
+                                                <li>• **القيد ٤ (حفر الحفرة ومواسير المية - تريكة التبويب):** دفعنا 135 ألف لحفر حفرة الطفلة (Mud pit) ودي غير ملموسة تروح IDC. واشترينا مواسير لخط المية بـ 90 ألف ودي ملموسة ولها خردة تروح L&amp;WE. 
+                                                    <br><br>
+                                                    ⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (١٣٥ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٩٠ ألف) إلى حـ/ **Cash** (٢٢٥ ألف).
                                                 </li>
-                                                <li>• **القيد ٥ (مواسير تبطين البير):** دفعنا 180 ألف مواسير حديد للبير، ملموسة وقبل الشجرة: من حـ/ **Wells in Progress - L&amp;WE** إلى حـ/ **Cash** بـ 180,000.</li>
-                                                <li>• **القيد ٦ (أتعاب مقاول الحفر):** شيك بـ 2.7 مليون لشركة الحفر، خدمة غير ملموسة: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 2,700,000.</li>
-                                                <li>• **القيد ٧ (اختبارات البير وعينات الصخور):** دفعنا 195 ألف للمعمل عشان يقيس التدفق، خدمة: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 195,000.</li>
-                                                <li>• **القيد ٨ (مواصفات التثبيت النهائية):** دفعنا 750 ألف مواسير إنتاج (ملموس L&amp;WE)، و 135 ألف تمن إسمنت التثبيت (غير ملموس IDC). 
-                                                    <br>⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (١٣٥ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٧٥٠ ألف) إلى حـ/ **Cash** (٨٨٥ ألف).
+                                                <li>• **القيد ٥ (مواسير تبطين البير الجانبي):** دفعنا 180 ألف مواسير حديد صلبة للبير، ملموسة وقبل الشجرة: من حـ/ **Wells in Progress - L&amp;WE** إلى حـ/ **Cash** بـ 180,000.</li>
+                                                <li>• **القيد ٦ (أتعاب مقاول الحفر والتنقيب):** شيك بـ 2.7 مليون لشركة الحفر، خدمة تشغيلية غير ملموسة: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 2,700,000.</li>
+                                                <li>• **القيد ٧ (اختبارات البير وعينات الصخور المخبرية):** دفعنا 195 ألف للمعمل عشان يقيس قوة التدفق وعزل الغاز، خدمة: من حـ/ **Wells in Progress - IDC** إلى حـ/ **Cash** بـ 195,000.</li>
+                                                <li>• **القيد ٨ (مواصفات التثبيت الإسمنتي والمواسير):** دفعنا 750 ألف مواسير إنتاج (ملموس L&amp;WE)، و 135 ألف تمن إسمنت التثبيت الكيميائي (غير ملموس IDC). 
+                                                    <br><br>
+                                                    ⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (١٣٥ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٧٥٠ ألف) إلى حـ/ **Cash** (٨٨٥ ألف).
                                                 </li>
-                                                <li>• **القيد ٩ (تركيب شجرة الكريسماس):** ثمن الشجرة نفسها 90 ألف (ملموس L&amp;WE)، وعمالة تركيبها 60 ألف (دي حصلت **قبل تمام التركيب** فبتتحسب IDC).
-                                                    <br>⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (٦٠ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٩٠ ألف) إلى حـ/ **Cash** (١٥٠ ألف).
+                                                <li>• **القيد ٩ (تركيب وتجهيز شجرة الكريسماس مجمع):** ثمن الشجرة الهندسية نفسها 90 ألف (ملموس L&amp;WE)، وعمالة تركيبها وربطها 60 ألف (دي حصلت **قبل تمام التركيب والتشغيل** فبتتحسب IDC قطعي).
+                                                    <br><br>
+                                                    ⬅️ القيد مدكورين: حـ/ **Wells in Progress - IDC** (٦٠ ألف) وحـ/ **Wells in Progress - L&amp;WE** (٩٠ ألف) إلى حـ/ **Cash** (١٥٠ ألف).
                                                 </li>
-                                                <li>• **القيد ١٠ (التثقيب والأحماض - الكمين الأكبر):** دفعنا 45 ألف دولار لخدمات التثقيب وضخ الأحماض. المعاملة دي حصلت **بعد ما ركبنا شجرة الكريسماس**. قاعدة الشجرة بتقول: أي مليم بعد تركيبها بيتحول قطعي لحساب الـ Equipment!
-                                                    <br>⬅️ القيد: من حـ/ **Wells in Progress - L&amp;WE** إلى حـ/ **Cash** بـ 45,000. (متروحش IDC أبداً).
+                                                <li>• **القيد ١٠ (التثقيب وضخ الأحماض - الكمين الأكبر):** دفعنا 45 ألف دولار لخدمات التثقيب الكيميائي وضخ الأحماض لتوسيع الشقوق. المعاملة دي حصلت بالملي **بعد ما ركبنا شجرة الكريسماس وسكرنا رأس البير**. قاعدة الشجرة الفولاذية بتقول: أي مليم ومصروف عمالة أو خدمة بعد تركيبها بيتحول قطعي ويندمج لحساب الـ Equipment!
+                                                    <br><br>
+                                                    ⬅️ القيد الرأسمالي: من حـ/ **Wells in Progress - L&amp;WE** إلى حـ/ **Cash** بـ 45,000. (متروحش IDC حساب المصاريف أبداً).
                                                 </li>
-                                                <li>• **القيد ١١ (حسبة التجميع الكبرى للإغلاق والنجاح):**
-                                                    <br>١. نجمع كل خانات الـ **WIP - IDC** من قيد ٢ لـ قيد ٩: $150k + 525k + 135k + 2.7M + 195k + 135k + 60k = 3,900,000$ دولار.
-                                                    <br>٢. نجمع كل خانات الـ **WIP - L&amp;WE** من قيد ٤ لـ قيد ١٠: $90k + 180k + 750k + 90k + 45k = 1,155,000$ دولار.
-                                                    <br>⬅️ **قيد تحويل النجاح:** من مدكورين حـ/ **Wells and Related E&F - IDC** (3.9 مليون) وحـ/ **Wells and Related E&F - L&amp;WE** (1.155 مليون) إلى مدكورين ونقفل حسابات الـ **Wells in Progress** القديمة بنفس الأرقام عشان تصفر.
-                                                    <br>⬅️ **قيد تحويل الأرض:** من حـ/ **Proved Property** إلى حـ/ **Unproved Property** بـ 2,400,000.
+                                                <li>• **القيد ١١ (حسبة التجميع الكبرى للإغلاق والنجاح وتحويل الأصل):**
+                                                    <br><br>
+                                                    ١. نجمع كل خانات الـ **WIP - IDC** المفتوحة من قيد ٢ لـ قيد ٩ لبيان تكلفتها الإجمالية:
+                                                    $$\text{Total IDC Base} = 150\text{k} + 525\text{k} + 135\text{k} + 2.7\text{M} + 195\text{k} + 135\text{k} + 60\text{k} = \$3,900,000$$
+                                                    <br>
+                                                    ٢. نجمع كل خانات الـ **WIP - L&amp;WE** الملموسة المفتوحة من قيد ٤ لـ قيد ١٠ لبيان تكلفتها الإجمالية:
+                                                    $$\text{Total L\&WE Base} = 90\text{k} + 180\text{k} + 750\text{k} + 90\text{k} + 45\text{k} = \$1,155,000$$
+                                                    <br>
+                                                    ⬅️ **قيد تحويل الأصل للإنتاج:** من مدكورين حـ/ **Wells and Related E&F - IDC** (3.9 مليون) وحـ/ **Wells and Related E&F - L&amp;WE** (1.155 مليون) إلى مدكورين ونقفل حسابات الـ **Wells in Progress** القديمة المؤقتة بنفس الأرقام عشان تصفر دفترياً.
+                                                    <br><br>
+                                                    ⬅️ **قيد تحويل الأرض القانوني:** من حـ/ **Proved Property** إلى حـ/ **Unproved Property** دائن بـ 2,400,000 لإثبات العثور على احتياطي مؤكد.
                                                 </li>
-                                                <li>• **القيد ١٢ (معدات الإنتاج النهائية برة البير):** اشتروا تانكات وفراصات بـ 450 ألف وعمالة تركيبها 30 ألف بعد الشجرة. يتجمعوا أصل دائم دائن: من حـ/ **Wells and Related E&F - L&amp;WE** إلى حـ/ **Cash** بـ 480,000.
+                                                <li>• **القيد ١٢ (معدات منشآت الإنتاج الخارجية):** اشتروا تانكات وفراصات غاز بـ 450 ألف وأجور عمال تركيبها 30 ألف بعد الشجرة. يتجمعوا أصل مجمع دائم دائن: من حـ/ **Wells and Related E&F - L&amp;WE** إلى حـ/ **Cash** بـ 480,000.
                                                 </li>
                                             </ul>
 
                                             <p class="font-bold text-sm text-purple-900 mt-4">ثانياً: سيناريو شركة بتروبل (البير الاستكشافي الجاف الفاشل):</p>
                                             <ul>
-                                                <li>بتروبل صرفت بالمليم نفس مصاريف جابكو لحد خطوة ٩، بس التقييم قال البير فاضي وجاف. وطلعنا مواسير خردة تسوى في السوق 180 ألف، وصرفنا بالإسمنت عشان نقفله قانونياً 225 ألف.
-                                                    <br><strong>خطوات الحسبة بالتفصيل الممل:</strong>
-                                                    <br>١. رصيد الـ WIP IDC المتجمع لغاية قيد ٩ = 3,855,000 دولار.
-                                                    <br>٢. رصيد الـ WIP L&amp;WE المتجمع لغاية قيد ٩ = 1,110,000 دولار.
-                                                    <br>٣. قيمة الخردة المستردة (Salvage) = 180,000 دولار (بتروح أصل مخازن مدين).
-                                                    <br>٤. الخسارة الصافية للبير قبل قفله = $\text{IDC } (3,855,000) + \text{L\&WE } (1,110,000) - \text{Salvage } (180,000) = 4,785,000$ دولار.
-                                                    <br>⬅️ **قيد إعدام البير الأول:** من مدكورين حـ/ **Materials and Equipment (Salvage)** بـ 180 ألف وحـ/ **Dry Hole Expense** بـ 4,785,000 إلى مدكورين ونقفل حسابات الـ WIP الجارية (IDC بـ 3.855M و L&amp;WE بـ 1.110M).
-                                                    <br>⬅️ **قيد مصاريف السد بالإسمنت الفعلي:** دفعنا كاش 225 ألف عشان نقفل البير وتضاف برضه على الخسارة: من حـ/ **Dry Hole Expense** إلى حـ/ **Cash** بـ 225,000.
-                                                    <br>• إجمالي خسارة البير الجاف الكلية المتراكمة في قائمة الدخل لشركة بتروبل = $4,785,000 + 225,000 = 5,010,000$ دولار بالمليم تماشياً مع معادلة الكتاب الدكتوري.
+                                                <li>بتروبل صرفت بالمليم نفس مصاريف جابكو لغاية خطوة ٩، بس الفحص والتقييم قال البير فاضي وجاف. ونجحنا نطلع مواسير خردة استردادية تسوى في السوق 180 ألف، وصرفنا بالإسمنت عشان نقفله وندفنه قانونياً 225 ألف.
+                                                    <br><br>
+                                                    <strong>خطوات الحسبة بالتفصيل الممل لإعدام البير:</strong>
+                                                    <br><br>
+                                                    ١. رصيد الـ WIP IDC المتجمع لغاية قيد ٩ المدفوع خدمات = 3,855,000 دولار.
+                                                    <br>
+                                                    ٢. رصيد الـ WIP L&amp;WE المتجمع لغاية قيد ٩ الملموس = 1,110,000 دولار.
+                                                    <br>
+                                                    ٣. قيمة الخردة المستردة المنقذة (Salvage) = 180,000 دولار (بتروح حساب أصل المخازن مدين).
+                                                    <br><br>
+                                                    ٤. الخسارة الصافية لإعدام البير قبل مصاريف السد والردم:
+                                                    $$\text{Net Well Loss} = \text{IDC } (3,855,000) + [\text{L\&WE } (1,110,000) - \text{Salvage } (180,000)] = \$4,785,000$$
+                                                    <br>
+                                                    ⬅️ **قيد إعدام البير الأول وعزل الخردة:** من مدكورين حـ/ **Materials and Equipment (Salvage)** بـ 180 ألف وحـ/ **Dry Hole Expense** بالخسارة الصافية بـ 4,785,000 إلى مدكورين ونقفل حسابات الـ WIP الجارية لفرملة البير (IDC بـ 3.855M و L&amp;WE بـ 1.110M) دائن عشان يصفروا.
+                                                    <br><br>
+                                                    ⬅️ **قيد مصاريف السد والردم بالإسمنت نقداً:** دفعنا كاش 225 ألف ومصاريف القفل بتزود وتضاف برضه على حساب الخسارة الفترية: من حـ/ **Dry Hole Expense** مدين بـ 225 ألف، إلى حـ/ **Cash** دائن بـ 225,000.
+                                                    <br><br>
+                                                    • إجمالي مصروفات وخسارة البير الجاف الكلية المتراكمة والمحملة دفترياً في قائمة دخل شركة بتروبل تنقص أرباح السنة الحالية بـ:
+                                                    $$\text{Total Cumulative Dry Hole Expense} = \$4,785,000 + \$225,000 = \$5,010,000$$
                                                 </li>
                                             </ul>
                                             
                                             <div class="ar-ok">
                                                 <i class="fa-solid fa-graduation-cap"></i>
-                                                <span><strong>الزتونة النهائية لتقفيل الشابتر ٤:</strong> البير الاستكشافي (Exploratory) مصاريفه معلقة في الـ WIP لغاية ما تظهر النتيجة؛ نجح يروح أصل دائم Proved E&F، فشل يروح قائمة الدخل فوراً حساب Dry Hole Expense. أما بير التطوير (Development) ملوش دعوة بالنتيجة؛ ناجح أو جاف بيروح من الـ WIP على حساب الأصول الدائمة Wells and Related E&F unconditionally ومن غير أي تفكير!</span>
+                                                <span><strong>الالزتونة النهائية لتقفيل الشابتر ٤:</strong> البير الاستكشافي (Exploratory) مصاريفه معلقة في الـ WIP لغاية ما تظهر النتيجة؛ نجح يروح أصل دائم Proved E&F، فشل يروح قائمة الدخل فوراً حساب Dry Hole Expense. أما بير التطوير والتنمية (Development) ملوش دعوة بالنتيجة؛ ناجح أو جاف بيروح قطعي ومباشر من الـ WIP على حساب الأصول الدائمة Wells and Related E&F unconditionally ومن غير أي تفكير مسبق!</span>
                                             </div>
                                         </div>
                                     </div>
@@ -4605,8 +4812,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                     </aside>
 
                     <div class="lecture-content-col">
-
-                        <div class="acc-card" id="l4-c-acc1">
+<div class="acc-card" id="l4-c-acc1">
                             <button class="acc-header l4-toggle" data-index="0">
                                 <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
                                     <i class="fa-solid fa-skull-crossbones"></i>
@@ -4619,19 +4825,35 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                     <div class="acc-body-content">
                                         <div class="content-en">
                                             <p><strong>Background:</strong> Petrobel conducted exploratory drilling in the Western Desert. The well was determined to be dry (unsuccessful) after identical expenditures to Case Study 1 through step 9.</p>
-                                            <ul>
+<ul class="list-none pl-0 text-xs space-y-2">
                                                 <li><strong>Accumulated WIP Balances:</strong> 
-                                                    <br>• $\text{Wells in Progress - IDC} = \$150,000 + \$525,000 + \$135,000 + \$2,700,000 + \$195,000 + \$135,000 + \$60,000 = \$3,900,000$.
-                                                    <br>• $\text{Wells in Progress - L\&WE} = \$90,000 + \$180,000 + \$750,000 + \$90,000 = \$1,110,000$.
+                                                    <br><br>
+                                                    • transitional assets for Intangible Drilling Costs (WIP - IDC):
+                                                    <br>
+                                                    $$\text{Wells in Progress - IDC} = \$150,000 + \$525,000 + \$135,000 + \$2,700,000 + \$195,000 + \$135,000 + \$60,000 = \$3,900,000$$
+                                                    <br>
+                                                    • transitional assets for Equipment Costs (WIP - L&amp;WE):
+                                                    <br>
+                                                    $$\text{Wells in Progress - L\&WE} = \$90,000 + \$180,000 + \$750,000 + \$90,000 = \$1,110,000$$
                                                 </li>
+                                                <br>
                                                 <li><strong>Salvage &amp; Plugging Data:</strong> Standalone salvaged equipment value = $180,000; plugging/abandonment costs = $225,000.</li>
+                                                <br>
                                                 <li><strong>Dry Hole Loss Calculation:</strong>
-                                                    <br>• IDC write-off = $3,900,000.
-                                                    <br>• L&WE write-off (Net of salvage) = $1,110,000 - $180,000 = $930,000.
-                                                    <br>• Expense before plugging = $4,830,000.
-                                                    <br>• Final Dry Hole Expense (with plugging) = $4,830,000 + $225,000 = $5,055,000.
+                                                    <br><br>
+                                                    • IDC components write-off:
+                                                    $$\text{IDC Write-off Cost} = \$3,900,000$$
+                                                    <br>
+                                                    • Tangible equipment components write-off (Net of salvage value):
+                                                    $$\text{Net L\&WE Loss} = \$1,110,000 - \$180,000 = \$930,000$$
+                                                    <br>
+                                                    • Accumulated unproved exploration expense before plugging recognition:
+                                                    $$\text{Unproved Loss Before Plugging} = \$3,900,000 + \$930,000 = \$4,830,000$$
+                                                    <br>
+                                                    • Final Comprehensive Dry Hole Expense recognized in income statement (with plugging cash costs):
+                                                    $$\text{Final Dry Hole Expense} = \$4,830,000 + \$225,000 = \$5,055,000$$
                                                 </li>
-                                            </ul>
+                                            </ul> </ul>
                                             <p class="font-bold my-1 text-xs">1. To Record Dry Hole Write-off (Net of Salvage):</p>
                                             <table class="min-w-full divide-y divide-gray-200 text-xs mb-3">
                                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -4661,16 +4883,31 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <p>تعال يا صاحبي نفتح الدفاتر ونشوف تكملة الفصل الرابع "حالة شركة بتروبل" في الصحراء الغربية. هنا البير طلع فاضي وجاف تماماً وهنتعلم إزاي بنعدمه ونقفل الحسابات بالمليم:</p>
                                             <ul>
                                                 <li><span class="ar-label">١. تجميع الأرقام القديمة تحت التنفيذ (WIP):</span> البير ده اتصرف عليه نفس مصاريف البير الناجح بالظبط لغاية خطوة رقم 9. يعني حسابات الـ WIP المفتوحة عندنا فيها أرصدة مدينة كالتالي:
-                                                    <br>• حساب الخدمات **WIP - IDC** متجمع فيه $3,900,000$ دولار.
-                                                    <br>• حساب المعدات والمواسير **WIP - L&amp;WE** متجمع فيه $1,110,000$ دولار.
+                                                    <br><br>
+                                                    • حساب الخدمات غير الملموسة المجمع:
+                                                    $$\text{Accumulated WIP - IDC} = \$150,000 + \$525,000 + \$135,000 + \$2,700,000 + \$195,000 + \$135,000 + \$60,000 = \$3,900,000$$
+                                                    <br>
+                                                    • حساب المعدات والمواسير الملموسة المجمع:
+                                                    $$\text{Accumulated WIP - L\&WE} = \$90,000 + \$180,000 + \$750,000 + \$90,000 = \$1,110,000$$
                                                 </li>
                                                 <li><span class="ar-label">٢. حسبة خسارة الإعدام الصافية (Dry Hole Expense):</span>
-                                                    <br>• الـ IDC بيعدم بالكامل لأنه خدمات طارت في الهواء وقيمته $3,900,000$.
-                                                    <br>• الـ L&amp;WE بنطرح منه قيمة المعدات والمواسير اللي المهندسين عرفوا يخلعوها وينقذوها من البير وقيمتها الخردة $180,000$. يبقى الصافي الخسران والميت في المعدات بيساوي: $\$1,110,000 - 180,000 = 930,000$ دولار.
-                                                    <br>• إجمالي الخسارة قبل الحبس والسد بيساوي: $\$3,900,000 + 930,000 = 4,830,000$ دولار.
+                                                    <br><br>
+                                                    • الـ IDC بيعدم بالكامل لأنه خدمات طارت في الهواء وقيمته الدفترية بيساوي:
+                                                    $$\text{Melted IDC Expense} = \$3,900,000$$
+                                                    <br>
+                                                    • الـ L&amp;WE بنطرح منه قيمة المعدات والمواسير اللي المهندسين عرفوا يخلعوها وينقذوها من البير وقيمتها الخردة الحالية المقدرة بـ \$180,000. يبقى الصافي الخسران والميت في المعدات بيساوي:
+                                                    $$\text{Net Unrecoverable L\&WE} = \$1,110,000 - \$180,000 = \$930,000$$
+                                                    <br>
+                                                    • إجمالي الخسارة المحققة قبل الحبس والسد بالإسمنت بيساوي الحسبة دي:
+                                                    $$\text{Initial Dry Hole Loss} = \$3,900,000 + \$930,000 = \$4,830,000$$
                                                 </li>
                                                 <li><span class="ar-label">٣. قيد إعدام البير الجاف (Net of Salvage):</span> بنعمل قيد نقفل فيه حسابات الـ WIP المدينة ونخليه دائن عشان تصفر. وبندخل المخازن الأصل المسترد **Materials and Equipment (Salvage)** مدين بـ 180 ألف، وبنحمل قائمة الدخل بالخسارة المبدئية **Dry Hole Expense** مدين بـ 4,830,000.</li>
-                                                <li><span class="ar-label">٤. قيد تكاليف السد والردم (Plugging Costs):</span> دفعنا كاش 225 ألف دولار للمقاول اللي ردم البير بالإسمنت. الفلوس دي خسارة تابعة للبير الجاف، فبتزود حساب الـ Dry Hole Expense ونخليه مدين بـ 225 ألف، والكاش دائن بـ 225 ألف. وبكدة إجمالي الخسارة الكلية للبير في قائمة الدخل وصلت لـ $5,055,000$ دولار.</li>
+                                                <li><span class="ar-label">٤. قيد تكاليف السد والردم (Plugging Costs):</span> دفعنا كاش 225 ألف دولار للمقاول اللي ردم البير بالإسمنت. الفلوس دي خسارة تابعة للبير الجاف، فبتزود حساب الـ Dry Hole Expense ونخليه مدين بـ 225 ألف، والكاش دائن بـ 225 ألف. وبكدة إجمالي الخسارة الكلية للبير في قائمة الدخل وصلت لـ:
+                                                    <br>
+                                                    $$\text{Total Cumulative Dry Hole Loss} = \$4,830,000 + \$225,000 = \$5,055,000$$
+                                                    <br>
+                                                    دولار بالمليم الصريح.
+                                                </li>
                                                 <li><span class="ar-label">٥. قيد التخلي النهائي عن الأرض (Lease Surrender):</span> طالما البير طلع جاف والإدارة يأست من البلوك ده وقررت تسلم الرخصة للحكومة وتتخلى عنها، بنروح نقفل تمن الأرض التاريخي غير المطور اللي كنا مسجلينه أصل بـ 2.4 مليون. وبنرميه كله خسارة فادحة في قائمة الدخل بقيد: من حساب **Surrendered Lease Expense** مدين بـ 2.4 مليون، إلى حساب **Unproved Property** دائن بـ 2.4 مليون دولار عشان يختفي من الميزانية.</li>
                                             </ul>
                                         </div>
@@ -4730,9 +4967,14 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 <li><span class="ar-label">١. قيد مصاريف الحفر الأولية:</span> المقاول أخد 3 مليون خدمات (IDC) واشترينا معدات ومواسير بمليون و200 ألف (L&amp;WE). بنفتح حسابات "تحت التنفيذ" ونخليها مدينة بقيمة الشيك اللي طلع كاش: من مدكورين حـ/ **WIP - IDC** بـ 3 مليون وحـ/ **WIP - L&amp;WE** بـ مليون و200 ألف، إلى حـ/ **Cash** بـ 4,200,000.</li>
                                                 <li><span class="ar-label">٢. قيد مصاريف التجهيز والإكمال (Completion):</span> عشان نقفل البير ونجهزه للضخ، صرفنا عمالة تكميلية بـ 375 ألف (IDC) واشترينا بقية معدات الإنتاج بـ 3 مليون و300 ألف (L&amp;WE). القيد: من مدكورين حـ/ **WIP - IDC** بـ 375 ألف وحـ/ **WIP - L&amp;WE** بـ 3,300,000، إلى حـ/ **Cash** بـ 3,675,000.</li>
                                                 <li><span class="ar-label">٣. قيد الرسملة النهائية وتحويل الأصل:</span> البير كمل وبدأ يضخ زيت. بنقفل حسابات "تحت التنفيذ" ونحول إجمالي المبالغ لحسابات الأصول المنتجة الدائمة.
-                                                    <br>• إجمالي الـ IDC المستهدف = $3,000,000 + 375,000 = 3,375,000$ دولار.
-                                                    <br>• إجمالي الـ L&amp;WE المستهدف = $1,200,000 + 3,300,000 = 4,500,000$ دولار.
-                                                    <br>• <strong>صياغة القيد:</strong> من مدكورين حـ/ **Wells and Related E&F - IDC** وحـ/ **Wells and Related E&F - L&amp;WE**، إلى مدكورين ونقفل حسابات الـ **WIP** القديمة بنفس المبالغ عشان تصفر.
+                                                    <br><br>
+                                                    • إجمالي تكاليف الخدمات الـ IDC المستهدفة:
+                                                    $$\text{Total Capitalized IDC} = \$3,000,000 + \$375,000 = \$3,375,000$$
+                                                    <br>
+                                                    • إجمالي تكاليف الأصول والمعدات الـ L&amp;WE المستهدفة:
+                                                    $$\text{Total Capitalized L\&WE} = \$1,200,000 + \$3,300,000 = \$4,500,000$$
+                                                    <br>
+                                                    • <strong>صياغة القيد الحاسم:</strong> من مدكورين حـ/ **Wells and Related E&F - IDC** وحـ/ **Wells and Related E&F - L&amp;WE**، إلى مدكورين ونقفل حسابات الـ **WIP** القديمة بنفس المبالغ عشان تصفر دفترياً.
                                                 </li>
                                             </ul>
                                         </div>
@@ -4779,8 +5021,12 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <p>ركز معايا هنا يا بطل عشان ده الكمين النظري والعملي رقم 1 في امتحانات مادة المتخصصة للبترول:</p>
                                             <ul>
                                                 <li><span class="ar-label">الكمين الجوهري (ماذا لو طلع بير التطوير جاف؟):</span> تخيل إننا بنحفر بير التطوير ده وصرفنا نفس الملايين اللي فاتت وفي الآخر حظنا طلع وحش وجف ومطلعش زيت. هل هنرمي المصاريف دي في الـ Dry Hole Expense زي البير الاستكشافي؟ **لأ قطعياً!**</li>
-                                                <li><span class="ar-label">القاعدة المحاسبية الحديدية:</span> طريقة المجهودات الناجحة بتقول إن آبار التطوير **تترسمل رسملة مطلقة وغير مشروطة بنجاح البير**. يعني حتى لو البير التنموي طلع جاف، بنعمل نفس قيد الرسملة والتحويل للأصول بالمليم! وبنعتبر التكلفة دي جزء من تأسيس البنية التحتية للحقل ككل (Field Infrastructure). التكلفة دي مش هتموت، دي هتفضل قاعدة في الأصول ونقسطها بنظام النفاذ على مدار بقية الآبار الشغالة في الحقل.</li>
-                                                <li><span class="ar-label">قيد تكاليف السد والردم للبير التنموي الجاف:</span> صرفنا 60 ألف دولار كاش عشان نقفل البير بالإسمنت. الفلوس دي برضه **بتترسمل كأصل** وبتتجمع على أصول الحقل ومش بتروح مصروف! القيد: من حساب **Wells and Related E&F - IDC** مدين بـ 60 ألف، إلى حساب **Cash** دائن بـ 60 ألف دولار.</li>
+                                                <li><span class="ar-label">قواعد السد والردم الرأسمالية:</span> صرفنا 60 ألف دولار كاش عشان نقفل البير بالإسمنت. الفلوس دي برضه **بتترسمل كأصل مجمع** وبتتزود على القيمة التأسيسية لـ IDC الحقل المشترك بقانون صريح:
+                                                    <br><br>
+                                                    $$\text{Final Development Asset Value} = \$3,375,000 \text{ (Initial IDC)} + \$60,000 \text{ (Plugging)} = \$3,435,000$$
+                                                    <br>
+                                                    القيد: من حساب **Wells and Related E&F - IDC** مدين بـ 60 ألف، إلى حساب **Cash** دائن بـ 60 ألف دولار.
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -4788,7 +5034,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                             </div>
                         </div>
 
-                        <div class="acc-card" id="l4-c-acc4">
+                        <div class="acc-card" id="l4-acc4">
                             <button class="acc-header l4-toggle" data-index="3">
                                 <div class="acc-icon" style="background:#e0f2fe;color:#0369a1">
                                     <i class="fa-solid fa-truck-monster"></i>
@@ -4824,6 +5070,11 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح والتفكيك بالتفصيل الممل</div>
                                             <p>تعال نفكك حالة "معدات الدعم المشترك" (Support Equipment) زي برامة حفر مملوكة للشركة أو معسكر سكن عمال. المصاريف دي بنجمعها في حصالة قيمتها: إهلاك البريمة 150 ألف + مصاريف تشغيلها وزيتها 120 ألف = 270 ألف دولار إجمالي الحصالة. التكلفة دي بنوزعها حسب نوع البير اللي كانت البريمة شغالة فيه ونمشي معاها خطوة بخطوة:</p>
                                             <ul>
+                                                <li><span class="ar-label">الحثيثات الحسابية لتجميع الوعاء (Cost Pool):</span>
+                                                    <br>
+                                                    $$\text{Total Allocated Support Cost Pool} = \$150,000 \text{ (Depreciation)} + \$120,000 \text{ (Cash Cost)} = \$270,000$$
+                                                    <br>
+                                                </li>
                                                 <li><span class="ar-label">الحالة أ: لو شغالة في بير استكشافي وطلع ناجح (Exploratory Successful):</span>
                                                     <br>• قيد التشغيل الأول: بنحمل التكلفة مجمعة على البير تحت التنفيذ كخدمة غير ملموسة: من حـ/ **WIP - IDC** مدين بـ 270 ألف، إلى مذكورين حـ/ **مجمع الإهلاك** دائن بـ 150 ألف وحـ/ **النقدية/الدائنين** دائن بـ 120 ألف.
                                                     <br>• قيد النجاح الختامي: طالما البير نجح، بنقفل الـ WIP ونحوله لأصل دائم منتج: من حـ/ **Wells and Related E&F - IDC** مدين بـ 270 ألف، إلى حـ/ **WIP - IDC** دائن بـ 270 ألف دولار.
@@ -4834,7 +5085,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 </li>
                                                 <li><span class="ar-label">الحالة ج: لو شغالة في بير تنموي تطويري (Development Well):</span>
                                                     <br>• قيد التشغيل الأول: بنرمي التكلفة في حساب البير التنموي تحت التنفيذ: من حـ/ **WIP - IDC** مدين بـ 270 ألف، إلى مذكورين مجمع الإهلاك (150 ألف) والكاش (120 ألف).
-                                                    <br>• قيد الإغلاق الختامي: تماشياً مع قاعدة الرسملة المطلقة للتنمية، **سواء البير ده نجح أو طلع جاف** بنقفل الـ WIP ونحوله لأصل دائم حتماً: من حـ/ **Wells and Related E&F - IDC** مدين بـ 270 ألف، إلى حـ/ **WIP - IDC** دائن بـ 270 ألف دولار.
+                                                    <br>• قيد الإغلاق الختامي: تماشياً مع قاعدة الرسملة المطلقة للتنمية، **سواء البير ده نجح أو طلع جاف** بنقفل الـ WIP ونحوله لأصل دائم حتماً في الميزانية: من حـ/ **Wells and Related E&F - IDC** مدين بـ 270 ألف، إلى حـ/ **WIP - IDC** دائن بـ 270 ألف دولار.
                                                 </li>
                                             </ul>
                                         </div>
@@ -4863,11 +5114,23 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 <li><strong>Development Rule:</strong> Capitalized unconditionally regardless of the specific well outcome. Development dry holes are held as permanent field infrastructure.</li>
                                                 <li><strong>Tax Implications:</strong> IDC is typically eligible for immediate full expensing for tax computation to maximize industry liquidity, while equipment is capitalized.</li>
                                             </ul>
-                                            <p class="font-bold mt-2 text-sm">Exam Review Focus (Question 10 Mastery):</p>
-                                            <p class="text-xs text-gray-600">Enppi exploratory drilling: IDC = $450,000; Equipment = $180,000. Well is dry. Salvage = $45,000; Plugging = $60,000. Lease is surrendered.
-                                            <br>• Formula: $\text{Dry Hole Expense} = \$450,000 \text{ (IDC)} + (\$180,000 \text{ Equip} - \$45,000 \text{ Salvage}) = \$585,000 \text{ before plugging}$.
-                                            <br>• Final Loss with plugging = $\$585,000 + \$60,000 = \$645,000$.
-                                            <br>• Surrendered lease is fully written off.</p>
+<p class="font-bold mt-2 text-sm">Exam Review Focus (Question 10 Mastery):</p>
+                                            <p class="text-xs text-gray-600">Enppi exploratory drilling operation data: Intangible Drilling Costs (IDC) = $450,000; Equipment = $180,000. Well is technically declared dry and unsuccessful. Standalone salvaged equipment value = $45,000; subsequent plugging/abandonment costs = $60,000. The entire property lease is surrendered.</p>
+                                            
+                                            <ul class="list-none pl-0 text-xs space-y-2 text-gray-600">
+                                                <li>• Calculation of initial dry hole loss components accumulated in WIP (before plugging recognition):
+                                                    <br>
+                                                    $$\text{Dry Hole Loss (Before Plugging)} = \$450,000 \text{ (WIP IDC)} + (\$180,000 \text{ (WIP L\&WE)} - \$45,000 \text{ (Salvage)}) = \$585,000$$
+                                                </li>
+                                                <li>• Calculation of final comprehensive dry hole expense recognized in the income statement (incorporating plugging cash costs):
+                                                    <br>
+                                                    $$\text{Total Cumulative Dry Hole Expense} = \$585,000 + \$60,000 \text{ (Plugging Costs)} = \$645,000$$
+                                                </li>
+                                                <li>• Surrendered property lease acquisition asset base is fully written off to current period operations under:
+                                                    <br>
+                                                    $$\text{Surrendered Lease Expense} \quad \text{(Full Loss Recognition)}$$
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div class="content-ar">
                                             <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الزتونة النهائية وأسئلة امتحانات الفاينال</div>
@@ -4876,10 +5139,16 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                                 <li><span class="ar-label">الزتونة ١ (الفرق بين الاستكشافي والتنموي في الفشل):</span> البير الاستكشافي لو طلع جاف ⬅️ يروح فوراً قائمة الدخل حساب **Dry Hole Expense**. أما البير التنموي لو طلع جاف ⬅️ يروح الميزانية أصل دائم حساب **Wells and Related E&F** من غير تفكير وبشكل غير مشروط!</li>
                                                 <li><span class="ar-label">الزتونة ٢ (خط الكريسماس الفيصل):</span> شجرة الكريسماس هي الحد القاطع. أي خدمات وعمالة وصيانة بتتم **قبلها** ⬅️ تروح حساب **IDC**. أي خدمات وعمالة وصيانة بتتم **بعدها** ⬅️ تترسمل وتتجمع كلها في حساب الـ **Equipment**.</li>
                                                 <li><span class="ar-label">الزتونة ٣ (حل مسألة المراجعة رقم 10 المتوقعة صم):</span> جالك سؤال بيقول شركة إنبي حفرت بير استكشافي اتكلف 450 ألف IDC ومعدات بـ 180 ألف، والبير طلع جاف. وطلعنا خردة بـ 45 ألف وصرفنا سد بالإسمنت 60 ألف، وتنازلنا عن الأرض.
-                                                    <br><strong>خطوات القيود السريعة في مسودتك:</strong>
-                                                    <br>١. **قيد إعدام البير الصافي:** بنقفل الـ WIP دائن (IDC بـ 450 ألف، و L&amp;WE بـ 180 ألف). وبندخل المخازن الخردة مدين بـ 45 ألف. والصافي الخسران بيروح حساب **Dry Hole Expense** مدين بقيمة: $\$450,000 + (180,000 - 45,000) = 585,000$ دولار.
-                                                    <br>٢. **قيد مصاريف السد:** من حـ/ **Dry Hole Expense** مدين بـ 60 ألف، إلى حـ/ **Cash** دائن بـ 60 ألف. (كده إجمالي حساب الخسارة للبير في قائمة الدخل بيساوي $645,000$ دولار).
-                                                    <br>٣. **قيد التنازل عن الأرض:** طالما الأرض اتلغت وسبناها، بنقفل حساب الأرض التاريخي ونرميه خسارة فادحة: من حـ/ **Surrendered Lease Expense** إلى حـ/ **Unproved Property**.
+                                                    <br><br>
+                                                    <strong>خطوات القيود السريعة الحتمية بالأرقام:</strong>
+                                                    <br><br>
+                                                    ١. **حسبة وعاء إعدام البير المبدئي (صافي الخردة المستردة):**
+                                                    $$\text{Initial Dry Hole Loss} = \$450,000 \text{ (IDC)} + (\$180,000 \text{ Equipment} - \$45,000 \text{ Salvage}) = \$585,000$$
+                                                    <br>
+                                                    ٢. **حسبة الخسارة الكلية النهائية الشاملة بعد إضافة شيك السد الكاش:**
+                                                    $$\text{Total Cumulative Loss with Plugging} = \$585,000 + \$60,000 = \$645,000$$
+                                                    <br>
+                                                    ٣. **قيد التنازل الفوري للأرض:** طالما الأرض اتلغت وسبناها، بنقفل حساب الأرض التاريخي غير المطور ونرميه خسارة فادحة بالكامل في المدين تصفية نهائية: من حـ/ **Surrendered Lease Expense** إلى حـ/ **Unproved Property**.
                                                 </li>
                                             </ul>
                                         </div>
@@ -5465,39 +5734,39 @@ ${fullContent}
                 };
 
                 if (isLec) {
-                    const cleanTitle = (bm.lectureTitle || '').replace('المحاضرة ', 'محاضرة ');
+                    const cleanTitle = (bm.lectureTitle || '').replace('المحاضرة ', 'م.');
                     const cardTitle = (bm.cardTitle || '').replace(/<[^>]+>/g, '');
                     card.innerHTML = `
-                        <div onclick="toggleBookmarkCard(${idx})" style="display:flex; align-items:flex-start; justify-content:space-between; gap:0.6rem; padding:1rem; cursor:pointer; background:${headerBg}; border-bottom: 1px solid #f1f5f9; direction:rtl;">
-                            <div style="display:flex; align-items:flex-start; gap:0.75rem; min-width:0; flex:1;">
-                                <div style="width:2.2rem; height:2.2rem; min-width:2.2rem; background:${mainIconBg}; border:1.5px solid ${mainIconBorder}; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; color:${mainIconColor}; font-size:0.95rem; margin-top:0.1rem; flex-shrink:0;">
+                        <div class="bm-card-header" onclick="toggleBookmarkCard(${idx})" style="display:flex; align-items:flex-start; justify-content:space-between; gap:0.5rem; padding:0.85rem 0.9rem; cursor:pointer; background:${headerBg}; border-bottom: 1px solid #f1f5f9; direction:rtl;">
+                            <div style="display:flex; align-items:flex-start; gap:0.6rem; min-width:0; flex:1;">
+                                <div style="width:2rem; height:2rem; min-width:2rem; background:${mainIconBg}; border:1.5px solid ${mainIconBorder}; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; color:${mainIconColor}; font-size:0.85rem; margin-top:0.1rem; flex-shrink:0;">
                                     <i class="${mainIcon}"></i>
                                 </div>
                                 <div style="flex:1; min-width:0; text-align:right;">
-                                    <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap; justify-content:flex-start;">
-                                        <span style="font-size:0.68rem; font-weight:800; background:#f3e8ff; color:#6b21a8; padding:0.15rem 0.5rem; border-radius:0.35rem; white-space:nowrap; border:1px solid #e9d5ff;">شرح للمراجعة</span>
-                                        <span style="font-size:0.68rem; font-weight:800; background:#ecfdf5; color:#047857; padding:0.15rem 0.5rem; border-radius:0.35rem; border:1px solid #a7f3d0; white-space:nowrap;">${cleanTitle}</span>
-                                        <span style="font-size:0.65rem; color:#94a3b8; font-weight:600;"><i class="fa-regular fa-clock ml-1"></i>${bm.savedAt || ''}</span>
+                                    <div class="bm-card-meta" style="display:flex; align-items:center; gap:0.35rem; margin-bottom:0.3rem; flex-wrap:wrap; justify-content:flex-start;">
+                                        <span style="font-size:0.62rem; font-weight:800; background:#f3e8ff; color:#6b21a8; padding:0.12rem 0.4rem; border-radius:0.3rem; white-space:nowrap; border:1px solid #e9d5ff;">شرح</span>
+                                        <span style="font-size:0.62rem; font-weight:800; background:#ecfdf5; color:#047857; padding:0.12rem 0.4rem; border-radius:0.3rem; border:1px solid #a7f3d0; white-space:nowrap; max-width:7rem; overflow:hidden; text-overflow:ellipsis;">${cleanTitle}</span>
+                                        <span style="font-size:0.6rem; color:#94a3b8; font-weight:600; white-space:nowrap;"><i class="fa-regular fa-clock"></i> ${(bm.savedAt||'').split('،')[0]||bm.savedAt||''}</span>
                                     </div>
-                                    <div style="font-size:0.92rem; font-weight:800; color:#1e293b; direction:rtl; text-align:right; word-break:break-word; line-height:1.5;">${cardTitle || ''}</div>
+                                    <div style="font-size:0.85rem; font-weight:800; color:#1e293b; direction:rtl; text-align:right; word-break:break-word; line-height:1.45; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${cardTitle || ''}</div>
                                 </div>
                             </div>
-                            <div style="display:flex; align-items:center; gap:0.4rem; flex-shrink:0; padding-top:0.1rem;">
-                                <button onclick="event.stopPropagation(); navigateToLectureCardByIdx(${idx})" title="عرض في المحاضرة" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #c084fc; background:#faf5ff; color:#7e22ce; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#f3e8ff'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#faf5ff'; this.style.transform='scale(1)'">
+                            <div class="bm-card-actions" style="display:flex; align-items:center; gap:0.35rem; flex-shrink:0; padding-top:0.1rem;">
+                                <button onclick="event.stopPropagation(); navigateToLectureCardByIdx(${idx})" title="عرض في المحاضرة" style="width:1.75rem; height:1.75rem; min-width:1.75rem; border-radius:0.45rem; border:1px solid #c084fc; background:#faf5ff; color:#7e22ce; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.75rem; transition:all 0.2s;" onmouseover="this.style.background='#f3e8ff'; this.style.transform='scale(1.08)'" onmouseout="this.style.background='#faf5ff'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
-                                <button onclick="event.stopPropagation(); openAIChatForBookmarkByIdx(${idx})" title="اسأل AI" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #86efac; background:#f0fdf4; color:#047857; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#d1fae5'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#f0fdf4'; this.style.transform='scale(1)'">
+                                <button onclick="event.stopPropagation(); openAIChatForBookmarkByIdx(${idx})" title="اسأل AI" style="width:1.75rem; height:1.75rem; min-width:1.75rem; border-radius:0.45rem; border:1px solid #86efac; background:#f0fdf4; color:#047857; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.75rem; transition:all 0.2s;" onmouseover="this.style.background='#d1fae5'; this.style.transform='scale(1.08)'" onmouseout="this.style.background='#f0fdf4'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-robot"></i>
                                 </button>
-                                <button onclick="event.stopPropagation(); deleteBookmarkByIdx(${idx})" title="حذف" style="width:1.85rem; height:1.85rem; border-radius:0.5rem; border:1px solid #fca5a5; background:#fff5f5; color:#dc2626; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#fff5f5'; this.style.transform='scale(1)'">
+                                <button onclick="event.stopPropagation(); deleteBookmarkByIdx(${idx})" title="حذف" style="width:1.75rem; height:1.75rem; min-width:1.75rem; border-radius:0.45rem; border:1px solid #fca5a5; background:#fff5f5; color:#dc2626; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.75rem; transition:all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.transform='scale(1.08)'" onmouseout="this.style.background='#fff5f5'; this.style.transform='scale(1)'">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
-                                <i id="bm-chevron-${idx}" class="fa-solid fa-chevron-down" style="color:#94a3b8; font-size:0.8rem; transition:transform 0.3s; margin-right:0.4rem;"></i>
+                                <i id="bm-chevron-${idx}" class="fa-solid fa-chevron-down" style="color:#94a3b8; font-size:0.75rem; transition:transform 0.3s; margin-right:0.3rem; flex-shrink:0;"></i>
                             </div>
                         </div>
-                        <div id="bm-body-${idx}" style="display:none; padding:1.25rem; border-top:1px solid #f1f5f9; background:#fafafa;">
-                            ${bm.enText ? `<div class="content-en" style="margin:0; padding:1.25rem; border-radius:0.75rem; font-size:0.82rem; overflow-x:auto;">${bm.enText}</div>` : ''}
-                            ${bm.arText ? `<div class="content-ar" style="margin-top:0.75rem; padding:1.25rem; border-radius:0.75rem; font-size:0.85rem; overflow-x:auto;">${bm.arText}</div>` : ''}
+                        <div id="bm-body-${idx}" style="display:none; padding:1rem; border-top:1px solid #f1f5f9; background:#fafafa;">
+                            ${bm.enText ? `<div class="content-en" style="margin:0; padding:1rem; border-radius:0.65rem; font-size:0.8rem; overflow-x:auto;">${bm.enText}</div>` : ''}
+                            ${bm.arText ? `<div class="content-ar" style="margin-top:0.65rem; padding:1rem; border-radius:0.65rem; font-size:0.83rem; overflow-x:auto;">${bm.arText}</div>` : ''}
                         </div>
                     `;
                 }
