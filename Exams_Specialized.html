@@ -2043,33 +2043,37 @@
             </div>
 
             <div class="exams-grid">
-                <!-- Card 1 — امتحان المؤسسات المتخصصة -->
-                <div class="exam-card">
-                    <div class="exam-card-header" style="background: linear-gradient(135deg, #0369a1, #0891b2);">
-                        <div class="bg-icon"><i class="fa-solid fa-oil-well"></i></div>
-                        <div class="exam-card-icon"><i class="fa-solid fa-clipboard-question"></i></div>
-                        <div class="exam-card-title">امتحان المؤسسات المتخصصة</div>
-                        <div class="exam-card-sub">قطاع البترول — امتحان سابق</div>
+                <!-- Card 1 — امتحان المؤسسات المتخصصة (مدمج بزتونة البصمجة) -->
+                <div class="exam-card" style="border-color: #d97706; border-width: 2px;">
+                    <div class="exam-card-header" style="background: linear-gradient(135deg, #92400e, #d97706);">
+                        <div class="bg-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div class="exam-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                        <div class="exam-card-title">امتحان المؤسسات المتخصصة ⚡</div>
+                        <div class="exam-card-sub">الاختبار الشامل المطور بناءً على أسئلة امتحانات الدكتور محمد أنور فهد لقطاع البترول</div>
                     </div>
                     <div class="exam-card-body">
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1.5px solid #f59e0b; border-radius: 0.75rem; padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; font-weight: 700; color: #78350f; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-lightbulb" style="color: #d97706;"></i>
+                            كل سؤال جنبه زتونة بصمجة للحفظ السريع
+                        </div>
                         <div class="exam-stats">
                             <div class="exam-stat">
-                                <i class="fa-solid fa-list-ol" style="color:var(--primary)"></i>
+                                <i class="fa-solid fa-list-ol" style="color:#d97706"></i>
                                 <div class="label">الأسئلة</div>
                                 <div class="value" id="q-count-1">-- سؤال</div>
                             </div>
                             <div class="exam-stat">
-                                <i class="fa-solid fa-bore-hole" style="color:#0891b2"></i>
-                                <div class="label">المجال</div>
-                                <div class="value">بترول</div>
+                                <i class="fa-solid fa-brain" style="color:#92400e"></i>
+                                <div class="label">النوع</div>
+                                <div class="value">بنك موحد</div>
                             </div>
                         </div>
                         <div class="exam-btns">
-                            <button class="btn btn-primary" onclick="startExam('specialized_institutions_exam', false)">
+                            <button class="btn btn-primary" onclick="startExam('specialized_institutions_exam', false)" style="background: linear-gradient(135deg, #d97706, #92400e); box-shadow: 0 2px 8px rgba(217,119,6,0.4);">
                                 <i class="fa-solid fa-rocket"></i> اختبر نفسك
                             </button>
                             <button class="btn btn-dark" onclick="startExam('specialized_institutions_exam', true)">
-                                <i class="fa-solid fa-chalkboard-user"></i> دراسة وشرح
+                                <i class="fa-solid fa-bolt-lightning"></i> دراسة وبصمجة
                             </button>
                         </div>
                     </div>
@@ -2136,42 +2140,6 @@
                             <button class="btn btn-dark"
                                 onclick="startExam('specialized_institutions_final_exam', true)">
                                 <i class="fa-solid fa-chalkboard-user"></i> دراسة وشرح
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 — بصمجة الأسئلة -->
-                <div class="exam-card" style="border-color: #d97706; border-width: 2px;">
-                    <div class="exam-card-header" style="background: linear-gradient(135deg, #92400e, #d97706);">
-                        <div class="bg-icon"><i class="fa-solid fa-brain"></i></div>
-                        <div class="exam-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-                        <div class="exam-card-title">بصمجة الأسئلة ⚡</div>
-                        <div class="exam-card-sub">حفظ سريع وزتونة ذكية للمراجعة الأخيرة</div>
-                    </div>
-                    <div class="exam-card-body">
-                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1.5px solid #f59e0b; border-radius: 0.75rem; padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; font-weight: 700; color: #78350f; display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fa-solid fa-lightbulb" style="color: #d97706;"></i>
-                            كل سؤال جنبه زتونة بصمجة للحفظ السريع
-                        </div>
-                        <div class="exam-stats">
-                            <div class="exam-stat">
-                                <i class="fa-solid fa-list-ol" style="color:#d97706"></i>
-                                <div class="label">الأسئلة</div>
-                                <div class="value" id="q-count-4">-- سؤال</div>
-                            </div>
-                            <div class="exam-stat">
-                                <i class="fa-solid fa-brain" style="color:#92400e"></i>
-                                <div class="label">النوع</div>
-                                <div class="value">بنك موحد</div>
-                            </div>
-                        </div>
-                        <div class="exam-btns">
-                            <button class="btn btn-primary" onclick="startExam('all_consolidated_questions', false)" style="background: linear-gradient(135deg, #d97706, #92400e); box-shadow: 0 2px 8px rgba(217,119,6,0.4);">
-                                <i class="fa-solid fa-rocket"></i> اختبر نفسك
-                            </button>
-                            <button class="btn btn-dark" onclick="startExam('all_consolidated_questions', true)">
-                                <i class="fa-solid fa-bolt-lightning"></i> دراسة وبصمجة
                             </button>
                         </div>
                     </div>
@@ -3198,11 +3166,6 @@
                 if (examsData['specialized_institutions_final_exam']) {
                     const cnt = examsData['specialized_institutions_final_exam'].questions.length;
                     const el = document.getElementById('q-count-2');
-                    if (el) el.textContent = cnt + ' سؤال';
-                }
-                if (examsData['all_consolidated_questions']) {
-                    const cnt = examsData['all_consolidated_questions'].questions.length;
-                    const el = document.getElementById('q-count-4');
                     if (el) el.textContent = cnt + ' سؤال';
                 }
             }
