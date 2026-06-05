@@ -986,13 +986,17 @@
             padding: 0.9rem 1.1rem;
             display: grid;
             grid-template-areas:
-                "badge . bookmark status"
-                "text text text text";
-            grid-template-columns: auto 1fr auto auto;
-            gap: 0.75rem;
+                "badge . lecref bookmark status"
+                "text text text text text";
+            grid-template-columns: auto 1fr auto auto auto;
+            gap: 0.5rem;
             align-items: center;
             cursor: default;
             background: var(--slate-50);
+        }
+
+        .btn-lec-ref-header {
+            grid-area: lecref;
         }
 
         .question-block.is-current .question-block-header {
@@ -1033,6 +1037,15 @@
 
         .btn-q-bookmark {
             grid-area: bookmark;
+        }
+
+        @media (max-width: 480px) {
+            .lec-ref-btn-label {
+                display: none;
+            }
+            .btn-lec-ref {
+                padding: 0.35rem 0.5rem;
+            }
         }
 
         .q-status-icon {
@@ -1970,6 +1983,439 @@
                 padding: 6px 12px;
             }
         }
+
+        /* ===== LECTURE REF BUTTON ===== */
+        .btn-lec-ref {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.6rem;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border: 1.5px solid #a5f3fc;
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+            color: #0e7490;
+            transition: all 0.22s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .btn-lec-ref:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(8, 145, 178, 0.25);
+            border-color: #67e8f9;
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+        }
+
+        .btn-lec-ref i {
+            font-size: 0.8rem;
+        }
+
+        /* ===== LECTURE REF MODAL ===== */
+        #lec-ref-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99999;
+            align-items: flex-end;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            padding: 0;
+        }
+
+        #lec-ref-modal.show {
+            display: flex;
+        }
+
+        @media (min-width: 768px) {
+            #lec-ref-modal {
+                align-items: center;
+                padding: 1rem;
+            }
+        }
+
+        .lec-ref-modal-box {
+            background: white;
+            border-radius: 1.5rem 1.5rem 0 0;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25);
+            animation: slideUpModal 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .lec-ref-modal-box {
+                border-radius: 1.5rem;
+                max-width: 780px;
+                max-height: 85vh;
+                animation: bounceInModal 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+        }
+
+        @keyframes slideUpModal {
+            from { transform: translateY(100%); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        @keyframes bounceInModal {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+
+        .lec-ref-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, #0e7490, #0369a1);
+            color: white;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .lec-ref-modal-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .lec-ref-header-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .lec-ref-modal-header h3 {
+            font-weight: 900;
+            font-size: 0.95rem;
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .lec-ref-modal-header p {
+            font-size: 0.72rem;
+            opacity: 0.75;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .lec-ref-close-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 0.6rem;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            transition: background 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lec-ref-close-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lec-ref-question-ctx {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-bottom: 1px solid #bfdbfe;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #1e40af;
+            direction: ltr;
+            text-align: left;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lec-ref-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.25rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .lec-ref-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            gap: 1rem;
+            color: var(--slate-400);
+        }
+
+        .lec-ref-spinner {
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 3px solid var(--slate-200);
+            border-top-color: #0369a1;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .lec-ref-loading p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lec-ref-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            gap: 1rem;
+            color: var(--danger);
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lec-ref-error i {
+            font-size: 2rem;
+        }
+
+        .lec-ref-error p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--slate-500);
+        }
+
+        /* Lecture content rendered from index.html */
+        .lec-ref-content-wrap {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lec-ref-content-wrap .content-en {
+            direction: ltr;
+            text-align: left;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #cbd5e1;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            font-size: 13px;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .lec-ref-content-wrap .content-en strong {
+            color: #fff;
+        }
+
+        .lec-ref-content-wrap .content-en ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lec-ref-content-wrap .content-en ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        .lec-ref-content-wrap .content-en ul li::before {
+            content: '✦';
+            color: #a78bfa;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .lec-ref-content-wrap .content-ar {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #fcd34d;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .lec-ref-content-wrap .content-ar p {
+            color: #44403c;
+            line-height: 1.9;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .lec-ref-content-wrap .content-ar-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 900;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .lec-ref-content-wrap .ar-tip {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border: 1.5px solid #c084fc;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-top: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #5b21b6;
+            line-height: 1.7;
+            direction: rtl;
+        }
+
+        .lec-ref-content-wrap .ar-ok {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1.5px solid #86efac;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-top: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #14532d;
+            line-height: 1.7;
+            direction: rtl;
+        }
+
+        .lec-ref-content-wrap .ar-equation {
+            background: #fff;
+            border: 2px dashed #7c3aed;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            direction: ltr;
+            text-align: center;
+            color: #4c1d95;
+            margin: 10px 0;
+            font-size: 15px;
+            overflow-x: auto;
+        }
+
+        .lec-ref-content-wrap .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .lec-ref-content-wrap .compare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lec-ref-content-wrap .compare-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            border-right: 4px solid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .lec-ref-content-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+
+        .lec-ref-content-wrap table th,
+        .lec-ref-content-wrap table td {
+            padding: 8px 10px;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .lec-ref-content-wrap table th {
+            background: #f1f5f9;
+            font-weight: 800;
+        }
+
+        .lec-ref-acc-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #e0f2fe;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lec-ref-acc-title i {
+            color: #0369a1;
+        }
+
+        .lec-ref-open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.6rem;
+            background: linear-gradient(135deg, #0369a1, #0891b2);
+            color: white;
+            font-weight: 700;
+            font-size: 0.82rem;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .lec-ref-open-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(3, 105, 161, 0.35);
+        }
+
+        @media (max-width: 640px) {
+            .lec-ref-modal-header h3 {
+                font-size: 0.85rem;
+            }
+            .lec-ref-modal-body {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -2683,6 +3129,17 @@
             header.appendChild(badge);
             header.appendChild(qText);
 
+            // Lecture Ref Button
+            const lecRefBtn = document.createElement('button');
+            lecRefBtn.className = 'btn-lec-ref btn-lec-ref-header';
+            lecRefBtn.title = 'شرح الجزئية من المحاضرة';
+            lecRefBtn.innerHTML = '<i class="fa-solid fa-book-open-reader"></i><span class="lec-ref-btn-label">شرح الجزئية</span>';
+            lecRefBtn.onclick = (e) => {
+                e.stopPropagation();
+                openLectureModal(qIndex);
+            };
+            header.appendChild(lecRefBtn);
+
             const qBookmarkBtn = document.createElement('button');
             qBookmarkBtn.className = 'btn-q-bookmark';
             qBookmarkBtn.title = 'احفظ للمراجعة';
@@ -3263,6 +3720,193 @@
         }
 
         // ================================================================
+        //  LECTURE REFERENCE MODAL
+        // ================================================================
+
+        // Map each question group label (from EXAM_GROUPS) to the accordion ID in index.html
+        // Format: { [groupLabelKeyword]: { accId: 'l1-acc1', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى' } }
+        const LECTURE_MAP = [
+            // Lecture 1 - صناعة البترول والمصطلحات
+            { keywords: ['مفاهيم أساسية', 'صناعة البترول', 'تصنيف التكاليف'], accId: 'l1-acc2', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — طبيعة صناعة البترول' },
+            { keywords: ['Upstream', 'Midstream', 'Downstream', 'مراحل الصناعة'], accId: 'l1-acc3', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — مراحل الصناعة' },
+            { keywords: ['Full Costing', 'Successful Efforts', 'SE vs FC', 'طريقة المجهودات'], accId: 'l2-acc2', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — طرق المحاسبة' },
+            // Lecture 2 - عقود الاستحواذ
+            { keywords: ['G&G', 'استكشاف', 'الاستكشاف'], accId: 'l2-acc3', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — مصاريف الاستكشاف' },
+            { keywords: ['الاستحواذ', 'Acquisition', 'عقارات', 'أراضي', 'Lease'], accId: 'l3-acc1', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — تكاليف الاستحواذ' },
+            { keywords: ['Contribution', 'اتفاقيات المساهمة'], accId: 'l3-acc3', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — اتفاقيات المساهمة' },
+            { keywords: ['منشآت الإنتاج', 'مصاريف التشغيل'], accId: 'l2-p-acc2', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — تطبيقات SE' },
+            { keywords: ['Support Equipment', 'إهلاك معدات', 'معدات الدعم'], accId: 'l4-c-acc4', lecSection: 'lecture-4-c-content', lecTitle: 'المحاضرة الثامنة — معدات الدعم المشترك' },
+            { keywords: ['توزيع التكلفة', 'بالقيمة العادلة', 'Residual', 'المتبقي'], accId: 'l3-acc2', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — توزيع التكلفة' },
+            { keywords: ['معلق', 'Suspense', 'بيتا'], accId: 'l3-p2-acc1', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — الحسابات المعلقة' },
+            { keywords: ['Impairment', 'انخفاض', 'هبوط', 'غير مؤكدة'], accId: 'l3-p2-acc2', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — انخفاض القيمة' },
+            { keywords: ['انتهاء', 'Lease Expiry', 'خسائر'], accId: 'l3-p3-acc1', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — انتهاء العقود' },
+            { keywords: ['DD&A', 'إهلاك', 'إطفاء', 'تدني'], accId: 'l3-p3-acc2', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — DD&A' },
+            { keywords: ['PSA', 'اتفاقية مشاركة الإنتاج', 'نسب'], accId: 'l3-acc4', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — اتفاقيات الإنتاج PSA' },
+            { keywords: ['خزانات', 'Proved', 'Probable', 'احتمالية'], accId: 'l1-acc5', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — تصنيف الخزانات' },
+            // Lecture 3 section keywords
+            { keywords: ['إتاوة', 'Royalty', 'امتياز', 'Egypt Concessions', 'مصرية'], accId: 'l2-acc4', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — الامتياز والإتاوة' },
+            { keywords: ['مكونات التكلفة', 'قائمتي الدخل', 'Applied Cases', 'ميزانية'], accId: 'l2-p-acc1', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — مقارنة عملية' },
+            // Lecture 7/8 - حفر الآبار
+            { keywords: ['حفر', 'استكشافية', 'تنموية', 'IDC', 'آبار', 'Drilling', 'dry hole', 'Christmas'], accId: 'l4-acc1', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — حفر الآبار' },
+        ];
+
+        // Cache for fetched index.html
+        let _indexHtmlCache = null;
+
+        async function fetchIndexHtml() {
+            if (_indexHtmlCache) return _indexHtmlCache;
+            try {
+                const resp = await fetch('index.html');
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                _indexHtmlCache = await resp.text();
+                return _indexHtmlCache;
+            } catch (e) {
+                throw e;
+            }
+        }
+
+        function findLectureRef(qIndex) {
+            const gIndex = questionGroupMap[qIndex];
+            const group = questionGroups[gIndex];
+            const groupLabel = (group && group.label) ? group.label : '';
+            const qText = activeQuestions[qIndex].text || '';
+            const combined = (groupLabel + ' ' + qText).toLowerCase();
+
+            for (const entry of LECTURE_MAP) {
+                for (const kw of entry.keywords) {
+                    if (combined.includes(kw.toLowerCase())) {
+                        return entry;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function extractAccordionContent(htmlStr, accId) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlStr, 'text/html');
+            const accCard = doc.getElementById(accId);
+            if (!accCard) return null;
+
+            // Get the acc-title text
+            const titleEl = accCard.querySelector('.acc-title');
+            const titleText = titleEl ? titleEl.innerText || titleEl.textContent : '';
+
+            // Get the acc-body-content
+            const bodyContent = accCard.querySelector('.acc-body-content');
+            if (!bodyContent) return { title: titleText, html: '' };
+
+            // Remove ai-ask-btn, bookmark buttons
+            bodyContent.querySelectorAll('.ai-ask-btn, .lec-bookmark-btn').forEach(el => el.remove());
+
+            return { title: titleText, html: bodyContent.innerHTML };
+        }
+
+        async function openLectureModal(qIndex) {
+            const modal = document.getElementById('lec-ref-modal');
+            const body = document.getElementById('lec-ref-modal-body');
+            const titleEl = document.getElementById('lec-ref-modal-title');
+            const subtitleEl = document.getElementById('lec-ref-modal-subtitle');
+            const ctxEl = document.getElementById('lec-ref-question-ctx');
+
+            const q = activeQuestions[qIndex];
+            const ref = findLectureRef(qIndex);
+
+            // Show modal with loading state
+            modal.classList.add('show');
+            body.innerHTML = '<div class="lec-ref-loading"><div class="lec-ref-spinner"></div><p>جارٍ تحميل شرح الجزئية...</p></div>';
+
+            // Set question context
+            const plain = stripHtmlTags(q.text);
+            ctxEl.innerHTML = `<i class="fa-solid fa-circle-question" style="color:#3b82f6"></i> ${plain.length > 100 ? plain.slice(0,100)+'...' : plain}`;
+
+            if (!ref) {
+                titleEl.textContent = 'شرح الجزئية';
+                subtitleEl.textContent = 'من ملف المحاضرات';
+                body.innerHTML = `
+                    <div class="lec-ref-error">
+                        <i class="fa-solid fa-book-open" style="color:#94a3b8; font-size:2.5rem;"></i>
+                        <div>
+                            <p style="font-weight:900; color:#334155; margin-bottom:0.4rem;">لم يتم ربط هذا السؤال بجزئية محددة</p>
+                            <p>يمكنك مراجعة ملف المحاضرات كاملاً للبحث عن الموضوع</p>
+                        </div>
+                        <a href="index.html" target="_blank" class="lec-ref-open-btn">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> فتح ملف المحاضرات
+                        </a>
+                    </div>`;
+                return;
+            }
+
+            titleEl.textContent = ref.lecTitle;
+            subtitleEl.textContent = 'الجزئية: ' + ref.accId.replace(/-/g,' ').toUpperCase();
+
+            try {
+                const htmlStr = await fetchIndexHtml();
+                const content = extractAccordionContent(htmlStr, ref.accId);
+
+                if (!content || !content.html.trim()) {
+                    body.innerHTML = `
+                        <div class="lec-ref-error">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <p>لم يتم العثور على محتوى هذه الجزئية في ملف المحاضرات.</p>
+                            <a href="index.html" target="_blank" class="lec-ref-open-btn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> فتح ملف المحاضرات
+                            </a>
+                        </div>`;
+                    return;
+                }
+
+                body.innerHTML = `
+                    <div class="lec-ref-content-wrap">
+                        <div class="lec-ref-acc-title">
+                            <i class="fa-solid fa-bookmark"></i>
+                            ${content.title}
+                        </div>
+                        ${content.html}
+                        <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #e2e8f0; display:flex; gap:0.75rem; flex-wrap:wrap;">
+                            <a href="index.html#${ref.lecSection}" target="_blank" class="lec-ref-open-btn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> فتح المحاضرة كاملة
+                            </a>
+                        </div>
+                    </div>`;
+
+                // Render MathJax if present
+                if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                    MathJax.typesetPromise([body]);
+                }
+
+            } catch (err) {
+                body.innerHTML = `
+                    <div class="lec-ref-error">
+                        <i class="fa-solid fa-wifi" style="color:#ef4444;"></i>
+                        <div>
+                            <p style="font-weight:900; color:#334155; margin-bottom:0.4rem;">تعذر تحميل المحتوى</p>
+                            <p>قد تحتاج لفتح الملف عبر خادم محلي (Live Server). تأكد من تشغيل الصفحة عبر server وليس مباشرة من المتصفح.</p>
+                        </div>
+                        <a href="index.html" target="_blank" class="lec-ref-open-btn">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> فتح ملف المحاضرات مباشرة
+                        </a>
+                    </div>`;
+            }
+        }
+
+        function closeLectureModal() {
+            document.getElementById('lec-ref-modal').classList.remove('show');
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('lec-ref-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeLectureModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLectureModal();
+            }
+        });
+
+        // ================================================================
         //  INIT
         // ================================================================
         renderHistory();
@@ -3417,6 +4061,29 @@
                 <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i> افتح الآن
             </button>
             <button class="ai-paste-close-btn" onclick="closePasteOverlay()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- ===== LECTURE REF MODAL ===== -->
+    <div id="lec-ref-modal">
+        <div class="lec-ref-modal-box">
+            <div class="lec-ref-modal-header">
+                <div class="lec-ref-header-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <div style="flex:1; overflow:hidden;">
+                    <h3 id="lec-ref-modal-title">شرح الجزئية من المحاضرة</h3>
+                    <p id="lec-ref-modal-subtitle">استعراض المحتوى الدراسي المرتبط بالسؤال</p>
+                </div>
+                <button class="lec-ref-close-btn" onclick="closeLectureModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="lec-ref-question-ctx" id="lec-ref-question-ctx"></div>
+            <div class="lec-ref-modal-body" id="lec-ref-modal-body">
+                <div class="lec-ref-loading">
+                    <div class="lec-ref-spinner"></div>
+                    <p>جارٍ تحميل شرح الجزئية...</p>
+                </div>
+            </div>
         </div>
     </div>
 
