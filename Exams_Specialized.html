@@ -2615,7 +2615,12 @@
 
             const body = document.createElement('div');
             body.className = 'inline-expl-body';
-            body.innerHTML = q.explanation || 'لا يوجد شرح مفصل متاح لهذا السؤال.';
+            let bodyHTML = '';
+            if (q.basmaga) {
+                bodyHTML += `<div class="basmaga-box"><i class="fa-solid fa-bolt-lightning"></i><div><div class="basmaga-label">زتونة البصمجة ⚡</div><div class="basmaga-text">${q.basmaga}</div></div></div>`;
+            }
+            bodyHTML += q.explanation || 'لا يوجد شرح مفصل متاح لهذا السؤال.';
+            body.innerHTML = bodyHTML;
             wrapper.appendChild(body);
 
             header.addEventListener('click', () => {
