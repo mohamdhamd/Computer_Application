@@ -1271,6 +1271,52 @@
             }
         }
 
+        .quote-bar {
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 0.45rem 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            color: #f0f9ff;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+            animation: fadeInQuote 0.6s ease-out forwards;
+        }
+
+        .quote-bar i {
+            color: #c084fc;
+            font-size: 0.9rem;
+            margin-left: 6px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .quote-bar span {
+            vertical-align: middle;
+            display: inline;
+        }
+
+        @keyframes fadeInQuote {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quote-bar {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
+        }
+
         @media (max-width: 600px) {
             .ai-ask-btn { font-size: 11px; padding: 5px 10px; }
             .lec-bookmark-btn { left: 14px; width: 28px; height: 28px; font-size: 11px; top: 11px; }
@@ -1294,10 +1340,28 @@
             <span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-wide text-center flex-1">سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر.</span>
             <div class="w-16 hidden sm:block"></div>
         </div>
+        <div class="quote-bar" id="random-quote-bar">
+            <i class="fa-solid fa-quote-right"></i>
+            <span id="random-quote-text">نهتم بتقديرات الدنيا ونقلق لها، ونغفل عن منازل الآخرة وهي الأبقى</span>
+        </div>
+        <script>
+            (function() {
+                const quotes = [
+                    "نستنفر كل طاقتنا خوفاً من تعثر القلم في لجان الدنيا، وننسى هيبة الموقف يوم تتكلم الأيدي وتشهد الأرجل.",
+                    "إن كان فوات درجة في امتحان البشر يكسر الخاطر ويضيق به الصدر، فكيف بفوات الرضا والقبول يوم العرض الأكبر؟",
+                    "تؤرقنا أسئلة صاغها عقل بشر، فما بالنا بأسئلة يُسأل فيها المرء عن عمره فيما أفناه، وعن شبابه فيما أبلاه",
+                    "قلق امتحانات الدنيا يمحوه النجاح، وقلق الآخرة لا ينجي منه إلا الصلاح",
+                    "نهتم بتقديرات الدنيا ونقلق لها، ونغفل عن منازل الآخرة وهي الأبقى"
+                ];
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const el = document.getElementById('random-quote-text');
+                if (el) el.textContent = quotes[randomIndex];
+            })();
+        </script>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-8 mt-16 sm:mt-20 md:mt-24 fade-in">
+    <main class="max-w-6xl mx-auto px-4 py-8 mt-28 sm:mt-32 md:mt-32 fade-in">
 
         <!-- Home View (Hero + Grid) -->
         <div id="home-view" class="fade-in">
@@ -5034,7 +5098,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                             </div>
                         </div>
 
-                        <div class="acc-card" id="l4-acc4">
+                            <div class="acc-card" id="l4-c-acc4">
                             <button class="acc-header l4-toggle" data-index="3">
                                 <div class="acc-icon" style="background:#e0f2fe;color:#0369a1">
                                     <i class="fa-solid fa-truck-monster"></i>

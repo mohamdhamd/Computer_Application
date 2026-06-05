@@ -3663,6 +3663,12 @@
                     if (e.target === this) closePasteOverlay();
                 });
             }
+            const lecRefModal = document.getElementById('lec-ref-modal');
+            if (lecRefModal) {
+                lecRefModal.addEventListener('click', function (e) {
+                    if (e.target === this) closeLectureModal();
+                });
+            }
             // Update question count on card
             if (typeof examsData !== 'undefined') {
                 if (examsData['specialized_institutions_exam']) {
@@ -3775,31 +3781,6 @@
 
         // Map each question group label (from EXAM_GROUPS) to the accordion ID in index.html
         // Format: { [groupLabelKeyword]: { accId: 'l1-acc1', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى' } }
-        const LECTURE_MAP = [
-            // Lecture 1 - صناعة البترول والمصطلحات
-            { keywords: ['مفاهيم أساسية', 'صناعة البترول', 'تصنيف التكاليف'], accId: 'l1-acc2', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — طبيعة صناعة البترول' },
-            { keywords: ['Upstream', 'Midstream', 'Downstream', 'مراحل الصناعة'], accId: 'l1-acc3', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — مراحل الصناعة' },
-            { keywords: ['Full Costing', 'Successful Efforts', 'SE vs FC', 'طريقة المجهودات'], accId: 'l2-acc2', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — طرق المحاسبة' },
-            // Lecture 2 - عقود الاستحواذ
-            { keywords: ['G&G', 'استكشاف', 'الاستكشاف'], accId: 'l2-acc3', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — مصاريف الاستكشاف' },
-            { keywords: ['الاستحواذ', 'Acquisition', 'عقارات', 'أراضي', 'Lease'], accId: 'l3-acc1', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — تكاليف الاستحواذ' },
-            { keywords: ['Contribution', 'اتفاقيات المساهمة'], accId: 'l3-acc3', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — اتفاقيات المساهمة' },
-            { keywords: ['منشآت الإنتاج', 'مصاريف التشغيل'], accId: 'l2-p-acc2', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — تطبيقات SE' },
-            { keywords: ['Support Equipment', 'إهلاك معدات', 'معدات الدعم'], accId: 'l4-c-acc4', lecSection: 'lecture-4-c-content', lecTitle: 'المحاضرة الثامنة — معدات الدعم المشترك' },
-            { keywords: ['توزيع التكلفة', 'بالقيمة العادلة', 'Residual', 'المتبقي'], accId: 'l3-acc2', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — توزيع التكلفة' },
-            { keywords: ['معلق', 'Suspense', 'بيتا'], accId: 'l3-p2-acc1', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — الحسابات المعلقة' },
-            { keywords: ['Impairment', 'انخفاض', 'هبوط', 'غير مؤكدة'], accId: 'l3-p2-acc2', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — انخفاض القيمة' },
-            { keywords: ['انتهاء', 'Lease Expiry', 'خسائر'], accId: 'l3-p3-acc1', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — انتهاء العقود' },
-            { keywords: ['DD&A', 'إهلاك', 'إطفاء', 'تدني'], accId: 'l3-p3-acc2', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — DD&A' },
-            { keywords: ['PSA', 'اتفاقية مشاركة الإنتاج', 'نسب'], accId: 'l3-acc4', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — اتفاقيات الإنتاج PSA' },
-            { keywords: ['خزانات', 'Proved', 'Probable', 'احتمالية'], accId: 'l1-acc5', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — تصنيف الخزانات' },
-            // Lecture 3 section keywords
-            { keywords: ['إتاوة', 'Royalty', 'امتياز', 'Egypt Concessions', 'مصرية'], accId: 'l2-acc4', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — الامتياز والإتاوة' },
-            { keywords: ['مكونات التكلفة', 'قائمتي الدخل', 'Applied Cases', 'ميزانية'], accId: 'l2-p-acc1', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — مقارنة عملية' },
-            // Lecture 7/8 - حفر الآبار
-            { keywords: ['حفر', 'استكشافية', 'تنموية', 'IDC', 'آبار', 'Drilling', 'dry hole', 'Christmas'], accId: 'l4-acc1', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — حفر الآبار' },
-        ];
-
         // Cache for fetched index.html
         let _indexHtmlCache = null;
 
@@ -3816,17 +3797,90 @@
         }
 
         function findLectureRef(qIndex) {
-            const gIndex = questionGroupMap[qIndex];
-            const group = questionGroups[gIndex];
-            const groupLabel = (group && group.label) ? group.label : '';
-            const qText = activeQuestions[qIndex].text || '';
-            const combined = (groupLabel + ' ' + qText).toLowerCase();
+            const q = activeQuestions[qIndex];
+            if (!q) return null;
 
-            for (const entry of LECTURE_MAP) {
-                for (const kw of entry.keywords) {
-                    if (combined.includes(kw.toLowerCase())) {
-                        return entry;
-                    }
+            const examId = selectedExamId;
+            const qId = q.id;
+
+            // Direct mapping based on examId and question ID
+            if (examId === 'specialized_institutions_exam') {
+                if (qId === 1) {
+                    return { accId: 'l1-acc2', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — خصائص صناعة البترول وأنواع الشركات' };
+                }
+                if (qId >= 2 && qId <= 10) {
+                    return { accId: 'l1-acc4', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — خصائص صناعة البترول وأنواع الشركات' };
+                }
+                if (qId >= 11 && qId <= 13) {
+                    return { accId: 'l1-acc2', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — مراحل السلسلة (Upstream / Midstream)' };
+                }
+                if (qId >= 14 && qId <= 17) {
+                    return { accId: 'l2-acc5', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — المسألة الشاملة لشركة فهد (SE vs FC)' };
+                }
+                if (qId >= 18 && qId <= 19) {
+                    return { accId: 'l2-p-acc1', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — قيود المسح الجيولوجي والاستكشاف الأولي' };
+                }
+                if (qId >= 20 && qId <= 26) {
+                    return { accId: 'l3-acc1', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — طبيعة تكاليف الاستحواذ وعقود المنبع' };
+                }
+                if (qId >= 27 && qId <= 28) {
+                    return { accId: 'l2-p-acc6', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — حالة اتفاقية مساهمات آبار الاختبار للجار' };
+                }
+                if (qId >= 29 && qId <= 30) {
+                    return { accId: 'l4-acc4', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — منشآت الإنتاج وشجرة الكريسماس' };
+                }
+                if (qId >= 31 && qId <= 32) {
+                    return { accId: 'l4-c-acc4', lecSection: 'lecture-4-c-content', lecTitle: 'المحاضرة الثامنة — إهلاك وتشغيل معدات الدعم المشترك' };
+                }
+                if (qId === 33 || qId === 34) {
+                    return { accId: 'l3-acc6', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — تمرين شراء الأرض بالكامل (Relative vs Residual)' };
+                }
+                if (qId >= 35 && qId <= 36) {
+                    return { accId: 'l3-p2-acc2', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — منطقة بيتا: قيود باقة الخيار المدمج مبدئياً' };
+                }
+                if (qId === 37) {
+                    return { accId: 'l3-p2-acc5', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — منطقة جاما: التسجيل في حالة غياب المرجع' };
+                }
+                if (qId >= 38 && qId <= 39) {
+                    return { accId: 'l3-p2-acc7', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — التسوية الجردية لمخصص الهبوط الفردي والجماعي' };
+                }
+                if (qId >= 40 && qId <= 42) {
+                    return { accId: 'l3-p3-acc6', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — تمرين ٣.٤ التنازل الجماعي بالتتابع والتبويب' };
+                }
+                if (qId >= 43 && qId <= 48) {
+                    return { accId: 'l4-acc5', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — الـ 6 خطوات للآبار الاستكشافية تحت التنفيذ' };
+                }
+                if (qId >= 49 && qId <= 50) {
+                    return { accId: 'l4-acc7', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — إغلاق البير الاستكشافي الجاف ضد التنموي الجاف' };
+                }
+            } else if (examId === 'booklet_exam') {
+                if (qId >= 1 && qId <= 5) {
+                    return { accId: 'l1-acc4', lecSection: 'lecture-1-content', lecTitle: 'المحاضرة الأولى — خصائص صناعة البترول' };
+                }
+                if (qId >= 6 && qId <= 10) {
+                    return { accId: 'l2-acc3', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — اتفاقيات الامتياز المصرية' };
+                }
+                if (qId >= 11 && qId <= 15) {
+                    return { accId: 'l2-acc5', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — مدرسة المجهودات الناجحة ضد التكلفة الكلية' };
+                }
+                if (qId >= 16 && qId <= 20) {
+                    return { accId: 'l2-p-acc1', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — الحالة الكبرى: المسح الجيولوجي والاستحواذ' };
+                }
+            } else if (examId === 'specialized_institutions_final_exam') {
+                if (qId >= 1 && qId <= 5) {
+                    return { accId: 'l2-acc1', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — الاستحواذ وأطراف عقد الإيجار' };
+                }
+                if (qId >= 6 && qId <= 9) {
+                    return { accId: 'l2-acc2', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — شروط الإيجار الخمسة وحسبة الإتاوة' };
+                }
+                if (qId >= 10 && qId <= 14) {
+                    return { accId: 'l2-acc3', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — اتفاقيات الامتياز المصرية' };
+                }
+                if (qId >= 15 && qId <= 19) {
+                    return { accId: 'l2-acc5', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — مدرسة المجهودات الناجحة ضد التكلفة الكلية' };
+                }
+                if (qId >= 20 && qId <= 25) {
+                    return { accId: 'l2-acc6', lecSection: 'lecture-2-content', lecTitle: 'المحاضرة الثانية — حالة عملية بالأرقام: شركة موبيل' };
                 }
             }
             return null;
@@ -3944,10 +3998,7 @@
             document.getElementById('lec-ref-modal').classList.remove('show');
         }
 
-        // Close modal on backdrop click
-        document.getElementById('lec-ref-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeLectureModal();
-        });
+        // Close modal on backdrop click (bound in DOMContentLoaded)
 
         // Close on Escape key
         document.addEventListener('keydown', function(e) {
