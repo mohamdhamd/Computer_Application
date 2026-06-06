@@ -2396,23 +2396,89 @@
         }
 
         .lec-ref-content-wrap table {
-            width: 100%;
+            width: 100% !important;
+            margin: 18px 0 !important;
             border-collapse: collapse;
-            font-size: 13px;
-            margin: 10px 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1.5px solid #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        @media (max-width: 768px) {
+            .lec-ref-content-wrap table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
         }
 
         .lec-ref-content-wrap table th,
         .lec-ref-content-wrap table td {
-            padding: 8px 10px;
-            border: 1px solid #e2e8f0;
-            color: #0f172a;
-            font-weight: 600;
+            color: #0f172a !important; /* Force deep dark text for high contrast */
+            font-weight: 700 !important; /* Bold text */
+            font-size: 13.5px !important;
+            padding: 12px 14px !important;
+            border-bottom: 1.5px solid #e2e8f0;
+            border-left: 1.5px solid #e2e8f0;
+        }
+
+        .lec-ref-content-wrap table th:last-child,
+        .lec-ref-content-wrap table td:last-child {
+            border-left: none;
+        }
+
+        .lec-ref-content-wrap table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* English tables layout alignment */
+        .lec-ref-content-wrap .content-en table th,
+        .lec-ref-content-wrap .content-en table td {
+            text-align: left;
+        }
+
+        /* Arabic tables layout alignment */
+        .lec-ref-content-wrap .content-ar table th,
+        .lec-ref-content-wrap .content-ar table td {
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
         }
 
         .lec-ref-content-wrap table th {
-            background: #f1f5f9;
-            font-weight: 800;
+            background-color: #f1f5f9 !important; /* Premium light gray header */
+            color: #1e293b !important;
+            font-weight: 800 !important;
+            font-size: 13px !important;
+        }
+
+        /* Preserve Credit/Debit colors with bold styling */
+        .lec-ref-content-wrap table td.dr {
+            color: #0284c7 !important;
+            font-weight: 700 !important;
+        }
+        .lec-ref-content-wrap table td.cr {
+            color: #059669 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Keep row background utility classes readable with dark bold text */
+        .lec-ref-content-wrap table tr.bg-emerald-50 {
+            background-color: #ecfdf5 !important;
+        }
+        .lec-ref-content-wrap table tr.bg-blue-50 {
+            background-color: #eff6ff !important;
+        }
+        .lec-ref-content-wrap table tr.bg-green-50 {
+            background-color: #f0fdf4 !important;
+        }
+        .lec-ref-content-wrap table tr.bg-yellow-50 {
+            background-color: #fefce8 !important;
+        }
+        .lec-ref-content-wrap table tr.bg-gray-50 {
+            background-color: #f8fafc !important;
         }
 
         .lec-ref-acc-title {

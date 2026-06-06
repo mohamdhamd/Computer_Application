@@ -404,6 +404,30 @@
             background-color: #fff;
         }
 
+        /* Support direct tables without wrapper (like in accordion cards) */
+        .content-en table,
+        .content-ar table {
+            width: 100% !important;
+            margin: 18px 0 !important;
+            border-collapse: collapse;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1.5px solid #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Make direct tables responsive on mobile */
+        @media (max-width: 768px) {
+            .content-en table,
+            .content-ar table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
         .table-responsive table {
             width: 100% !important;
             margin: 0 !important;
@@ -411,10 +435,15 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
+        /* Unified table cells styling */
         .table-responsive table th,
-        .table-responsive table td {
+        .table-responsive table td,
+        .content-en table th,
+        .content-en table td,
+        .content-ar table th,
+        .content-ar table td {
             color: #0f172a !important; /* Force deep dark text for high contrast */
-            font-weight: 700 !important; /* Bold/darken text as requested */
+            font-weight: 700 !important; /* Bold/darken text */
             font-size: 13.5px !important;
             padding: 12px 14px !important;
             border-bottom: 1.5px solid #e2e8f0;
@@ -422,52 +451,84 @@
         }
 
         /* Preserve Credit/Debit colors with bold styling */
-        .table-responsive table td.dr {
+        .table-responsive table td.dr,
+        .content-en table td.dr,
+        .content-ar table td.dr {
             color: #0284c7 !important;
             font-weight: 700 !important;
         }
-        .table-responsive table td.cr {
+        .table-responsive table td.cr,
+        .content-en table td.cr,
+        .content-ar table td.cr {
             color: #059669 !important;
             font-weight: 700 !important;
         }
 
         .table-responsive table th:last-child,
-        .table-responsive table td:last-child {
+        .table-responsive table td:last-child,
+        .content-en table th:last-child,
+        .content-en table td:last-child,
+        .content-ar table th:last-child,
+        .content-ar table td:last-child {
             border-left: none;
         }
 
-        .table-responsive table tr:last-child td {
+        .table-responsive table tr:last-child td,
+        .content-en table tr:last-child td,
+        .content-ar table tr:last-child td {
             border-bottom: none;
         }
 
         /* English tables layout alignment */
+        .content-en table th,
+        .content-en table td,
         .content-en .table-responsive table th,
         .content-en .table-responsive table td {
             text-align: left;
         }
 
         /* Arabic tables layout alignment */
+        .content-ar table th,
+        .content-ar table td,
         .content-ar .table-responsive table th,
         .content-ar .table-responsive table td {
             text-align: right;
             font-family: 'Cairo', sans-serif;
         }
 
-        .table-responsive table th {
+        .table-responsive table th,
+        .content-en table th,
+        .content-ar table th {
             background-color: #f1f5f9 !important; /* Premium light gray header */
             color: #1e293b !important;
             font-weight: 800 !important;
             font-size: 13px !important;
         }
 
-        /* Keep row background utility classes readable with dark bold text */
-        .table-responsive table tr.bg-emerald-50 {
+        /* Row background colors */
+        .table-responsive table tr.bg-emerald-50,
+        .content-en table tr.bg-emerald-50,
+        .content-ar table tr.bg-emerald-50 {
             background-color: #ecfdf5 !important;
         }
-        .table-responsive table tr.bg-blue-50 {
+        .table-responsive table tr.bg-blue-50,
+        .content-en table tr.bg-blue-50,
+        .content-ar table tr.bg-blue-50 {
             background-color: #eff6ff !important;
         }
-        .table-responsive table tr.bg-gray-50 {
+        .table-responsive table tr.bg-green-50,
+        .content-en table tr.bg-green-50,
+        .content-ar table tr.bg-green-50 {
+            background-color: #f0fdf4 !important;
+        }
+        .table-responsive table tr.bg-yellow-50,
+        .content-en table tr.bg-yellow-50,
+        .content-ar table tr.bg-yellow-50 {
+            background-color: #fefce8 !important;
+        }
+        .table-responsive table tr.bg-gray-50,
+        .content-en table tr.bg-gray-50,
+        .content-ar table tr.bg-gray-50 {
             background-color: #f8fafc !important;
         }
 
