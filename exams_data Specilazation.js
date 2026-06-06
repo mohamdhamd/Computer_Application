@@ -408,7 +408,21 @@ const examsData = {
             },
             {
                 "id": 14,
-                "text": "Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:",
+                "text": "
+                    
+
+> *** Use the following information of Fahd company to answer the next 4 questions:**
+> 
+> |  |  |  |
+> | --- | --- | --- |
+> | **DD&A expense (SE)** 40,000 | **Exploratory dry** 130,000 | **Development costs** 500,000 |
+> | **DD&A expense (FC)** 90,000 | **G&G costs** $30,000 | **Production costs** 25,000 |
+> | **Exploratory successful** 400,000 | **Acquisition costs** 50,000 | **Sales revenue:** 150,000 |
+> 
+> 
+
+                    
+                    Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:",
                 "options": [
                     {
                         "id": "a",
