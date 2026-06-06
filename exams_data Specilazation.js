@@ -406,51 +406,37 @@ const examsData = {
                 "reference": "l1-acc4",
                 "reference_title": "المحاضرة الأولى — خصائص صناعة البترول"
             },
-            {
-                "id": 14,
-                "text": "
-                    
-
-> *** Use the following information of Fahd company to answer the next 4 questions:**
-> 
-> |  |  |  |
-> | --- | --- | --- |
-> | **DD&A expense (SE)** 40,000 | **Exploratory dry** 130,000 | **Development costs** 500,000 |
-> | **DD&A expense (FC)** 90,000 | **G&G costs** $30,000 | **Production costs** 25,000 |
-> | **Exploratory successful** 400,000 | **Acquisition costs** 50,000 | **Sales revenue:** 150,000 |
-> 
-> 
-
-                    
-                    Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:",
-                "options": [
-                    {
-                        "id": "a",
-                        "text": "a. $85,000"
-                    },
-                    {
-                        "id": "b",
-                        "text": "b. $35,000"
-                    },
-                    {
-                        "id": "c",
-                        "text": "c. $55,000"
-                    },
-                    {
-                        "id": "d",
-                        "text": "d. ($5,000)"
-                    },
-                    {
-                        "id": "e",
-                        "text": "e. $60,000"
-                    }
-                ],
-                "correct": "b",
-                "basmaga": "حسبة دخل شركة فهد بطريقة FC: مبيعات 150 ألف واطرح مصاريف قائمة الدخل المعتمدة (الإنتاج 25 ألف + إهلاك FC الـ 90 ألف) تطلع 35,000 ربح.",
-                "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) $35,000</strong><br><br>في طريقة الـ Full Costing، بنطرح من الإيراد مصاريف الإنتاج (25,000) زائد إهلاك الطريقة الكلية DD&A FC فقط (90,000) لأن الآبار الجافة بتترسمل كأصل ومبتروحش قائمة الدخل: 150,000 - 115,000 = 35,000 دولار.",
-                "reference": "l2-acc5",
-                "reference_title": "المحاضرة الثانية — مدرسة المجهودات الناجحة ضد التكلفة الكلية"
-            },
+           {
+    "id": 14,
+    "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&A expense (FC)</strong></td><td>90,000</td><td><strong>G&G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:</p>",
+    "options": [
+        {
+            "id": "a",
+            "text": "a. $85,000"
+        },
+        {
+            "id": "b",
+            "text": "b. $35,000"
+        },
+        {
+            "id": "c",
+            "text": "c. $55,000"
+        },
+        {
+            "id": "d",
+            "text": "d. ($5,000)"
+        },
+        {
+            "id": "e",
+            "text": "e. $60,000"
+        }
+    ],
+    "correct": "b",
+    "basmaga": "حسبة دخل شركة فهد بطريقة FC: مبيعات 150 ألف واطرح مصاريف قائمة الدخل المعتمدة (الإنتاج 25 ألف + إهلاك FC الـ 90 ألف) تطلع 35,000 ربح[cite: 1, 4].",
+    "explanation": "<strong class=\"text-emerald-700\">الإجابة الصحيحة: (b) $35,000</strong><br><br>في طريقة الـ Full Costing، بنطرح من الإيراد مصاريف الإنتاج ($25,000$) زائد إهلاك الطريقة الكلية $DD\&A \text{ } FC$ فقط ($90,000$) لأن الآبار الجافة بتترسمل كأصل ومبتروحش قائمة الدخل[cite: 1, 4]:<br><br>$$\\text{Net Income (FC)} = \\$150,000 - (\\$25,000 + \\$90,000) = \\$35,000$$",
+    "reference": "l2-acc5",
+    "reference_title": "المحاضرة الثانية — مدرسة المجهودات الناجحة ضد التكلفة الكلية"
+},
             {
                 "id": 15,
                 "text": "Based on Fahd Company data, if the company uses the full costing (FC) method, the net asset value equals:",
