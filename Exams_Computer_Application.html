@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> الاختبارات التفاعلية | المحاسبة في المؤسسات المتخصصة</title>
+    <title> الاختبارات التفاعلية | تطبيقات الحاسب الآلي</title>
     <meta name="description"
-        content="منصة تفاعلية لمراجعة وحل امتحانات المحاسبة في المؤسسات المتخصصة (قطاع البترول) مع شرح تفصيلي لكل سؤال">
+        content="منصة تفاعلية لمراجعة وحل امتحانات تطبيقات الحاسب الآلي مع شرح تفصيلي لكل سؤال">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,13 +21,12 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
-            --primary: #0369a1;
-            --primary-dark: #075985;
-            --primary-light: #e0f2fe;
-            --secondary: #7c3aed;
-            --secondary-light: #ede9fe;
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --primary-light: #e0e7ff;
+            --secondary: #0891b2;
+            --secondary-light: #cffafe;
             --danger: #ef4444;
             --danger-light: #fee2e2;
             --warning: #f59e0b;
@@ -130,7 +129,7 @@
 
         /* ===== HEADER ===== */
         header {
-            background: linear-gradient(135deg, #0c4a6e, #0369a1);
+            background: linear-gradient(135deg, #312e81, #4f46e5);
             color: white;
             position: fixed;
             top: 0;
@@ -151,7 +150,7 @@
         }
 
         .quote-bar {
-            background: rgba(8, 47, 73, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             border-top: 1px dashed rgba(255, 255, 255, 0.15);
             padding: 0.45rem 1.5rem;
             text-align: center;
@@ -1447,7 +1446,7 @@
         }
 
         .result-hero {
-            background: linear-gradient(135deg, #0369a1, #0891b2);
+            background: linear-gradient(135deg, #4f46e5, #0891b2);
             color: white;
             border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
             padding: 2.5rem;
@@ -2120,7 +2119,7 @@
             align-items: center;
             gap: 0.75rem;
             padding: 1rem 1.25rem;
-            background: linear-gradient(135deg, #0e7490, #0369a1);
+            background: linear-gradient(135deg, #0891b2, #4f46e5);
             color: white;
             flex-shrink: 0;
             position: relative;
@@ -2219,7 +2218,7 @@
             width: 2.5rem;
             height: 2.5rem;
             border: 3px solid var(--slate-200);
-            border-top-color: #0369a1;
+            border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
@@ -2487,14 +2486,14 @@
             color: #0f172a;
             margin-bottom: 0.75rem;
             padding-bottom: 0.6rem;
-            border-bottom: 2px solid #e0f2fe;
+            border-bottom: 2px solid #e0e7ff;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .lec-ref-acc-title i {
-            color: #0369a1;
+            color: var(--primary);
         }
 
         .lec-ref-open-btn {
@@ -2503,7 +2502,7 @@
             gap: 0.5rem;
             padding: 0.6rem 1.2rem;
             border-radius: 0.6rem;
-            background: linear-gradient(135deg, #0369a1, #0891b2);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             font-weight: 700;
             font-size: 0.82rem;
@@ -2527,6 +2526,67 @@
             .lec-ref-modal-body {
                 padding: 1rem;
             }
+        }
+
+        /* Style tables inside question blocks and explanations */
+        .q-text .table-responsive,
+        .q-text table,
+        .wrong-q-text .table-responsive,
+        .wrong-q-text table,
+        .inline-expl-body .table-responsive,
+        .inline-expl-body table,
+        .wrong-explanation .table-responsive,
+        .wrong-explanation table {
+            width: 100% !important;
+            margin: 12px 0 !important;
+            border-collapse: collapse;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1.5px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .q-text table th,
+        .q-text table td,
+        .wrong-q-text table th,
+        .wrong-q-text table td,
+        .inline-expl-body table th,
+        .inline-expl-body table td,
+        .wrong-explanation table th,
+        .wrong-explanation table td {
+            color: #0f172a !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            padding: 8px 10px !important;
+            border-bottom: 1px solid #e2e8f0;
+            border-left: 1px solid #e2e8f0;
+        }
+
+        .q-text table th:last-child,
+        .q-text table td:last-child,
+        .wrong-q-text table th:last-child,
+        .wrong-q-text table td:last-child,
+        .inline-expl-body table th:last-child,
+        .inline-expl-body table td:last-child,
+        .wrong-explanation table th:last-child,
+        .wrong-explanation table td:last-child {
+            border-left: none;
+        }
+
+        .q-text table th,
+        .wrong-q-text table th,
+        .inline-expl-body table th,
+        .wrong-explanation table th {
+            background-color: #f1f5f9 !important;
+            font-weight: 800 !important;
+            color: #1e293b !important;
+        }
+
+        /* Hide redundant shared tables in group view (only show the first one) */
+        #questions-container .question-block ~ .question-block .fahd-shared-table {
+            display: none !important;
         }
     </style>
 </head>
@@ -2565,8 +2625,8 @@
         <div id="intro-screen" class="screen active fade-in-up">
             <div class="dashboard-header">
                 <div class="subject-badge">
-                    <i class="fa-solid fa-oil-well"></i>
-                    المحاسبة في المؤسسات المتخصصة — قطاع البترول
+                    <i class="fa-solid fa-laptop-code"></i>
+                    تطبيقات الحاسب الآلي في المحاسبة والإدارة
                 </div>
                 <h1> الاختبارات التفاعلية</h1>
                 <p class="text-sm sm:text-base md:text-lg text-slate-500 mb-6 sm:mb-8 max-w-2xl z-10">- أول ما يحاسب به
@@ -2605,33 +2665,33 @@
             </div>
 
             <div class="exams-grid">
-                <!-- Card 1 — امتحان المؤسسات المتخصصة (مدمج بزتونة البصمجة) -->
-                <div class="exam-card" style="border-color: #d97706; border-width: 2px;">
-                    <div class="exam-card-header" style="background: linear-gradient(135deg, #92400e, #d97706);">
-                        <div class="bg-icon"><i class="fa-solid fa-brain"></i></div>
+                <!-- Card 1 — امتحان تطبيقات الحاسب الآلي (مدمج بزتونة البصمجة) -->
+                <div class="exam-card" style="border-color: #4f46e5; border-width: 2px;">
+                    <div class="exam-card-header" style="background: linear-gradient(135deg, #312e81, #4f46e5);">
+                        <div class="bg-icon"><i class="fa-solid fa-laptop-code"></i></div>
                         <div class="exam-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-                        <div class="exam-card-title">امتحان المؤسسات المتخصصة ⚡</div>
-                        <div class="exam-card-sub">الاختبار الشامل المطور بناءً على أسئلة امتحانات الدكتور محمد أنور فهد لقطاع البترول</div>
+                        <div class="exam-card-title">امتحان تطبيقات الحاسب الآلي ⚡</div>
+                        <div class="exam-card-sub">الاختبار الشامل المطور لأسئلة وتدريبات مقرر تطبيقات الحاسب الآلي</div>
                     </div>
                     <div class="exam-card-body">
-                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1.5px solid #f59e0b; border-radius: 0.75rem; padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; font-weight: 700; color: #78350f; display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fa-solid fa-lightbulb" style="color: #d97706;"></i>
+                        <div style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe); border: 1.5px solid #818cf8; border-radius: 0.75rem; padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; font-weight: 700; color: #3730a3; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-lightbulb" style="color: #4f46e5;"></i>
                             كل سؤال جنبه زتونة بصمجة للحفظ السريع
                         </div>
                         <div class="exam-stats">
                             <div class="exam-stat">
-                                <i class="fa-solid fa-list-ol" style="color:#d97706"></i>
+                                <i class="fa-solid fa-list-ol" style="color:#4f46e5"></i>
                                 <div class="label">الأسئلة</div>
                                 <div class="value" id="q-count-1">-- سؤال</div>
                             </div>
                             <div class="exam-stat">
-                                <i class="fa-solid fa-brain" style="color:#92400e"></i>
+                                <i class="fa-solid fa-brain" style="color:#0891b2"></i>
                                 <div class="label">النوع</div>
                                 <div class="value">بنك موحد</div>
                             </div>
                         </div>
                         <div class="exam-btns">
-                            <button class="btn btn-primary" onclick="startExam('specialized_institutions_exam', false)" style="background: linear-gradient(135deg, #d97706, #92400e); box-shadow: 0 2px 8px rgba(217,119,6,0.4);">
+                            <button class="btn btn-primary" onclick="startExam('specialized_institutions_exam', false)" style="background: linear-gradient(135deg, #4f46e5, #3730a3); box-shadow: 0 2px 8px rgba(79,70,229,0.4);">
                                 <i class="fa-solid fa-rocket"></i> اختبر نفسك
                             </button>
                             <button class="btn btn-dark" onclick="startExam('specialized_institutions_exam', true)">
@@ -2899,7 +2959,7 @@
     </main>
 
     <!-- Include Specialized Exams Data -->
-    <script src="exams_data Specilazation.js?v=1"></script>
+    <script src="exams_data_Computer_Application.js?v=1"></script>
 
     <script>
         // ================================================================
@@ -3024,7 +3084,7 @@
         // ================================================================
         function startExam(examId, isStudyMode = false) {
             if (typeof examsData === 'undefined' || !examsData[examId]) {
-                alert("تعذر تحميل بيانات الامتحان المختار. تأكد من تحميل ملف exams_data Specilazation.js");
+                alert("تعذر تحميل بيانات الامتحان المختار. تأكد من تحميل ملف exams_data_Computer_Application.js");
                 return;
             }
             selectedExamId = examId;
@@ -4319,15 +4379,14 @@
 
     <!-- Footer -->
     <footer
-        style="background: #0f172a; color: #94a3b8; padding: 2.5rem 1.5rem; text-align: center; font-family: 'Cairo', sans-serif; margin-top: 5rem; border-top: 4px solid #0369a1; z-index: 10; position: relative;">
+        style="background: #0f172a; color: #94a3b8; padding: 2.5rem 1.5rem; text-align: center; font-family: 'Cairo', sans-serif; margin-top: 5rem; border-top: 4px solid #4f46e5; z-index: 10; position: relative;">
         <div>
             <p
                 style="font-size: 1.25rem; font-weight: 800; color: #38bdf8; margin: 0; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
                 <i class="fa-solid fa-heart" style="color:#ef4444"></i> صلّ على الحبيب قلبك يطيب <i
                     class="fa-solid fa-heart" style="color:#ef4444"></i>
             </p>
-            <!-- <p style="font-size: 0.85rem; margin: 0.5rem 0 0; color: #64748b; font-weight: 600;">منصة المحاسبة في
-                المؤسسات المتخصصة التفاعلية &copy; 2026</p> -->
+            <!-- <p style="font-size: 0.85rem; margin: 0.5rem 0 0; color: #64748b; font-weight: 600;">منصة تطبيقات الحاسب الآلي التفاعلية &copy; 2026</p> -->
         </div>
     </footer>
 

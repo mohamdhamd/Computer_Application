@@ -1,6 +1,6 @@
 const examsData = {
     "specialized_institutions_exam": {
-        "title": "امتحان المحاسبة في المؤسسات المتخصصة سابق",
+        "title": "امتحان تطبيقات الحاسب الآلي سابق",
         "description": "جميع أسئلة البوكلت والسكاشن والامتحانات السابقة مدمجة مع زتونة البصمجة السريعة والتفكيك التفصيلي المطور للمادة",
         "questions": [
             {
@@ -408,7 +408,7 @@ const examsData = {
             },
            {
     "id": 14,
-    "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&A expense (FC)</strong></td><td>90,000</td><td><strong>G&G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:</p>",
+    "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3 fahd-shared-table\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&amp;A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&amp;A expense (FC)</strong></td><td>90,000</td><td><strong>G&amp;G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the full costing (FC) method, the net income or loss equals:</p>",
     "options": [
         {
             "id": "a",
@@ -439,7 +439,7 @@ const examsData = {
 },
             {
                 "id": 15,
-                "text": "Based on Fahd Company data, if the company uses the full costing (FC) method, the net asset value equals:",
+                "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3 fahd-shared-table\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&amp;A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&amp;A expense (FC)</strong></td><td>90,000</td><td><strong>G&amp;G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the full costing (FC) method, the net asset value equals:</p>",
                 "options": [
                     {
                         "id": "a",
@@ -470,7 +470,7 @@ const examsData = {
             },
             {
                 "id": 16,
-                "text": "Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net income or loss equals:",
+                "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3 fahd-shared-table\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&amp;A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&amp;A expense (FC)</strong></td><td>90,000</td><td><strong>G&amp;G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net income or loss equals:</p>",
                 "options": [
                     {
                         "id": "a",
@@ -501,7 +501,7 @@ const examsData = {
             },
             {
                 "id": 17,
-                "text": "Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net asset value equals:",
+                "text": "<div class=\"p-2 bg-slate-50 border border-slate-200 rounded-xl mb-3 fahd-shared-table\">\n<p class=\"font-bold text-xs mb-2 text-slate-700\"><i class=\"fa-solid fa-database ml-1\"></i> Use the following information of Fahd company to answer the next 4 questions:</p>\n<div class=\"table-responsive\">\n<table class=\"min-w-full text-center\">\n<thead>\n<tr class=\"bg-slate-100\"><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th><th class=\"border-b\">Metric</th><th class=\"border-b\">Value ($)</th></tr>\n</thead>\n<tbody>\n<tr><td><strong>DD&amp;A expense (SE)</strong></td><td>40,000</td><td><strong>Exploratory dry</strong></td><td>130,000</td><td><strong>Development costs</strong></td><td>500,000</td></tr>\n<tr class=\"bg-slate-50/50\"><td><strong>DD&amp;A expense (FC)</strong></td><td>90,000</td><td><strong>G&amp;G costs</strong></td><td>30,000</td><td><strong>Production costs</strong></td><td>25,000</td></tr>\n<tr><td><strong>Exploratory successful</strong></td><td>400,000</td><td><strong>Acquisition costs</strong></td><td>50,000</td><td><strong>Sales revenue</strong></td><td>150,000</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<p class=\"mt-2\">Based on Fahd Company data, if the company uses the successful efforts (SE) method, the net asset value equals:</p>",
                 "options": [
                     {
                         "id": "a",
@@ -1556,8 +1556,8 @@ const examsData = {
         ]
     },
     "booklet_exam": {
-        "title": "أسئلة بوكلت مادة المحاسبة في المؤسسات المتخصصة",
-        "description": "حل وتفكيك أسئلة الامتحانات السابقة لقطاع البترول - الفرقة الرابعة كلية التجارة جامعة الزقازيق",
+        "title": "أسئلة بوكلت مادة تطبيقات الحاسب الآلي",
+        "description": "حل وتفكيك أسئلة الامتحانات السابقة لتطبيقات الحاسب الآلي مع الشرح التفصيلي",
         "questions": [
             {
                 "id": 1,
@@ -2182,8 +2182,8 @@ const examsData = {
         ]
     },
     "specialized_institutions_final_exam": {
-        "title": "أسئلة السكاشن — قطاع البترول",
-        "description": "حل وتفكيك أسئلة الامتحان السابق لقطاع البترول - د. محمد أنور فهد",
+        "title": "أسئلة السكاشن والتمارين العملية",
+        "description": "حل وتفكيك أسئلة السكاشن والتمارين العملية لمقرر تطبيقات الحاسب الآلي",
         "questions": [
             {
                 "id": 1,

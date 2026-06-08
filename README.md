@@ -1,3 +1,3 @@
-# Specialized-Accounting
+# Computer-Application
 
-# test-server-speclized
+Interactive web app and exam system for the Computer Application in Accounting course.

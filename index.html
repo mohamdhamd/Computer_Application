@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المحاسبة المتخصصة | المحاضرات</title>
+    <title>البرامج التطبيقية  | المحاضرات</title>
 
     <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +27,8 @@
                         sans: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#7c3aed', // violet-600
-                        secondary: '#db2777', // pink-600
+                        primary: '#4f46e5', // indigo-600
+                        secondary: '#0891b2', // cyan-600
                     }
                 }
             }
@@ -195,9 +195,9 @@
         }
 
         .sidebar-item.active-nav {
-            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
             color: #fff;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
         }
 
         .sidebar-item.active-nav .nav-num {
@@ -235,7 +235,7 @@
 
         .progress-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+            background: linear-gradient(90deg, #4f46e5, #818cf8);
             border-radius: 99px;
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -254,8 +254,8 @@
         }
 
         .acc-card.acc-open {
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
-            border-color: #ddd6fe;
+            box-shadow: 0 8px 32px rgba(79, 70, 229, 0.12);
+            border-color: #c7d2fe;
         }
 
         .acc-header {
@@ -590,7 +590,7 @@
 
         .ar-label {
             background: #fff;
-            color: #7c3aed;
+            color: #4f46e5;
             font-weight: 800;
             font-size: 12px;
             padding: 2px 8px;
@@ -600,8 +600,8 @@
         }
 
         .ar-tip {
-            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-            border: 1.5px solid #c084fc;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border: 1.5px solid #818cf8;
             border-radius: 14px;
             padding: 14px 18px;
             margin-top: 10px;
@@ -610,12 +610,12 @@
             gap: 10px;
             font-size: 14px;
             font-weight: 700;
-            color: #5b21b6;
+            color: #3730a3;
             line-height: 1.7;
         }
 
         .ar-tip i {
-            color: #7c3aed;
+            color: #4f46e5;
             margin-top: 2px;
             flex-shrink: 0;
         }
@@ -643,14 +643,14 @@
 
         .ar-equation {
             background: #fff;
-            border: 2px dashed #7c3aed;
+            border: 2px dashed #4f46e5;
             padding: 16px;
             border-radius: 12px;
             font-family: 'Segoe UI', sans-serif;
             font-weight: bold;
             direction: ltr;
             text-align: center;
-            color: #4c1d95;
+            color: #312e81;
             margin: 14px 0;
             font-size: 16px;
             word-break: break-word;
@@ -837,10 +837,10 @@
         }
 
         .mobile-nav-item.active-nav {
-            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
             color: #fff;
             border-color: transparent;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
         }
 
         .mobile-nav-item.active-nav .m-num {
@@ -874,7 +874,7 @@
         }
 
         .mobile-nav-item.active-nav.nav-done {
-            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
             color: #fff;
             border-color: transparent;
         }
@@ -1088,14 +1088,14 @@
             transition: opacity 0.22s ease, transform 0.22s ease;
             pointer-events: none;
             white-space: nowrap;
-            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
             color: #fff;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
         }
 
         .ai-ask-btn:hover {
             transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
         }
 
         .acc-card:hover .ai-ask-btn {
@@ -1129,9 +1129,9 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            border: 1px solid #ddd6fe;
+            border: 1px solid #c7d2fe;
             background: #fff;
-            color: #7c3aed;
+            color: #4f46e5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1144,13 +1144,13 @@
 
         .lec-bookmark-btn:hover {
             transform: scale(1.08);
-            border-color: #c084fc;
+            border-color: #818cf8;
         }
 
         .lec-bookmark-btn.saved {
-            background: #f5f3ff;
-            color: #7c3aed;
-            border-color: #c084fc;
+            background: #e0e7ff;
+            color: #4f46e5;
+            border-color: #818cf8;
             opacity: 1 !important;
             transform: none !important;
         }
@@ -1190,7 +1190,7 @@
             font-size: 13.5px;
             font-weight: 700;
             pointer-events: none;
-            border-right: 4px solid #7c3aed;
+            border-right: 4px solid #4f46e5;
         }
 
         #ai-toast.show {
@@ -1429,17 +1429,17 @@
             <!-- Hero Section -->
             <section
                 class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-6 sm:mb-10 text-center relative overflow-hidden flex flex-col items-center">
-                <div class="absolute -top-10 -right-10 text-purple-100 opacity-50 text-9xl z-0 pointer-events-none">
+                <div class="absolute -top-10 -right-10 text-indigo-100 opacity-50 text-9xl z-0 pointer-events-none">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 mb-3 sm:mb-4 z-10">المحاسبة المتخصصة</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 mb-3 sm:mb-4 z-10">تطبيقات الحاسب الآلي</h2>
                 <p class="text-sm sm:text-base md:text-lg text-slate-500 mb-6 sm:mb-8 max-w-2xl z-10">- أول ما يحاسب به
                     العبد يوم القيامة الصلاة ، فإن صلحت ، صلح سائر عمله ، و إن فسدت فسد سائر عمله
                 </p>
                 
                 <!-- Dynamic Button (auto-targets the first available active lecture) -->
                 <button id="resume-btn" onclick="navigateToFirstLecture()"
-                    class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2.5 px-6 sm:py-3 sm:px-8 text-sm sm:text-base rounded-xl shadow-lg transform hover:-translate-y-1 transition-all duration-200 z-10">
+                    class="bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white font-bold py-2.5 px-6 sm:py-3 sm:px-8 text-sm sm:text-base rounded-xl shadow-lg transform hover:-translate-y-1 transition-all duration-200 z-10">
                     <i class="fa-solid fa-rocket ml-2"></i> ابدأ المذاكرة
                 </button>
 
@@ -1464,7 +1464,7 @@
             <!-- Bookmarks / Reviews Widget -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 <!-- Exams Card -->
-                <a href="Exams_Specialized.html" style="text-decoration: none;" class="group bg-gradient-to-br from-violet-500 to-indigo-600 rounded-2xl shadow-md p-6 flex flex-col justify-between text-white transform hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
+                <a href="Exams_Computer_Application.html" style="text-decoration: none;" class="group bg-gradient-to-br from-indigo-500 to-cyan-600 rounded-2xl shadow-md p-6 flex flex-col justify-between text-white transform hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
                     <div class="absolute -bottom-6 -right-6 text-white opacity-10 text-9xl z-0 pointer-events-none transform group-hover:scale-110 transition-transform duration-300">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
@@ -1474,7 +1474,7 @@
                         </div>
                         <h4 class="text-xl sm:text-2xl font-extrabold mb-2">بنك الامتحانات والتدريبات</h4>
                         <p class="text-white/90 text-xs sm:text-sm leading-relaxed">
-                            اختبر نفسك وحل أسئلة الامتحانات التفاعلية للمحاسبة المتخصصة مع التصحيح التلقائي والمراجعة.
+                            اختبر نفسك وحل أسئلة الامتحانات التفاعلية لتطبيقات الحاسب الآلي مع التصحيح التلقائي والمراجعة.
                         </p>
                     </div>
                     <div class="mt-6 flex items-center gap-2 text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 py-2.5 px-4 rounded-xl self-start z-10 transition-colors">
@@ -1483,14 +1483,14 @@
                 </a>
 
                 <!-- Bookmarks Card -->
-                <div onclick="openBookmarksModal()" class="group bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl shadow-md p-6 flex flex-col justify-between text-white transform hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
+                <div onclick="openBookmarksModal()" class="group bg-gradient-to-br from-indigo-500 to-cyan-600 rounded-2xl shadow-md p-6 flex flex-col justify-between text-white transform hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
                     <div class="absolute -bottom-6 -right-6 text-white opacity-10 text-9xl z-0 pointer-events-none transform group-hover:scale-110 transition-transform duration-300">
                         <i class="fa-solid fa-bookmark"></i>
                     </div>
                     <div class="z-10 bg-transparent">
                         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl mb-4 relative">
                             <i class="fa-solid fa-bookmark text-amber-300"></i>
-                            <span id="bm-badge-count" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-slate-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-purple-500 hidden">0</span>
+                            <span id="bm-badge-count" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-slate-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-indigo-500 hidden">0</span>
                         </div>
                         <h4 class="text-xl sm:text-2xl font-extrabold mb-2">محفوظاتي للمراجعة</h4>
                         <p class="text-white/90 text-xs sm:text-sm leading-relaxed">الأجزاء والتعريفات التي قمت بحفظها أثناء الشرح لمراجعتها والتفاعل معها لاحقاً.</p>
@@ -1505,14 +1505,14 @@
             <div id="bookmarks-modal-overlay">
                 <div id="bookmarks-modal-content">
                     <!-- Modal Header -->
-                    <div class="bm-modal-header bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md z-10" style="padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; direction:rtl; flex-shrink:0;">
+                    <div class="bm-modal-header bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md z-10" style="padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; direction:rtl; flex-shrink:0;">
                         <div style="display:flex; align-items:center; gap:0.65rem; min-width:0;">
                             <span style="width:2.4rem; height:2.4rem; min-width:2.4rem; background:rgba(255,255,255,0.2); border-radius:0.75rem; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
                                 <i class="fa-solid fa-bookmark text-amber-300"></i>
                             </span>
                             <div style="min-width:0;">
                                 <h3 class="font-bold" style="margin:0; font-size:clamp(0.85rem,3.5vw,1.1rem); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">محفوظاتي للمراجعة</h3>
-                                <p class="text-purple-200 font-medium" id="bm-modal-subtitle" style="margin:0; font-size:0.7rem;">0 عناصر محفوظة</p>
+                                <p class="text-indigo-200 font-medium" id="bm-modal-subtitle" style="margin:0; font-size:0.7rem;">0 عناصر محفوظة</p>
                             </div>
                         </div>
                         <div class="bm-header-actions" style="display:flex; align-items:center; gap:0.5rem; flex-shrink:0;">
@@ -1529,7 +1529,7 @@
                         <div id="bookmarks-modal-list" class="flex flex-col gap-4"></div>
                         <!-- Empty State -->
                         <div id="bookmarks-modal-empty" class="hidden flex-col items-center justify-center py-16 text-center">
-                            <div class="w-20 h-20 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-3xl mb-4 animate-bounce">
+                            <div class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-3xl mb-4 animate-bounce">
                                 <i class="fa-solid fa-folder-open"></i>
                             </div>
                             <h4 class="text-lg font-bold text-slate-800 mb-1">لا توجد محفوظة بعد</h4>
@@ -1543,7 +1543,7 @@
                  LECTURES GRID (فهرس المحاضرات)
                  ========================================== -->
             <h3 id="lectures"
-                class="text-2xl sm:text-3xl font-bold text-slate-800 mb-5 sm:mb-6 border-r-4 border-violet-600 pr-3 sm:pr-4">
+                class="text-2xl sm:text-3xl font-bold text-slate-800 mb-5 sm:mb-6 border-r-4 border-indigo-600 pr-3 sm:pr-4">
                 فهرس المحاضرات</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
@@ -1778,7 +1778,7 @@
                         <!-- ======= ACCORDION 1 ======= -->
                         <div class="acc-card" id="l1-acc1">
                             <button class="acc-header l1-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-droplet"></i>
                                 </div>
                                 <span class="acc-title">نشأة وتكوين البترول <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Origin & Formation of Petroleum</small></span>
@@ -2147,7 +2147,7 @@
                         <!-- ======= ACCORDION 1 ======= -->
                         <div class="acc-card" id="l2-acc1">
                             <button class="acc-header l2-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-file-contract"></i>
                                 </div>
                                 <span class="acc-title">الاستحواذ وأطراف عقد الإيجار <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Acquisition of Petroleum Properties &amp; Lease Parties</small></span>
@@ -2578,7 +2578,7 @@
                         <!-- ======= ACCORDION 1 ======= -->
                         <div class="acc-card" id="l2-p-acc1">
                             <button class="acc-header l2-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-compass"></i>
                                 </div>
                                 <span class="acc-title">الحالة الكبرى: المسح الجيولوجي والاستحواذ <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Case Study: G&amp;G Activities &amp; Lease Acquisition</small></span>
@@ -3077,7 +3077,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
                         <div class="acc-card" id="l3-acc1">
                             <button class="acc-header l3-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-gavel"></i>
                                 </div>
                                 <span class="acc-title">طبيعة تكاليف الاستحواذ في قطاع المنبع <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Nature of Acquisition Costs in Upstream Sector</small></span>
@@ -3222,8 +3222,8 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                                     <div class="acc-body-content">
                                         <div class="content-en">
                                             <div class="compare-grid">
-                                                <div class="compare-card" style="border-color:#7c3aed">
-                                                    <h6 style="color:#7c3aed">1. Theoretical Approach (Economic Substance)</h6>
+                                                <div class="compare-card" style="border-color:#4f46e5">
+                                                    <h6 style="color:#4f46e5">1. Theoretical Approach (Economic Substance)</h6>
                                                     <p>The joint payment must be strictly apportioned between the option value and shooting rights based on relative fair market value. The option portion is capitalized as an asset, while the shooting rights portion is immediately written off as a current G&G expense.</p>
                                                 </div>
                                                 <div class="compare-card" style="border-color:#10b981">
@@ -3426,7 +3426,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
                         <div class="acc-card" id="l3-p2-acc1">
                             <button class="acc-header l3-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-chart-area"></i>
                                 </div>
                                 <span class="acc-title">منطقة ألفا: حقوق تصوير فقط بالصحراء الغربية <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Area Alpha: Standalone Shooting Rights</small></span>
@@ -3932,7 +3932,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
                         <div class="acc-card" id="l3-p3-acc1">
                             <button class="acc-header l3-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-triangle-exclamation"></i>
                                 </div>
                                 <span class="acc-title">مؤشرات هبوط قيمة الأصول غير المؤكدة الأربعة <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">The Four Strategic Indicators of Property Impairment</small></span>
@@ -4430,7 +4430,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
                         <div class="acc-card" id="l4-acc1">
                             <button class="acc-header l4-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-building-columns"></i>
                                 </div>
                                 <span class="acc-title">فلسفة المجهودات الناجحة والمطابقة الاقتصادية <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Successful Efforts Philosophy &amp; Conceptual Foundation</small></span>
@@ -4939,7 +4939,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
                     <div class="lecture-content-col">
 <div class="acc-card" id="l4-c-acc1">
                             <button class="acc-header l4-toggle" data-index="0">
-                                <div class="acc-icon" style="background:#ede9fe;color:#7c3aed">
+                                <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
                                     <i class="fa-solid fa-skull-crossbones"></i>
                                 </div>
                                 <span class="acc-title">حالة بتروبل: المعالجة الكاملة للبئر الاستكشافية الجافة والتنازل <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Case Study 2: Petrobel Western Desert Exploratory Dry Hole</small></span>
@@ -5310,7 +5310,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
     </div>
 
     <!-- Footer -->
-    <footer style="background: #0f172a; color: #94a3b8; padding: 2.5rem 1.5rem; text-align: center; font-family: 'Cairo', sans-serif; margin-top: 5rem; border-top: 4px solid #7c3aed; z-index: 10; position: relative;">
+    <footer style="background: #0f172a; color: #94a3b8; padding: 2.5rem 1.5rem; text-align: center; font-family: 'Cairo', sans-serif; margin-top: 5rem; border-top: 4px solid #4f46e5; z-index: 10; position: relative;">
         <div style="max-w-6xl mx-auto flex flex-col items-center justify-center gap-2">
             <p style="font-size: 1.25rem; font-weight: 800; color: #10b981; margin: 0; display: flex; align-items: center; justify-content: center; gap: 0.6rem; text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
                 <i class="fa-solid fa-heart animate-pulse text-red-500"></i> صلّ على الحبيب قلبك يطيب <i class="fa-solid fa-heart animate-pulse text-red-500"></i>
@@ -5529,9 +5529,9 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
         function getLectureName(card) {
             const section = card.closest('section[id]');
-            if (!section) return 'المحاسبة المتخصصة';
+            if (!section) return 'تطبيقات الحاسب الآلي';
             const heroTitle = section.querySelector('.lecture-hero-title');
-            return heroTitle ? heroTitle.textContent.trim() : 'المحاسبة المتخصصة';
+            return heroTitle ? heroTitle.textContent.trim() : 'تطبيقات الحاسب الآلي';
         }
 
         function extractCardText(card) {
@@ -5554,7 +5554,7 @@ $$\text{Acquisition Cost} = 450 \text{ Sq. Km} \times \$300 = \$135,000$$
 
             let prompt;
             if (isQ) {
-                prompt = `أنا طالب في مقرر المحاسبة المتخصصة.
+                prompt = `أنا طالب في مقرر تطبيقات الحاسب الآلي.
 هذا سؤال أو مسألة من ${lectureName}:
 
 العنوان: ${title}
@@ -5563,7 +5563,7 @@ ${fullContent}
 
 المطلوب: اشرح لي الحل خطوة بخطوة بأسلوب مبسط وواضح، مع توضيح المفاهيم الأساسية المستخدمة في الحل.`;
             } else {
-                prompt = `أنا طالب في مقرر المحاسبة المتخصصة.
+                prompt = `أنا طالب في مقرر تطبيقات الحاسب الآلي.
 هذا جزء من ${lectureName}:
 
 العنوان: ${title}
@@ -5840,13 +5840,13 @@ ${fullContent}
             bookmarks.forEach((bm, idx) => {
                 const card = document.createElement('div');
                 const isLec = (bm.type === 'lecture');
-                const borderHex = '#7c3aed';
-                const hoverShadow = '0 10px 25px rgba(124,58,237,0.12)';
+                const borderHex = '#4f46e5';
+                const hoverShadow = '0 10px 25px rgba(79,70,229,0.12)';
                 const headerBg = '#fbfbfe';
                 const mainIcon = 'fa-solid fa-graduation-cap';
-                const mainIconColor = '#7c3aed';
-                const mainIconBg = '#f5f3ff';
-                const mainIconBorder = '#ddd6fe';
+                const mainIconColor = '#4f46e5';
+                const mainIconBg = '#e0e7ff';
+                const mainIconBorder = '#c7d2fe';
 
                 card.style.cssText = `background:white; border-radius:1rem; border:1px solid #e2e8f0; border-right:4px solid ${borderHex}; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.04); transition:all 0.25s ease-in-out; margin-bottom: 0.75rem;`;
                 card.onmouseover = () => {
@@ -5979,13 +5979,13 @@ ${fullContent}
         }
 
         function buildPromptForBookmark(bm) {
-            const lectureName = bm.lectureTitle || 'محاضرة في المحاسبة المتخصصة';
+            const lectureName = bm.lectureTitle || 'محاضرة في تطبيقات الحاسب الآلي';
             const title = bm.cardTitle || 'جزء من الشرح';
             const cleanEn = (bm.enText || '').replace(/<[^>]+>/g, '').trim();
             const cleanAr = (bm.arText || '').replace(/<[^>]+>/g, '').trim();
             const fullContent = [cleanEn, cleanAr].filter(Boolean).join('\n\n');
             
-            return `أنا طالب في مقرر المحاسبة المتخصصة.
+            return `أنا طالب في مقرر تطبيقات الحاسب الآلي.
 هذا جزء من ${lectureName}:
 
 العنوان: ${title}
