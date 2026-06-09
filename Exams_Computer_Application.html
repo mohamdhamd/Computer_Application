@@ -3931,16 +3931,29 @@
 
             if (q.reference) {
                 let section = 'lecture-1-content';
+                let translatedAccId = q.reference;
                 if (q.reference.startsWith('l1')) section = 'lecture-1-content';
                 else if (q.reference.startsWith('l2-p')) section = 'lecture-2-p-content';
                 else if (q.reference.startsWith('l2')) section = 'lecture-2-content';
-                else if (q.reference.startsWith('l3-p2')) section = 'lecture-3-p2-content';
-                else if (q.reference.startsWith('l3-p3')) section = 'lecture-3-p3-content';
+                else if (q.reference.startsWith('l3-p2')) {
+                    section = 'lecture-5-content';
+                    translatedAccId = q.reference.replace('l3-p2-', 'l5-');
+                }
+                else if (q.reference.startsWith('l3-p3')) {
+                    section = 'lecture-6-content';
+                    translatedAccId = q.reference.replace('l3-p3-', 'l6-');
+                }
                 else if (q.reference.startsWith('l3')) section = 'lecture-3-content';
-                else if (q.reference.startsWith('l4-c')) section = 'lecture-4-c-content';
-                else if (q.reference.startsWith('l4')) section = 'lecture-4-content';
+                else if (q.reference.startsWith('l4-c')) {
+                    section = 'lecture-8-content';
+                    translatedAccId = q.reference.replace('l4-c-', 'l8-');
+                }
+                else if (q.reference.startsWith('l4')) {
+                    section = 'lecture-7-content';
+                    translatedAccId = q.reference.replace('l4-', 'l7-');
+                }
                 
-                return { accId: q.reference, lecSection: section, lecTitle: q.reference_title || 'شرح الجزئية' };
+                return { accId: translatedAccId, lecSection: section, lecTitle: q.reference_title || 'شرح الجزئية' };
             }
 
             // Direct mapping based on examId and question ID
@@ -3967,31 +3980,31 @@
                     return { accId: 'l2-p-acc6', lecSection: 'lecture-2-p-content', lecTitle: 'المحاضرة الثالثة — حالة اتفاقية مساهمات آبار الاختبار للجار' };
                 }
                 if (qId >= 29 && qId <= 30) {
-                    return { accId: 'l4-acc4', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — منشآت الإنتاج وشجرة الكريسماس' };
+                    return { accId: 'l7-acc1', lecSection: 'lecture-7-content', lecTitle: 'المحاضرة السابعة — الربط التحليلي بين الموازنات وأوامر التحليل' };
                 }
                 if (qId >= 31 && qId <= 32) {
-                    return { accId: 'l4-c-acc4', lecSection: 'lecture-4-c-content', lecTitle: 'المحاضرة الثامنة — إهلاك وتشغيل معدات الدعم المشترك' };
+                    return { accId: 'l8-acc9', lecSection: 'lecture-8-content', lecTitle: 'المحاضرة الثامنة — تريكات أسئلة الفاينال لـ المحاضرة 8' };
                 }
                 if (qId === 33 || qId === 34) {
                     return { accId: 'l3-acc6', lecSection: 'lecture-3-content', lecTitle: 'المحاضرة الرابعة — تمرين شراء الأرض بالكامل (Relative vs Residual)' };
                 }
                 if (qId >= 35 && qId <= 36) {
-                    return { accId: 'l3-p2-acc2', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — منطقة بيتا: قيود باقة الخيار المدمج مبدئياً' };
+                    return { accId: 'l5-acc2', lecSection: 'lecture-5-content', lecTitle: 'المحاضرة الخامسة — بنية واجهة برنامج الإكسيل الهندسية' };
                 }
                 if (qId === 37) {
-                    return { accId: 'l3-p2-acc5', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — منطقة جاما: التسجيل في حالة غياب المرجع' };
+                    return { accId: 'l5-acc5', lecSection: 'lecture-5-content', lecTitle: 'المحاضرة الخامسة — مسائل الكشكول العملي وحساب الإزاحات' };
                 }
                 if (qId >= 38 && qId <= 39) {
-                    return { accId: 'l3-p2-acc7', lecSection: 'lecture-3-p2-content', lecTitle: 'المحاضرة الخامسة — التسوية الجردية لمخصص الهبوط الفردي والجماعي' };
+                    return { accId: 'l5-acc6', lecSection: 'lecture-5-content', lecTitle: 'المحاضرة الخامسة — دليل فرملة أسئلة الـ MCQ في الفاينال' };
                 }
                 if (qId >= 40 && qId <= 42) {
-                    return { accId: 'l3-p3-acc6', lecSection: 'lecture-3-p3-content', lecTitle: 'المحاضرة السادسة — تمرين ٣.٤ التنازل الجماعي بالتتابع والتبويب' };
+                    return { accId: 'l6-acc6', lecSection: 'lecture-6-content', lecTitle: 'المحاضرة السادسة — دليل فرملة أسئلة الـ MCQ في امتحان الفاينال' };
                 }
                 if (qId >= 43 && qId <= 48) {
-                    return { accId: 'l4-acc5', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — الـ 6 خطوات للآبار الاستكشافية تحت التنفيذ' };
+                    return { accId: 'l7-acc4', lecSection: 'lecture-7-content', lecTitle: 'المحاضرة السابعة — دالة الرصيد المتناقص المتغير والـ الجوكر VDB' };
                 }
                 if (qId >= 49 && qId <= 50) {
-                    return { accId: 'l4-acc7', lecSection: 'lecture-4-content', lecTitle: 'المحاضرة السابعة — إغلاق البير الاستكشافي الجاف ضد التنموي الجاف' };
+                    return { accId: 'l7-acc6', lecSection: 'lecture-7-content', lecTitle: 'المحاضرة السابعة — دليل فرملة أسئلة الإهلاك في الفاينال' };
                 }
             } else if (examId === 'booklet_exam') {
                 if (qId >= 1 && qId <= 5) {
