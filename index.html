@@ -1686,368 +1686,189 @@
         <section id="lecture-1-content" class="lecture-content-section hidden grid-cols-1 fade-in scroll-mt-20">
             <div class="col-span-1">
 
-                <!-- Lecture Hero -->
                 <div class="lecture-hero">
                     <button onclick="showHomeView()" class="back-btn">
                         <i class="fa-solid fa-arrow-right"></i>
                         قائمة المحاضرات
                     </button>
-                    <h2 class="lecture-hero-title">المحاضرة الأولى: طبيعة صناعة البترول والمصطلحات الأساسية</h2>
-                    <p class="lecture-hero-sub">Introduction to Petroleum Industry Accounting — Ch. 1</p>
+                    <h2 class="lecture-hero-title">المحاضرة الأولى: تصنيف البرامج وتطبيقات الكمبيوتر المحاسبية</h2>
+                    <p class="lecture-hero-sub">Classification of Accounting Programs — Ch. 1</p>
                     <div class="lecture-stats">
-                        <div class="stat-pill"><i class="fa-solid fa-layer-group"></i> 7 أقسام</div>
-                        <div class="stat-pill"><i class="fa-solid fa-clock"></i> ~25 دقيقة</div>
-                        <div class="stat-pill" id="l1-progress-label"><i class="fa-solid fa-chart-simple"></i> 0 / 7 مكتملين</div>
+                        <div class="stat-pill"><i class="fa-solid fa-layer-group"></i> 3 أقسام تفصيلية</div>
+                        <div class="stat-pill"><i class="fa-solid fa-clock"></i> ~20 دقيقة</div>
+                        <div class="stat-pill" id="l1-progress-label"><i class="fa-solid fa-chart-simple"></i> 0 / 3 مكتملين</div>
                     </div>
                     <div class="progress-bar-wrap" style="margin-top:14px;margin-bottom:0">
                         <div class="progress-bar-fill" id="l1-progress-bar" style="width:0%"></div>
                     </div>
                 </div>
 
-                <!-- Mobile Navigation (shown on mobile, hidden on desktop) -->
                 <div class="mobile-topics-nav">
                     <button class="mobile-nav-item active-nav" data-acc="l1-acc1" onclick="scrollToAcc('l1-acc1', this)">
-                        <span class="m-num">1</span>
-                        <span>النشأة</span>
+                        <span class="m-num">A</span>
+                        <span>Spreadsheets</span>
                     </button>
                     <button class="mobile-nav-item" data-acc="l1-acc2" onclick="scrollToAcc('l1-acc2', this)">
-                        <span class="m-num">2</span>
-                        <span>الشركات</span>
+                        <span class="m-num">B</span>
+                        <span>Accounting Pro</span>
                     </button>
                     <button class="mobile-nav-item" data-acc="l1-acc3" onclick="scrollToAcc('l1-acc3', this)">
-                        <span class="m-num">3</span>
-                        <span>الخطوات</span>
-                    </button>
-                    <button class="mobile-nav-item" data-acc="l1-acc4" onclick="scrollToAcc('l1-acc4', this)">
-                        <span class="m-num">4</span>
-                        <span>الخصائص</span>
-                    </button>
-                    <button class="mobile-nav-item" data-acc="l1-acc5" onclick="scrollToAcc('l1-acc5', this)">
-                        <span class="m-num">5</span>
-                        <span>المحاسبة</span>
-                    </button>
-                    <button class="mobile-nav-item" data-acc="l1-acc6" onclick="scrollToAcc('l1-acc6', this)">
-                        <span class="m-num">6</span>
-                        <span>التعريفات</span>
-                    </button>
-                    <button class="mobile-nav-item" data-acc="l1-acc7" onclick="scrollToAcc('l1-acc7', this)">
-                        <span class="m-num">7</span>
-                        <span>الآبار</span>
+                        <span class="m-num">C</span>
+                        <span>ERP Systems</span>
                     </button>
                 </div>
 
-                <!-- Two-column layout: Sidebar + Content -->
                 <div class="lecture-layout">
 
-                    <!-- Sidebar -->
                     <aside class="lecture-sidebar">
                         <h5><i class="fa-solid fa-list-ul ml-1"></i> أقسام المحاضرة</h5>
                         <a class="sidebar-item active-nav" data-acc="l1-acc1" onclick="scrollToAcc('l1-acc1', this)">
-                            <span class="nav-num">1</span>
-                            <span>نشأة وتكوين البترول</span>
+                            <span class="nav-num">A</span>
+                            <span>برامج الجداول الإلكترونية</span>
                         </a>
                         <a class="sidebar-item" data-acc="l1-acc2" onclick="scrollToAcc('l1-acc2', this)">
-                            <span class="nav-num">2</span>
-                            <span>أنواع شركات البترول</span>
+                            <span class="nav-num">B</span>
+                            <span>البرامج المحاسبية الجاهزة</span>
                         </a>
                         <a class="sidebar-item" data-acc="l1-acc3" onclick="scrollToAcc('l1-acc3', this)">
-                            <span class="nav-num">3</span>
-                            <span>خطوات البحث والاستكشاف</span>
-                        </a>
-                        <a class="sidebar-item" data-acc="l1-acc4" onclick="scrollToAcc('l1-acc4', this)">
-                            <span class="nav-num">4</span>
-                            <span>خصائص صناعة البترول</span>
-                        </a>
-                        <a class="sidebar-item" data-acc="l1-acc5" onclick="scrollToAcc('l1-acc5', this)">
-                            <span class="nav-num">5</span>
-                            <span>مبررات القواعد المحاسبية</span>
-                        </a>
-                        <a class="sidebar-item" data-acc="l1-acc6" onclick="scrollToAcc('l1-acc6', this)">
-                            <span class="nav-num">6</span>
-                            <span>المصطلحات والاحتياطيات</span>
-                        </a>
-                        <a class="sidebar-item" data-acc="l1-acc7" onclick="scrollToAcc('l1-acc7', this)">
-                            <span class="nav-num">7</span>
-                            <span>تصنيف الآبار النفطية</span>
+                            <span class="nav-num">C</span>
+                            <span>أنظمة الـ ERP الشاملة</span>
                         </a>
                     </aside>
 
-                    <!-- Main Content Column -->
                     <div class="lecture-content-col">
 
-                        <!-- ======= ACCORDION 1 ======= -->
                         <div class="acc-card" id="l1-acc1">
                             <button class="acc-header l1-toggle" data-index="0">
                                 <div class="acc-icon" style="background:#e0e7ff;color:#4f46e5">
-                                    <i class="fa-solid fa-droplet"></i>
+                                    <i class="fa-solid fa-table"></i>
                                 </div>
-                                <span class="acc-title">نشأة وتكوين البترول <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Origin & Formation of Petroleum</small></span>
+                                <span class="acc-title">برامج الجداول الإلكترونية <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">A. Spreadsheet Programs</small></span>
                                 <i class="fa-solid fa-chevron-down acc-chevron"></i>
                             </button>
                             <div class="acc-body">
                                 <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>Organic Accumulation:</strong> Hydrocarbons are formed from marine plant and animal remains buried millions of years ago under layers of sand and mud.</li>
-                                                <li><strong>Transformation Phase:</strong> Extreme weight, temperature, and subsurface pressure convert organic matter into oil and gas.</li>
-                                                <li><strong>Migration & Trapping:</strong> Hydrocarbons migrate upward through porous rocks until blocked by an impervious rock layer (trap).</li>
-                                                <li><strong>Four Essential Conditions:</strong> Reservoir formation strictly requires a Source rock, Transformation parameters, a Porous migration path, and an Impervious rock trap.</li>
-                                                <li><strong>Porosity & Permeability:</strong> Porosity defines the fluid capacity of the rock, while permeability measures the interconnectedness of pores that allows petroleum to flow.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>بص يا بطل، عشان نفهم محاسبة البترول لازم الأول نعرف البترول ده بييجي منين وبيتشكل إزاي:</p>
-                                            <ul>
-                                                <li><span class="ar-label">البداية (التكوين):</span> من ملايين السنين، كان فيه كائنات بحرية ونباتات صغيرة ماتت واتدفنت في قاع البحر تحت طبقات رمل وطين.</li>
-                                                <li><span class="ar-label">الطبخة (التحول):</span> وزن الطبقات دي والضغط العالي جداً مع الحرارة الشديدة تحت الأرض، حولوا البقايا العضوية لمواد هيدروكربونية (بترول وغاز).</li>
-                                                <li><span class="ar-label">الهروب والمصيدة (الهجرة):</span> البترول خفيف، فبيبدأ يتحرك لفوق من خلال الصخور "المسامية" اللي فيها فتحات، لحد ما يخبط في صخرة ناشفة ومقفولة (Impervious Rock) تمنعه من الحركة، فيتجمع ويعمل الخزان.</li>
-                                                <li><span class="ar-label">الشروط الأربعة:</span> عشان الشركة تحفر وتلاقي بترول لازم يتوفر 4 حاجات: بقايا عضوية (مصدر) + ضغط وحرارة (تحول) + صخور مسامية (طريق هجرة) + صخرة مقفولة (مصيدة حبس).</li>
-                                                <li><span class="ar-label">المسامية vs النفاذية:</span> المسامية (Porosity) هي الفراغات اللي جوة الصخرة اللي بتشيل البترول. أما النفاذية (Permeability) هي إن الفراغات دي تكون "مفتوحة ومترابطة ببعضها" عشان البترول يتدفق ويتحرك من خلالها ونعرف نطلعه.</li>
-                                            </ul>
-                                        </div>
+                                    <div class="content-en">
+                                        <p><strong>Spreadsheet programs</strong> are essential tools for organizing, analyzing, and visualizing data. Some of the most widely used spreadsheet programs include:</p>
+                                        <ul>
+                                            <li><strong>Microsoft Excel:</strong> The industry standard for financial modeling, complex formulas, and offline data analysis.</li>
+                                            <li><strong>Google Sheets:</strong> Cloud-based platform enabling seamless real-time collaboration and remote team access.</li>
+                                            <li><strong>Apple Numbers:</strong> Designed for iOS and macOS users, focusing heavily on rich visual layouts.</li>
+                                            <li><strong>LibreOffice Calc:</strong> Free, open-source desktop spreadsheet software used as a cost-effective alternative.</li>
+                                            <li><strong>Zoho Sheet:</strong> Comprehensive online collaborative spreadsheet solution for modern business workflows.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-ar">
+                                        <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالتفصيل بالعامية المصرية (الزتونة)</div>
+                                        <p>برامج الجداول الإلكترونية دي هي خط الدفاع الأول لأي محاسب، وعبارة عن شبكة مرنة جداً من الصفوف والأعمدة والخلايا. المنهج محدد لها <strong>٣ وظائف أساسية</strong> لازم تفهمهم:</p>
+                                        <ul>
+                                            <li><span class="ar-label">١. التنظيم (Organizing):</span> بتجمع وتدخل عليها داتا المبيعات أو المشتريات الخام وترتبها بفلاتر.</li>
+                                            <li><span class="ar-label">٢. التحليل (Analyzing):</span> القوة الحقيقية! بتكتب معادلات محاسبية من أول SUM البسيطة لحد VLOOKUP والـ Pivot Tables اللي بتلخص آلاف السطور في ثانية.</li>
+                                            <li><span class="ar-label">٣. العرض والتصوير (Visualizing):</span> بتحول الأرقام الصامتة لرسومات بيانية (Charts) تفهمها العين بمجرد النظر.</li>
+                                        </ul>
+                                        <div style="margin-top:12px; font-weight:700; color:#4f46e5;">تفاصيل الأمثلة اللي في المنهج:</div>
+                                        <ul style="margin-top:6px;">
+                                            <li><strong>Microsoft Excel:</strong> ده الملك والأساس في أي شركة لبناء النماذج المالية المعقدة (Financial Modeling).</li>
+                                            <li><strong>Google Sheets:</strong> شغال على النت (Cloud)، وميزته الجبارة إنك تقدر تعدل في الملف أنت وزمايلك في نفس اللحظة (Real-time).</li>
+                                            <li><strong>Apple Numbers:</strong> بتاع أجهزة الماك، شيك جداً في الرسومات والأشكال الجمالية.</li>
+                                            <li><strong>LibreOffice Calc:</strong> برنامج مجاني ومفتوح المصدر، الشركات بتنزله لو مش عايزة تدفع اشتراكات.</li>
+                                            <li><strong>Zoho Sheet:</strong> أداة سحابية ممتازة برضه تابعة لمنظومة زوهو وتدعم الشغل الجماعي.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- ======= ACCORDION 2 ======= -->
                         <div class="acc-card" id="l1-acc2">
                             <button class="acc-header l1-toggle" data-index="1">
                                 <div class="acc-icon" style="background:#dcfce7;color:#16a34a">
-                                    <i class="fa-solid fa-building-shield"></i>
-                                </div>
-                                <span class="acc-title">أنواع شركات البترول <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Types of Oil Companies</small></span>
-                                <i class="fa-solid fa-chevron-down acc-chevron"></i>
-                            </button>
-                            <div class="acc-body">
-                                <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>Integrated Oil Companies:</strong> Companies engaged in upstream activities (E&P) as well as at least one downstream segment like refining, transportation, or marketing.</li>
-                                                <li><strong>Independent Oil Companies:</strong> Companies that focus almost exclusively on the upstream sector (exploration and production) without refining or marketing networks.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>شركات البترول في السوق بتنقسم لنوعين حسب النطاق والقدرة التشغيلية:</p>
-                                            <div class="compare-grid">
-                                                <div class="compare-card" style="border-color:#16a34a">
-                                                    <h6 style="color:#16a34a">🏢 شركات متكاملة (Integrated)</h6>
-                                                    <p>دي "الحيتان الكبيرة" اللي واخدة السلسلة من أولها لآخرها؛ بتدور وتحفر وتستخرج البترول (Upstream)، وكمان بتنظفه وتكرره وتبيعه للمستهلك في محطات البنزين (Downstream).</p>
-                                                </div>
-                                                <div class="compare-card" style="border-color:#dc2626">
-                                                    <h6 style="color:#dc2626">🏭 شركات مستقلة (Independent)</h6>
-                                                    <p>دي شركات "على قدها ومتخصصة"؛ شغلها الشاغل هو قطاع الـ Upstream بس، يعني تنزل تدور وتحفر وتطلع الخام على السطح، وبعدين تبيعه للشركات الكبيرة وتخرج من اللعبة.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ======= ACCORDION 3 ======= -->
-                        <div class="acc-card" id="l1-acc3">
-                            <button class="acc-header l1-toggle" data-index="2">
-                                <div class="acc-icon" style="background:#fee2e2;color:#dc2626">
-                                    <i class="fa-solid fa-arrow-down-short-wide"></i>
-                                </div>
-                                <span class="acc-title">خطوات البحث والاستكشاف <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Steps in Finding Oil & Gas</small></span>
-                                <i class="fa-solid fa-chevron-down acc-chevron"></i>
-                            </button>
-                            <div class="acc-body">
-                                <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>1. Initial Reconnaissance:</strong> Broad structural and G&G surveys, including aerial, magnetic, and initial seismic scans.</li>
-                                                <li><strong>2. Lease Acquisition:</strong> Securing legal rights or government licenses to explore the target area.</li>
-                                                <li><strong>3. Detailed Evaluation & Data Analysis:</strong> Close seismic spacing and test drilling followed by rigorous evaluations.</li>
-                                                <li><strong>4. Drill Site Selection:</strong> Spotting the exact point with maximum commercial success probability.</li>
-                                                <li><strong>5. Drilling & Completion Decision:</strong> Penetrating formations; if quantities are sufficient, the well is completed; if insufficient, it is abandoned.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>عشان نطلع برميل بترول واحد، بنمشي في رحلة طويلة مكونة من خطوات هندسية وقانونية:</p>
-                                            <ul>
-                                                <li><span class="ar-label">١. المسح المبدئي:</span> مسح شامل بالأقمار الصناعية، وتصوير جوي، ومسح زلزالي مبدئي (Seismic) عشان نشوف الهياكل الأرضية.</li>
-                                                <li><span class="ar-label">٢. تأجير الأرض (Lease):</span> لو المؤشرات حلوة، بنجري على الحكومة ناخد رخصة أو عقد إيجار يدينا الحق القانوني للبحث.</li>
-                                                <li><span class="ar-label">٣. التقييم التفصيلي والتحليل:</span> بنعمل دراسات جيولوجية دقيقة وممكن نحفر "بير تجريبي" (Test Well) ونحلل البيانات دي في المعامل.</li>
-                                                <li><span class="ar-label">٤. تحديد موقع البير:</span> بننقي على الخريطة النقطة "الجمهورية" اللي فيها أعلى نسبة نجاح اقتصادي لتواجد البترول.</li>
-                                                <li><span class="ar-label">٥. الحفر وقرار المصير:</span> بننزل بالبريمة ونحفر (Drilling). وإحنا بنحفر بتظهر لنا داتا؛ لو لقينا كمية كبيرة تفتح البيت بنعمل قيد إكمال البير للإنتاج (Complete Well). لو طلع البير "فشوش" وما فيش كمية مجدية بنسده بالإسمنت ونمشي وبنسميه بير جاف (Abandon Well).</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ======= ACCORDION 4 ======= -->
-                        <div class="acc-card" id="l1-acc4">
-                            <button class="acc-header l1-toggle" data-index="3">
-                                <div class="acc-icon" style="background:#e0f2fe;color:#0369a1">
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                </div>
-                                <span class="acc-title">خصائص صناعة البترول <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Characteristics of the Petroleum Industry</small></span>
-                                <i class="fa-solid fa-chevron-down acc-chevron"></i>
-                            </button>
-                            <div class="acc-body">
-                                <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>High Risk & Uncertainty:</strong> Exploration drilling faces a low success ratio (~10%), where massive investments can be completely lost.</li>
-                                                <li><strong>Capital Intensity:</strong> Requires huge upfront financial expenditure for equipment and advanced technology.</li>
-                                                <li><strong>Extended Time Horizon:</strong> It takes several years from initial exploration funding to actual production and revenue generation.</li>
-                                                <li><strong>Operational Complexity:</strong> Involves highly sophisticated engineering under harsh conditions (e.g., deepwater drilling).</li>
-                                                <li><strong>Heavy Government Regulation:</strong> Massive state oversight on operational licenses, environmental compliance, and revenue-sharing.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>الصناعة دي مابيهزرش ولها سمات مرعبة بتخليها مختلفة عن أي بيزنس عادي في الدنيا:</p>
-                                            <ul>
-                                                <li><span class="ar-label">مخاطر عالية جداً (High Risk):</span> نسبة النجاح التجاري لآبار الاستكشاف هي 10% بس! يعني من كل 10 آبار بنحفرهم ونملاهم فلوس، 1 بس بيطلع بترول والـ 9 الباقيين بيترموا في الأرض.</li>
-                                                <li><span class="ar-label">كثافة رأس المال (Capital Intensity):</span> أقل حركة هنا بتتكلف ملايين ومليارات؛ تكنولوجيا، معدات، سفن، وبرامات حفر.</li>
-                                                <li><span class="ar-label">دورة زمنية طويلة (Time Horizon):</span> المشروع محتاج نَفَس طويل؛ بتصرف الفلوس النهاردة وممكن تقعد سنين تبحث وتطور قبل ما تشوف أول برميل بترول وتدخل أول دولار إيراد.</li>
-                                                <li><span class="ar-label">التعقيد الهندسي والرقابة:</span> الشغل ساعات بيكون وسط البحر وفي ظروف صعبة جداً، ده غير إن عيون الحكومة (Government Regulation) بتكون عليك في كل خطوة بخصوص البيئة وتوزيع الحصص.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ======= ACCORDION 5 ======= -->
-                        <div class="acc-card" id="l1-acc5">
-                            <button class="acc-header l1-toggle" data-index="4">
-                                <div class="acc-icon" style="background:#fef9c3;color:#a16207">
                                     <i class="fa-solid fa-calculator"></i>
                                 </div>
-                                <span class="acc-title">مبررات وجود قواعد محاسبية متخصصة <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Specialized Accounting &amp; System Requirements</small></span>
+                                <span class="acc-title">البرامج المحاسبية المتخصصة <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">B. Accounting Programs</small></span>
                                 <i class="fa-solid fa-chevron-down acc-chevron"></i>
                             </button>
                             <div class="acc-body">
                                 <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>Reason 1: Wasting Assets:</strong> Petroleum is a non-replaceable asset that gets permanently depleted through production, requiring unique "depletion" methods instead of standard depreciation.</li>
-                                                <li><strong>Reason 2: Lack of Investment-Reserve Correlation:</strong> Cost incurred does not reflect asset value found. High costs can net zero discovery, while low costs can discover giant fields.</li>
-                                                <li><strong>System Coverage:</strong> A specialized accounting framework must tracking costs in 4 key areas: Acquisition, Exploration, Development, and Production.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>ليه المادة دي اخترعوها وليه البترول له محاسبة لوحده؟ لسببين غريبين مش موجودين في المحاسبة العادية:</p>
-                                            <ul>
-                                                <li><span class="ar-label">١. أصول مستنفذة (Wasting Assets):</span> البترول اللي تحت الأرض أصل بينتهي ومابيتجددش. كل ما بتطلع برميل، أنت بتخلص على مخزون الشركة للأبد. عشان كده بنعمله حاجة اسمها "نفاذ" (Depletion) مش إهلاك عادي للأصول.</li>
-                                                <li><span class="ar-label">٢. انعدام العلاقة بين المصاريف والرزق (Lack of Correlation):</span> في المحاسبة العادية لو بنيت مبنى بمليون، قيمته مليون. في البترول مفيش الكلام ده؛ ممكن تصرف 500 مليون دولار في حفر وتطلع الأرض فاضية وقيمة الأصل صفر! وممكن تصرف مبلغ تافه وتخبط في حقل بترول بمليارات! عدم الارتباط ده خلى المحاسبة تبتكر نظم خاصة.</li>
-                                                <li><span class="ar-label">أركان النظام المحاسبي:</span> النظام المتخصص ده بيبحث ويقسم التكاليف على 4 مراحل: تكاليف الاستحواذ (العقود) ⬅️ الاستكشاف (التدوير) ⬅️ التطوير (تجهيز الإنتاج) ⬅️ الإنتاج (التشغيل اليومي).</li>
-                                            </ul>
-                                        </div>
+                                    <div class="content-en">
+                                        <p><strong>Accounting programs</strong> are software solutions designed to manage and streamline various financial tasks. These tasks can range from simple bookkeeping to complex financial analysis. Popular accounting programs include:</p>
+                                        <ul>
+                                            <li><strong>QuickBooks:</strong> Highly popular globally for small to medium business accounting, offering robust invoicing and ledger tracking.</li>
+                                            <li><strong>Xero:</strong> Powerful cloud-native accounting software favored by modern accountants for its slick UI and automation.</li>
+                                            <li><strong>Sage 50:</strong> Traditional, deeply structured accounting software (formerly Peachtree) known for strong compliance.</li>
+                                            <li><strong>FreshBooks:</strong> Specialized in seamless invoicing, expense tracking, and time management for service-oriented firms.</li>
+                                            <li><strong>Zoho Books:</strong> Smart, automated cloud accounting platform built to support growing business ecosystems.</li>
+                                            <li><strong>Wave Accounting:</strong> An excellent free software option ideal for freelancers, solopreneurs, and micro-businesses.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-ar">
+                                        <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالتفصيل بالعامية المصرية (الزتونة)</div>
+                                        <p>هنا بقى بنسيب عشوائية الإكسيل وبندخل في برامج جاهزة "متبرمجة ومبنية على قواعد المحاسبة وقيد اليومية المزدوج". البرامج دي بتحميك من الأخطاء لأنك يدوب بتدخل الحركة وهي بتعمل القيد وترحل لوحدها. مهامها بتنقسم لـ:</p>
+                                        <ul>
+                                            <li><span class="ar-label">مسك الدفاتر (Simple Bookkeeping):</span> الحاجات اليومية المباشرة (تسجيل فواتير البيع والشراء والمصروفات).</li>
+                                            <li><span class="ar-label">التحليل المالي المعقد (Complex Analysis):</span> حسابات الأرباح والخسائر، تدفقات الكاش (Cash Flow)، والتقارير الضريبية الجاهزة.</li>
+                                        </ul>
+                                        <div style="margin-top:12px; font-weight:700; color:#16a34a;">تفاصيل الأمثلة اللي في المنهج:</div>
+                                        <ul style="margin-top:6px;">
+                                            <li><strong>QuickBooks:</strong> أشهر برنامج محاسبي في العالم للشركات الصغيرة والمتوسطة، أوتوماتيكي ومنظم جداً.</li>
+                                            <li><strong>Xero:</strong> سحابي بالكامل (Cloud-native)، واجهته شيك جداً وبيتكامل مع مئات التطبيقات التانية عشان كده المحاسبين الجداد بيعشقوه.</li>
+                                            <li><strong>Sage 50:</strong> ده اللي كان زمان اسمه (Peachtree)، نظام كلاسيكي عنيف وقوي ومشهور جداً في السوق المصري والخليجي.</li>
+                                            <li><strong>FreshBooks:</strong> بيركز على الفواتير وتتبع الوقت (Time Tracking)، ممتاز لو أنت فريلانسر أو شركتك بتقدم خدمات مش بضاعة.</li>
+                                            <li><strong>Zoho Books &amp; Wave:</strong> زوهو ذكي وسحابي، أما (Wave) فمشهور جداً لأنه بيقدم الخدمات الأساسية "مجاناً" للمشروعات المتناهية الصغر.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- ======= ACCORDION 6 ======= -->
-                        <div class="acc-card" id="l1-acc6">
-                            <button class="acc-header l1-toggle" data-index="5">
-                                <div class="acc-icon" style="background:#fce7f3;color:#9d174d">
-                                    <i class="fa-solid fa-scale-balanced"></i>
+                        <div class="acc-card" id="l1-acc3">
+                            <button class="acc-header l1-toggle" data-index="2">
+                                <div class="acc-icon" style="background:#fef9c3;color:#a16207">
+                                    <i class="fa-solid fa-diagram-project"></i>
                                 </div>
-                                <span class="acc-title">المصطلحات والاحتياطيات البترولية <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Key Definitions &amp; Reserves Classification</small></span>
+                                <span class="acc-title">أنظمة تخطيط موارد المؤسسات <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">C. Enterprise Resource Planning (ERP)</small></span>
                                 <i class="fa-solid fa-chevron-down acc-chevron"></i>
                             </button>
                             <div class="acc-body">
                                 <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>Reservoir:</strong> Porous and permeable underground formation with a natural accumulation of producible oil/gas.</li>
-                                                <li><strong>Proved Reserves:</strong> Estimated quantities verified by geologic data to be recoverable with reasonable certainty under existing economic conditions.</li>
-                                                <li><strong>Proved Developed:</strong> Reserves expected to be recovered through existing wells and equipment without major capital expenditure.</li>
-                                                <li><strong>Proved Undeveloped:</strong> Confirmed reserves requiring new wells or major expenditure on undrilled acreage.</li>
-                                                <li><strong>Field:</strong> An area encompassing one or more separate reservoirs related to the same geological feature.</li>
-                                                <li><strong>Upstream vs. Midstream vs. Downstream:</strong> Upstream relates to Exploration & Production (E&P). Midstream covers transportation (pipelines). Downstream covers refining, processing, and marketing.</li>
-                                                <li><strong>Egypt Operations:</strong> Managed completely under the sovereign oversight of the Ministry of Petroleum and Mineral Resources via state-owned entities.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>المصطلحات دي بتيجي كتير جداً في امتحانات الـ MCQ ولازم تتقن الفروق بينها:</p>
-                                            <ul>
-                                                <li><span class="ar-label">الخزان (Reservoir):</span> صخور مسامية ونفاذة متجمع فيها النفط أو الغاز بشكل طبيعي تحت الأرض ومقفول عليها. وعشان يكون خزان ذو جدوى تجارية (Commercial Viability) لازم مساحته وإنتاجه يغطوا كل التكاليف ويطلعوا ربح وضرايب.</li>
-                                                <li><span class="ar-label">الاحتياطي المؤكد (Proved Reserves):</span> كميات البترول اللي متأكدين بنسبة كبيرة جيويلوجياً وهندسياً إننا نقدر نطلعها مستقبلاً تحت نفس الظروف الاقتصادية والأسعار الحالية. وبيتقسم لنوعين:
-                                                    <br>&nbsp;&nbsp;• <strong>مطور (Developed):</strong> البترول اللي جاهز يطلع فوراً بالآبار والمعدات اللي راكبة وشغالة فعلاً ومش محتاج مصاريف تانية.
-                                                    <br>&nbsp;&nbsp;• <strong>غير مطور (Undeveloped):</strong> إحنا متأكدين إنه موجود، بس لسه محتاجين نصرف ونحفر آبار جديدة عشان نعرف نطلعه.
-                                                </li>
-                                                <li><span class="ar-label">الحقل (Field):</span> مساحة جغرافية بتضم خزان واحد أو كذا خزان مرتبطين ببعض جيويلوجياً.</li>
-                                                <li><span class="ar-label">تقسيمات الصناعة:</span> 
-                                                    <br>&nbsp;&nbsp;• <strong>Upstream:</strong> مرحلة المنبع (البحث والاستخراج E&P).
-                                                    <br>&nbsp;&nbsp;• <strong>Midstream:</strong> مرحلة الوسط (النقل بالأنابيب والمواسير).
-                                                    <br>&nbsp;&nbsp;• <strong>Downstream:</strong> مرحلة المصب (التكرير، التصنيع، والتسويق للمحطات).
-                                                </li>
-                                                <li><span class="ar-label">الوضع في مصر:</span> صناعة البترول كلها بتدار وتراقب من خلال وزارة البترول والثروة المعدنية، وتحتها بتشتغل الشركات الحكومية (تحيا مصر).</li>
-                                            </ul>
-                                        </div>
+                                    <div class="content-en">
+                                        <p><strong>Enterprise Resource Planning (ERP) programs</strong> are comprehensive software solutions that integrate and manage all the core processes of a business. Instead of isolated software, it creates a single unified ecosystem across finance, HR, manufacturing, supply chain, services, and procurement.</p>
+                                        
+                                        <div style="margin-top: 12px; font-weight: bold; color:#b45309; border-bottom: 1px solid #fef08a; padding-bottom:4px;">Market Solutions Classified by Business Suitability:</div>
+                                        <ul style="margin-top: 8px;">
+                                            <li><strong>SAP ERP:</strong> Perfect for <em>Large enterprises and multinational corporations</em>. It is the global powerhouse for massive operations.</li>
+                                            <li><strong>Oracle ERP Cloud:</strong> Highly robust cloud infrastructure tailored for <em>Medium to large-sized businesses</em>.</li>
+                                            <li><strong>Microsoft Dynamics 365:</strong> Extremely versatile system suitable for <em>Small to large-sized businesses</em> due to its modular design.</li>
+                                            <li><strong>NetSuite ERP:</strong> A pioneer cloud-based ERP solution built specifically for <em>Medium to large-sized businesses</em>.</li>
+                                            <li><strong>Infor CloudSuite:</strong> Industry-specific micro-vertical solutions suited for <em>Medium to large-sized businesses</em>.</li>
+                                            <li><strong>Sage X3:</strong> Advanced financial and operational control optimized for <em>Medium to large-sized businesses</em>.</li>
+                                            <li><strong>Epicor ERP:</strong> Deep manufacturing and supply chain focus, built for <em>Small to medium-sized businesses</em>.</li>
+                                            <li><strong>Odoo:</strong> Highly flexible, open-source, modular platform perfectly suited for <em>Small to medium-sized businesses</em>.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-ar">
+                                        <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالتفصيل بالعامية المصرية (الزتونة)</div>
+                                        <p>الـ ERP ده هو "الوحش الكبير" والدماغ الإلكترونية للشركات العملاقة. فكرته قائمة على كلمة <strong>Integrate (التكامل)</strong>؛ يعني مفيش حاجة اسمها المحاسب قاعد لوحده والمخازن لوحدها. الشركة كلها مربوطة على <strong>قاعدة بيانات واحدة عملاقة</strong>.</p>
+                                        <p style="background:#fefca8; padding:8px; border-radius:6px; font-size:13px; margin:8px 0;"><strong>مثال التكامل:</strong> موظف المبيعات يعمل أمر بيع ⬅️ المخزن يجيله إشعار أوتوماتيك إن البضاعة نقصت ⬅️ المشتريات يفتح أمر شراء للمواد الخام ⬅️ الـ HR يحسب عمولة الموظف ⬅️ المحاسب يسمع عنده قيد الإيراد والضريبة في نفس الثانية! كله متوصل ببعضه.</p>
+                                        
+                                        <div style="margin-top:12px; font-weight:700; color:#a16207;">التصنيف حسب حجم الشركة (مهم جداً للـ MCQ):</div>
+                                        <ul style="margin-top:6px;">
+                                            <li><span class="ar-label">🏢 للشركات الضخمة والملتيناشونال (Large &amp; Multinational):</span> الملك هنا هو <strong>SAP ERP</strong>، وتكلفته بتوصل ملايين الدولارات، ويجي بعده برضه <strong>Oracle ERP Cloud</strong>.</li>
+                                            <li><span class="ar-label">⚖️ للشركات المتوسطة للكبيرة (Medium to Large):</span> المنهج حاطط برامج زي <strong>NetSuite</strong>، و <strong>Infor</strong>، و <strong>Sage X3</strong>. ومعاهم طبعاً <strong>Microsoft Dynamics 365</strong> اللي بيلعب في كل المستويات من الصغير للكبير.</li>
+                                            <li><span class="ar-label">🚀 للشركات الصغيرة والمتوسطة (Small to Medium):</span> عندك <strong>Epicor</strong>، والنجم الصاعد <strong>Odoo</strong> وده محبوب جداً في مصر لأنه شغال بنظام "المكعبات أو الموديولات"، تشتري على قدك النهاردة وتزود لما شركتك تكبر.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- ======= ACCORDION 7 ======= -->
-                        <div class="acc-card" id="l1-acc7">
-                            <button class="acc-header l1-toggle" data-index="6">
-                                <div class="acc-icon" style="background:#ecfdf5;color:#059669">
-                                    <i class="fa-solid fa-bore-hole"></i>
-                                </div>
-                                <span class="acc-title">تصنيف الآبار النفطية <small style="color:#94a3b8;font-weight:600;font-size:12px;display:block">Classification of Oil &amp; Gas Wells</small></span>
-                                <i class="fa-solid fa-chevron-down acc-chevron"></i>
-                            </button>
-                            <div class="acc-body">
-                                <div class="acc-body-inner">
-                                    <div class="acc-body-content">
-                                        <div class="content-en">
-                                            <ul>
-                                                <li><strong>Exploratory Wells:</strong> Drilled outside a proved area or to previously untested horizons to find new commercial reserves.</li>
-                                                <li><strong>Development Wells:</strong> Drilled within a proved area to a known productive stratigraphic horizon to extract confirmed reserves.</li>
-                                                <li><strong>Service Wells:</strong> Drilled to support production by injecting water or gas to maintain reservoir pressure.</li>
-                                                <li><strong>Stratigraphic Test Wells:</strong> Drilled solely to gather geological subsurface data. Classified as:
-                                                    <br>&nbsp;&nbsp;• <strong>Exploratory Stratigraphic:</strong> Drilled in unproved areas (expensed).
-                                                    <br>&nbsp;&nbsp;• <strong>Development Stratigraphic:</strong> Drilled in proved areas (capitalized).
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="content-ar">
-                                            <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
-                                            <p>الآبار اللي بنحفرها مش كلها زي بعض، المحاسب بيبص على نوع البير عشان يحدد الفلوس دي أصل ولا مصروف:</p>
-                                            <ul>
-                                                <li><span class="ar-label">١. بئر استكشافي (Exploratory):</span> بير بنحفره في منطقة جديدة خالص برة المساحة المؤكدة عشان نستكشف هل فيه بترول أصلاً ولا لأ.</li>
-                                                <li><span class="ar-label">٢. بئر تنموي (Development):</span> بير بنحفره جوه منطقة مؤكدة (Proved Area) وعارفين إنها بتنتج، وهدفه بس إننا "نطلع" ونزود إنتاج البترول اللي خلاص ضمنّاه.</li>
-                                                <li><span class="ar-label">٣. بئر خدمي (Service Well):</span> البير ده مش بيطلع بترول! ده بير مساند بنحقن فيه مية أو غاز عشان يزود الضغط في الخزان، فيقوم يزود إنتاج الآبار التانية.</li>
-                                                <li><span class="ar-label">٤. بئر اختبار طبقي (Stratigraphic):</span> بير محفور مخصوص عشان يجمع معلومات وداتا عن طبقات الأرض والصخور بس. لو محفور في منطقة لسه مش مؤكدة (Unproved) بياخد حكم الاستكشاف وتكلفته بتترمي مصروف. ولو محفور جوه منطقة مؤكدة (Proved) بياخد حكم التطوير وتكلفته بتترسمل كأصل.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Back to Lectures Button -->
                         <div class="mt-8 flex justify-center">
                             <button onclick="showHomeView()" class="px-8 py-3 rounded-xl font-bold text-white shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700">
                                 <i class="fa-solid fa-arrow-right ml-2"></i> العودة لقائمة المحاضرات
                             </button>
                         </div>
 
-                    </div><!-- end .lecture-content-col -->
-                </div><!-- end .lecture-layout -->
+                    </div>
+                </div>
             </div>
         </section>
 
