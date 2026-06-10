@@ -2376,22 +2376,80 @@
         .lec-ref-content-wrap .compare-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 16px;
+            margin-top: 14px;
+            margin-bottom: 14px;
         }
 
         @media (max-width: 500px) {
             .lec-ref-content-wrap .compare-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
 
         .lec-ref-content-wrap .compare-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 12px;
-            border-right: 4px solid;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .lec-ref-content-wrap .compare-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .lec-ref-content-wrap .compare-card h6 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        /* Override dark-theme styles inside light-themed comparison cards */
+        .lec-ref-content-wrap .content-en .compare-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .lec-ref-content-wrap .content-en .compare-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #334155 !important;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .lec-ref-content-wrap .content-en .compare-card ul li strong {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+
+        /* Custom colored bullet points for each card */
+        .lec-ref-content-wrap .compare-grid .compare-card:nth-child(1) ul li::before {
+            content: '✦';
+            color: #3b82f6 !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .lec-ref-content-wrap .compare-grid .compare-card:nth-child(2) ul li::before {
+            content: '✦';
+            color: #10b981 !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 11px;
+            line-height: 1.6;
         }
 
         .lec-ref-content-wrap table {

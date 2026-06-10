@@ -392,6 +392,47 @@
             color: #fff;
         }
 
+        /* High contrast styles for MCQ blocks with white background */
+        .content-en .mcq-white-card {
+            background: #ffffff !important;
+            color: #1e293b !important;
+            padding: 16px !important;
+            border-radius: 12px !important;
+            border: 1px solid #fed7aa !important;
+            margin-bottom: 15px !important;
+        }
+        .content-en .mcq-white-card ul li {
+            color: #1e293b !important;
+        }
+        .content-en .mcq-white-card ul li code {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            border: 1px solid #e2e8f0 !important;
+            padding: 2px 4px !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+        }
+        .content-en .mcq-white-card ul li span {
+            color: #475569 !important;
+        }
+
+        /* High contrast styles for inner yellow/green grids in content-en */
+        .content-en .mcq-inner-card {
+            color: #1e293b !important;
+        }
+        .content-en .mcq-inner-card strong {
+            color: #0f172a !important;
+        }
+        .content-en .mcq-inner-card ul li {
+            color: #334155 !important;
+        }
+        .content-en .mcq-inner-card ul li code {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+            color: #0f172a !important;
+            padding: 2px 4px !important;
+            border-radius: 4px !important;
+        }
+
         /* Responsive Tables Wrapper */
         .table-responsive {
             width: 100%;
@@ -540,6 +581,11 @@
             margin-top: 14px;
         }
 
+        .content-ar strong {
+            color: #92400e !important;
+            font-weight: 800;
+        }
+
         .content-ar-header {
             display: flex;
             align-items: center;
@@ -669,32 +715,42 @@
         .compare-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 12px;
+            gap: 16px;
+            margin-top: 14px;
+            margin-bottom: 14px;
         }
 
         @media (max-width: 600px) {
             .compare-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
 
         .compare-card {
-            background: #fff;
+            background: #ffffff;
             border-radius: 14px;
-            padding: 16px;
-            border-right: 4px solid;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             min-width: 0;
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .compare-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .compare-card h6 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
+            margin-top: 0;
         }
 
         .compare-card p {
@@ -702,6 +758,225 @@
             color: #475569;
             line-height: 1.7;
             margin: 0;
+        }
+
+        /* Override dark-theme styles inside light-themed comparison cards */
+        .content-en .compare-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .content-en .compare-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #334155 !important;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .content-en .compare-card ul li strong {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+
+        /* Custom colored bullet points for each card */
+        .compare-grid .compare-card:nth-child(1) ul li::before {
+            content: '✦';
+            color: #3b82f6 !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .compare-grid .compare-card:nth-child(2) ul li::before {
+            content: '✦';
+            color: #10b981 !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════════
+           EXCEL INTERACTIVE LABS — Shared Foundation
+        ═══════════════════════════════════════════════ */
+        .excel-lab {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2d45 100%);
+            border-radius: 18px;
+            padding: 22px;
+            margin-top: 18px;
+            border: 1px solid rgba(99,102,241,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .excel-lab::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .excel-lab-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(148,163,184,0.15);
+        }
+        .excel-lab-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+        }
+        .excel-lab-title {
+            font-weight: 800; font-size: 15px; color: #e2e8f0;
+            line-height: 1.2;
+        }
+        .excel-lab-sub {
+            font-size: 11px; color: #64748b; font-weight: 600;
+            margin-top: 2px; letter-spacing: 0.3px;
+        }
+        .lab-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(99,102,241,0.2); color: #a5b4fc;
+            border: 1px solid rgba(99,102,241,0.35);
+            border-radius: 20px; padding: 3px 10px;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+            margin-right: auto;
+        }
+        .lab-badge.green { background: rgba(16,185,129,0.15); color: #6ee7b7; border-color: rgba(16,185,129,0.3); }
+        .lab-badge.amber { background: rgba(245,158,11,0.15); color: #fcd34d; border-color: rgba(245,158,11,0.3); }
+        .lab-badge.red   { background: rgba(239,68,68,0.15);  color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+        /* Input controls */
+        .lab-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; align-items: flex-end; }
+        .lab-field { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 120px; }
+        .lab-field label { font-size: 11px; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px; }
+        .lab-input {
+            background: rgba(15,23,42,0.7); border: 1.5px solid rgba(148,163,184,0.2);
+            border-radius: 8px; padding: 9px 12px;
+            color: #e2e8f0; font-size: 13px; font-family: 'Courier New', monospace;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%; box-sizing: border-box;
+        }
+        .lab-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+        .lab-input::placeholder { color: #475569; }
+        .lab-select {
+            background: rgba(15,23,42,0.7); border: 1.5px solid rgba(148,163,184,0.2);
+            border-radius: 8px; padding: 9px 12px;
+            color: #e2e8f0; font-size: 13px; outline: none;
+            transition: border-color 0.2s; cursor: pointer; width: 100%;
+        }
+        .lab-select:focus { border-color: #6366f1; }
+        .lab-btn {
+            padding: 10px 20px; border-radius: 10px; border: none; cursor: pointer;
+            font-weight: 700; font-size: 13px; letter-spacing: 0.3px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff; transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.35);
+            white-space: nowrap;
+        }
+        .lab-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(99,102,241,0.5); }
+        .lab-btn:active { transform: translateY(0); }
+        .lab-btn.green-btn { background: linear-gradient(135deg,#059669,#10b981); box-shadow: 0 4px 12px rgba(5,150,105,0.35); }
+        .lab-btn.green-btn:hover { box-shadow: 0 6px 18px rgba(5,150,105,0.5); }
+        .lab-btn.amber-btn { background: linear-gradient(135deg,#d97706,#f59e0b); box-shadow: 0 4px 12px rgba(217,119,6,0.35); }
+        .lab-btn.red-btn   { background: linear-gradient(135deg,#dc2626,#ef4444); box-shadow: 0 4px 12px rgba(220,38,38,0.35); }
+
+        /* Result panels */
+        .lab-result {
+            background: rgba(0,0,0,0.35); border-radius: 12px;
+            padding: 16px; margin-top: 14px;
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+        .lab-result-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .lab-result-row:last-child { margin-bottom: 0; }
+        .lab-result-label { font-size: 11px; font-weight: 700; color: #64748b; min-width: 130px; letter-spacing: 0.3px; }
+        .lab-result-val {
+            background: rgba(99,102,241,0.15); color: #a5b4fc;
+            border: 1px solid rgba(99,102,241,0.3); border-radius: 6px;
+            padding: 4px 12px; font-size: 14px; font-weight: 700;
+            font-family: 'Courier New', monospace; letter-spacing: 0.5px;
+        }
+        .lab-result-val.green-val { background: rgba(16,185,129,0.15); color: #6ee7b7; border-color: rgba(16,185,129,0.3); }
+        .lab-result-val.amber-val { background: rgba(245,158,11,0.15); color: #fcd34d; border-color: rgba(245,158,11,0.3); }
+        .lab-result-val.red-val   { background: rgba(239,68,68,0.15);  color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+        .lab-result-val.big { font-size: 20px; padding: 6px 16px; }
+
+        /* Grid visual for cell referencing */
+        .cell-grid-wrap { overflow-x: auto; margin: 14px 0; }
+        .cell-grid-table { border-collapse: collapse; direction: ltr; font-size: 13px; width: 100%; min-width: 280px; }
+        .cell-grid-table th, .cell-grid-table td {
+            border: 1px solid rgba(148,163,184,0.18);
+            padding: 8px 12px; text-align: center;
+            font-family: 'Courier New', monospace; color: #94a3b8; font-weight: 600;
+            min-width: 52px; transition: all 0.3s;
+        }
+        .cell-grid-table th { background: rgba(99,102,241,0.12); color: #a5b4fc; font-size: 11px; letter-spacing: 0.5px; }
+        .cell-grid-table td { background: rgba(0,0,0,0.25); }
+        .cell-grid-table td.cell-source { background: rgba(245,158,11,0.2) !important; color: #fcd34d !important; border-color: #f59e0b !important; }
+        .cell-grid-table td.cell-dest   { background: rgba(99,102,241,0.25) !important; color: #c7d2fe !important; border-color: #6366f1 !important; }
+        .cell-grid-table td.cell-ref    { background: rgba(16,185,129,0.15) !important; color: #6ee7b7 !important; border-color: #10b981 !important; }
+        .cell-grid-table td.cell-ref-abs { background: rgba(239,68,68,0.15) !important; color: #fca5a5 !important; border-color: #ef4444 !important; }
+
+        /* Step breakdown */
+        .lab-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .lab-step {
+            display: flex; align-items: flex-start; gap: 10px;
+            background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px 13px;
+            border-left: 3px solid rgba(99,102,241,0.5);
+        }
+        .lab-step-num {
+            width: 22px; height: 22px; background: rgba(99,102,241,0.3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 900; color: #a5b4fc; flex-shrink: 0;
+        }
+        .lab-step-text { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+        .lab-step-text code { background: rgba(99,102,241,0.2); padding: 2px 6px; border-radius: 4px; color: #a5b4fc; font-size: 12px; }
+        .lab-step-text .hi-amber { color: #fcd34d; font-weight: 700; }
+        .lab-step-text .hi-green { color: #6ee7b7; font-weight: 700; }
+        .lab-step-text .hi-red   { color: #fca5a5; font-weight: 700; }
+
+        /* Data table inside labs */
+        .lab-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; direction: ltr; }
+        .lab-table th { background: rgba(99,102,241,0.15); color: #a5b4fc; padding: 8px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; border: 1px solid rgba(99,102,241,0.2); }
+        .lab-table td { padding: 8px 10px; border: 1px solid rgba(148,163,184,0.1); color: #cbd5e1; font-family: 'Courier New', monospace; text-align: right; }
+        .lab-table td:first-child { text-align: left; font-family: inherit; color: #94a3b8; }
+        .lab-table tr.lab-row-hi { background: rgba(245,158,11,0.12) !important; }
+        .lab-table tr.lab-row-lo { background: rgba(99,102,241,0.08) !important; }
+        .lab-table tr:nth-child(even) { background: rgba(0,0,0,0.15); }
+        .lab-table tr.lab-row-match { background: rgba(16,185,129,0.12) !important; }
+        .lab-table td.pass { color: #6ee7b7; font-weight: 700; }
+        .lab-table td.fail { color: #fca5a5; font-weight: 700; }
+        .lab-table td.formula-cell { color: #c084fc; font-style: italic; font-size: 12px; }
+
+        /* SVG Chart */
+        .lab-chart-wrap { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; margin-top: 14px; overflow-x: auto; }
+        .lab-chart-title { font-size: 12px; font-weight: 700; color: #94a3b8; text-align: center; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .lab-chart-wrap svg { display: block; margin: 0 auto; max-width: 100%; }
+        .lab-legend { display: flex; gap: 14px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+        .lab-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #94a3b8; font-weight: 600; }
+        .lab-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        /* Divider */
+        .lab-divider { border: none; border-top: 1px solid rgba(148,163,184,0.12); margin: 16px 0; }
+        .lab-section-title { font-size: 12px; font-weight: 800; color: #6366f1; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+
+        @media (max-width: 600px) {
+            .lab-row { flex-direction: column; }
+            .lab-field { min-width: 0; }
+            .lab-result-label { min-width: 100px; }
         }
 
         /* Lecture hero header */
@@ -2409,21 +2684,100 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p><strong>Professor's Notebook Practical Cases Analysis:</strong></p>
-                                        <p style="font-size: 14px;">
-                                            Given the data grid values: A1=0, A2=1, B1=3, B2=2, B3=6, C1=9.
-                                            <br><br>
-                                            <strong>Case A: Copying formula from D2 to E2:</strong>
-                                            <br>• Initial Formula in D2: <code>=A1+B3</code>
-                                            <br>• Movement: 1 column right (D &rarr; E), 0 rows down (2 &rarr; 2).
-                                            <br>• <strong>New Content:</strong> <code>=B1+C3</code>
-                                            <br>• <strong>New Output:</strong> B1 (3) + C3 (empty/0) = <strong>3</strong>.
-                                            <br><br>
-                                            <strong>Case B: Copying formula from C3 to D4:</strong>
-                                            <br>• Initial Formula in C3: <code>=$B$3+A2</code>
-                                            <br>• Movement: 1 column right (C &rarr; D), 1 row down (3 &rarr; 4).
-                                            <br>• <strong>New Content:</strong> Shifting free parts only &rarr; <code>=$B$3+B3</code>
-                                            <br>• <strong>New Output:</strong> B3 (6) + B3 (6) = <strong>12</strong>.
-                                        </p>
+                                        <div class="mcq-white-card">
+                                            <p style="font-size: 14px;">
+                                                Given the data grid values: A1=0, A2=1, B1=3, B2=2, B3=6, C1=9.
+                                                <br><br>
+                                                <strong>Case A: Copying formula from D2 to E2:</strong>
+                                                <br>• Initial Formula in D2: <code>=A1+B3</code>
+                                                <br>• Movement: 1 column right (D &rarr; E), 0 rows down (2 &rarr; 2).
+                                                <br>• <strong>New Content:</strong> <code>=B1+C3</code>
+                                                <br>• <strong>New Output:</strong> B1 (3) + C3 (empty/0) = <strong>3</strong>.
+                                                <br><br>
+                                                <strong>Case B: Copying formula from C3 to D4:</strong>
+                                                <br>• Initial Formula in C3: <code>=$B$3+A2</code>
+                                                <br>• Movement: 1 column right (C &rarr; D), 1 row down (3 &rarr; 4).
+                                                <br>• <strong>New Content:</strong> Shifting free parts only &rarr; <code>=$B$3+B3</code>
+                                                <br>• <strong>New Output:</strong> B3 (6) + B3 (6) = <strong>12</strong>.
+                                            </p>
+                                        </div>
+
+                                        <!-- ⬇️ INTERACTIVE LAB: Cell Referencing Playground -->
+                                        <div class="excel-lab" id="lab-l5-ref">
+                                            <div class="excel-lab-header">
+                                                <div class="excel-lab-icon"><i class="fa-solid fa-table-cells-large"></i></div>
+                                                <div>
+                                                    <div class="excel-lab-title">🧪 Cell Reference Shift Simulator</div>
+                                                    <div class="excel-lab-sub">INTERACTIVE LAB — Lecture 5 · Cell Referencing & Offset Playground</div>
+                                                </div>
+                                                <span class="lab-badge amber">⚡ Exam-Ready</span>
+                                            </div>
+
+                                            <!-- Live Grid -->
+                                            <div class="lab-section-title">📊 Data Grid (Pre-filled Values)</div>
+                                            <div class="cell-grid-wrap">
+                                                <table class="cell-grid-table" id="l5-grid">
+                                                    <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead>
+                                                    <tbody>
+                                                        <tr><th>1</th><td id="gc-A1">0</td><td id="gc-B1">3</td><td id="gc-C1">9</td><td id="gc-D1"></td><td id="gc-E1"></td></tr>
+                                                        <tr><th>2</th><td id="gc-A2">1</td><td id="gc-B2">2</td><td id="gc-C2"></td><td id="gc-D2"></td><td id="gc-E2"></td></tr>
+                                                        <tr><th>3</th><td id="gc-A3"></td><td id="gc-B3">6</td><td id="gc-C3"></td><td id="gc-D3"></td><td id="gc-E3"></td></tr>
+                                                        <tr><th>4</th><td id="gc-A4"></td><td id="gc-B4"></td><td id="gc-C4"></td><td id="gc-D4"></td><td id="gc-E4"></td></tr>
+                                                        <tr><th>5</th><td id="gc-A5"></td><td id="gc-B5"></td><td id="gc-C5"></td><td id="gc-D5"></td><td id="gc-E5"></td></tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <div class="lab-section-title" style="margin-top:16px;">🎮 Try Your Own Formula</div>
+                                            <div class="lab-row">
+                                                <div class="lab-field">
+                                                    <label>SOURCE CELL</label>
+                                                    <select class="lab-select" id="l5-src">
+                                                        <option value="D2">D2</option><option value="C3">C3</option>
+                                                        <option value="D1">D1</option><option value="E3">E3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>FORMULA (use = prefix)</label>
+                                                    <input class="lab-input" id="l5-formula" value="=A1+B3" placeholder="e.g.  =A1+B3  or  =$B$3+A2" spellcheck="false"/>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>DESTINATION CELL</label>
+                                                    <select class="lab-select" id="l5-dst">
+                                                        <option value="E2">E2</option><option value="D4">D4</option>
+                                                        <option value="D2">D2</option><option value="E4">E4</option>
+                                                    </select>
+                                                </div>
+                                                <button class="lab-btn" onclick="runL5Sim()"><i class="fa-solid fa-play" style="margin-left:6px;"></i>احسب الإزاحة</button>
+                                            </div>
+
+                                            <div id="l5-result" style="display:none;">
+                                                <hr class="lab-divider">
+                                                <div class="lab-section-title">📋 Calculation Steps</div>
+                                                <div class="lab-steps" id="l5-steps"></div>
+                                                <div class="lab-result" style="margin-top:14px;">
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">🔀 SHIFT OFFSET</span>
+                                                        <span class="lab-result-val amber-val" id="l5-shift"></span>
+                                                    </div>
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">📝 NEW FORMULA CONTENT</span>
+                                                        <span class="lab-result-val" id="l5-newcontent"></span>
+                                                    </div>
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">🎯 NEW OUTPUT (Result)</span>
+                                                        <span class="lab-result-val green-val big" id="l5-newoutput"></span>
+                                                    </div>
+                                                </div>
+                                                <div style="margin-top:10px; padding:10px 14px; background:rgba(245,158,11,0.1); border-radius:8px; border-left:3px solid #f59e0b; font-size:12px; color:#fcd34d; direction:ltr;">
+                                                    🔑 <strong>Legend:</strong> <span style="background:rgba(245,158,11,0.2);padding:2px 6px;border-radius:4px;">■ Amber</span> = Source cell &nbsp;
+                                                    <span style="background:rgba(99,102,241,0.25);padding:2px 6px;border-radius:4px;">■ Blue</span> = Destination cell &nbsp;
+                                                    <span style="background:rgba(16,185,129,0.15);padding:2px 6px;border-radius:4px;">■ Green</span> = Relative ref shifted &nbsp;
+                                                    <span style="background:rgba(239,68,68,0.15);padding:2px 6px;border-radius:4px;">■ Red</span> = Absolute ref ($) locked
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="content-ar">
                                         <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
@@ -2448,7 +2802,7 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p><strong>Official Excel Exam Questions &amp; Confirmed Answer Keys:</strong></p>
-                                        <div style="background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #fed7aa; margin-bottom: 15px;">
+                                        <div class="mcq-white-card">
                                             <ul style="list-style-type: square; padding-left: 20px;">
                                                 <li style="margin-bottom: 10px;">To have an equation in the excel cell we should start by:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (e) (=)</strong></li>
                                                 <li style="margin-bottom: 10px;">Excel is considered better than Microsoft Office Word because of:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (d) All of the above</strong> <span style="color: #71717a; font-size:13px;">(Data analysis, Better charts, Formulas &amp; functions)</span></li>
@@ -2650,6 +3004,122 @@
                                                 <br>• <code>SUMIFS</code> handles complex data by aggregating ranges under multiple conditions simultaneously. <strong>Important Note:</strong> SUMIFS strictly utilizes <strong>AND logic</strong> only; it is incapable of processing <strong>OR logic</strong>.
                                             </li>
                                         </ul>
+
+                                        <!-- ⬇️ INTERACTIVE LAB: IF / SUMIFS Logic Lab -->
+                                        <div class="excel-lab" id="lab-l6-if">
+                                            <div class="excel-lab-header">
+                                                <div class="excel-lab-icon" style="background:linear-gradient(135deg,#0284c7,#0ea5e9)"><i class="fa-solid fa-code-branch"></i></div>
+                                                <div>
+                                                    <div class="excel-lab-title">🧪 IF & SUMIFS Logic Lab</div>
+                                                    <div class="excel-lab-sub">INTERACTIVE LAB — Lecture 6 · Conditional & Logical Functions</div>
+                                                </div>
+                                                <span class="lab-badge green">⚡ Exam-Ready</span>
+                                            </div>
+
+                                            <div class="lab-section-title">📋 Employee Dataset (Live)</div>
+                                            <div class="mcq-white-card">
+                                                <div style="overflow-x:auto;">
+                                                    <table class="lab-table" id="l6-data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th><th>Gender</th><th>Dept</th><th>Sales (L.E.)</th>
+                                                                <th>IF Bonus</th><th>SUMIFS Match</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="l6-tbody"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <hr class="lab-divider">
+
+                                            <!-- IF Builder -->
+                                            <div class="lab-section-title">🔀 IF Formula Builder</div>
+                                            <div class="lab-row">
+                                                <div class="lab-field">
+                                                    <label>TEST COLUMN</label>
+                                                    <select class="lab-select" id="l6-if-col">
+                                                        <option value="gender">Gender (f/m)</option>
+                                                        <option value="dept">Department</option>
+                                                        <option value="sales">Sales Amount</option>
+                                                    </select>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>OPERATOR</label>
+                                                    <select class="lab-select" id="l6-if-op">
+                                                        <option value="=">=</option><option value="<">&lt;</option>
+                                                        <option value=">">&gt;</option><option value="<=">&lt;=</option><option value=">=">&gt;=</option>
+                                                    </select>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>VALUE (text in quotes)</label>
+                                                    <input class="lab-input" id="l6-if-val" value='"f"' placeholder='"f" or 5000'/>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>IF TRUE → Bonus</label>
+                                                    <input class="lab-input" id="l6-if-true" value="1500" placeholder="e.g. 1500"/>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>IF FALSE → Bonus</label>
+                                                    <input class="lab-input" id="l6-if-false" value="800" placeholder="e.g. 800"/>
+                                                </div>
+                                                <button class="lab-btn" onclick="runL6IF()"><i class="fa-solid fa-bolt" style="margin-left:6px;"></i>Apply IF</button>
+                                            </div>
+                                            <div class="lab-result" id="l6-if-result" style="display:none;">
+                                                <div class="lab-result-row">
+                                                    <span class="lab-result-label">📝 FORMULA USED</span>
+                                                    <span class="lab-result-val" id="l6-if-formula-show" style="font-size:12px;"></span>
+                                                </div>
+                                                <div class="lab-result-row">
+                                                    <span class="lab-result-label">💰 TOTAL BONUSES</span>
+                                                    <span class="lab-result-val green-val big" id="l6-if-total"></span>
+                                                </div>
+                                            </div>
+
+                                            <hr class="lab-divider">
+
+                                            <!-- SUMIFS Builder -->
+                                            <div class="lab-section-title">🔢 SUMIFS Builder (AND Logic)</div>
+                                            <div class="lab-row">
+                                                <div class="lab-field">
+                                                    <label>SUM RANGE</label>
+                                                    <select class="lab-select" id="l6-sumifs-range"><option value="sales">Sales</option></select>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>COND 1 — Gender</label>
+                                                    <select class="lab-select" id="l6-sumifs-g">
+                                                        <option value="any">Any</option>
+                                                        <option value="f">Female (f)</option>
+                                                        <option value="m">Male (m)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>COND 2 — Department</label>
+                                                    <select class="lab-select" id="l6-sumifs-d">
+                                                        <option value="any">Any</option>
+                                                        <option value="Sales">Sales</option>
+                                                        <option value="HR">HR</option>
+                                                        <option value="IT">IT</option>
+                                                        <option value="Finance">Finance</option>
+                                                    </select>
+                                                </div>
+                                                <button class="lab-btn amber-btn" onclick="runL6SUMIFS()"><i class="fa-solid fa-sigma" style="margin-left:6px;"></i>Apply SUMIFS</button>
+                                            </div>
+                                            <div class="lab-result" id="l6-sumifs-result" style="display:none;">
+                                                <div class="lab-result-row">
+                                                    <span class="lab-result-label">📝 FORMULA USED</span>
+                                                    <span class="lab-result-val" id="l6-sumifs-formula-show" style="font-size:12px;"></span>
+                                                </div>
+                                                <div class="lab-result-row">
+                                                    <span class="lab-result-label">🎯 SUMIFS RESULT</span>
+                                                    <span class="lab-result-val amber-val big" id="l6-sumifs-total"></span>
+                                                </div>
+                                                <div class="lab-result-row">
+                                                    <span class="lab-result-label">✅ MATCHING ROWS</span>
+                                                    <span class="lab-result-val" id="l6-sumifs-rows"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="content-ar">
                                         <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
@@ -2673,8 +3143,8 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p>Statistical tools and shortcuts allow for immediate insights over large numerical ranges:</p>
-                                        <div style="display:grid; grid-template-cols: 1fr 1fr; gap:10px; margin-bottom:10px;">
-                                            <div style="background:#fefce8; padding:8px; border-radius:6px;">
+                                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                            <div class="mcq-inner-card" style="background:#fefce8; padding:12px; border-radius:8px;">
                                                 <strong>Core Functions:</strong>
                                                 <ul style="font-size:13px; padding-left:15px; margin-top:4px;">
                                                     <li><code>SUM</code>: Returns the total sum of values.</li>
@@ -2684,7 +3154,7 @@
                                                     <li><code>MIN</code>: Extracts the smallest number in a set.</li>
                                                 </ul>
                                             </div>
-                                            <div style="background:#f0fdf4; padding:8px; border-radius:6px;">
+                                            <div class="mcq-inner-card" style="background:#f0fdf4; padding:12px; border-radius:8px;">
                                                 <strong>Core Keystrokes:</strong>
                                                 <ul style="font-size:13px; padding-left:15px; margin-top:4px;">
                                                     <li><code>F4 (Inside Cell)</code>: Locks reference ($).</li>
@@ -2717,7 +3187,7 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p><strong>Official Exam Questions &amp; Verified Answer Keys:</strong></p>
-                                        <div style="background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #fed7aa; margin-bottom: 15px;">
+                                        <div class="mcq-white-card">
                                             <ul style="list-style-type: decimal; padding-left: 20px;">
                                                 <li style="margin-bottom: 8px;">Spending variance in flexible budget:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (c) Diagnostic</strong></li>
                                                 <li style="margin-bottom: 8px;">The hardest analysis type:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (d) Prescriptive analytics</strong></li>
@@ -2905,6 +3375,71 @@
                                                 <br><em>Note:</em> The <strong>[Factor]</strong> parameter is optional; if omitted, Excel assumes it is <strong>2</strong> (double-declining).
                                             </li>
                                         </ul>
+
+                                        <!-- ⬇️ INTERACTIVE LAB: Depreciation Schedule Simulator -->
+                                        <div class="excel-lab" id="lab-l7-dep">
+                                            <div class="excel-lab-header">
+                                                <div class="excel-lab-icon" style="background:linear-gradient(135deg,#7c3aed,#a855f7)"><i class="fa-solid fa-chart-bar"></i></div>
+                                                <div>
+                                                    <div class="excel-lab-title">🧪 Depreciation Schedule Simulator</div>
+                                                    <div class="excel-lab-sub">INTERACTIVE LAB — Lecture 7 · SLN vs SYD vs DDB Comparison</div>
+                                                </div>
+                                                <span class="lab-badge" style="background:rgba(168,85,247,0.2);color:#d8b4fe;border-color:rgba(168,85,247,0.35);">⚡ Exam-Ready</span>
+                                            </div>
+
+                                            <div class="lab-section-title">🎮 Asset Parameters</div>
+                                            <div class="lab-row">
+                                                <div class="lab-field">
+                                                    <label>COST (L.E.)</label>
+                                                    <input class="lab-input" id="l7-cost" value="10000" placeholder="e.g. 10000"/>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>SALVAGE VALUE (L.E.)</label>
+                                                    <input class="lab-input" id="l7-salvage" value="1000" placeholder="e.g. 1000"/>
+                                                </div>
+                                                <div class="lab-field">
+                                                    <label>USEFUL LIFE (years)</label>
+                                                    <input class="lab-input" id="l7-life" value="5" placeholder="e.g. 5" type="number" min="1" max="15"/>
+                                                </div>
+                                                <button class="lab-btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 12px rgba(124,58,237,0.4);" onclick="runL7Dep()">
+                                                    <i class="fa-solid fa-calculator" style="margin-left:6px;"></i>احسب الجدول
+                                                </button>
+                                            </div>
+
+                                            <div id="l7-result" style="display:none;">
+                                                <div class="lab-section-title">📊 Year-by-Year Depreciation Schedule</div>
+                                                <div style="overflow-x:auto;">
+                                                    <table class="lab-table" id="l7-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Year</th>
+                                                                <th>=SLN(...)</th><th>SLN Book Value</th>
+                                                                <th>=SYD(...,Per)</th><th>SYD Book Value</th>
+                                                                <th>=DDB(...,Per)</th><th>DDB Book Value</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="l7-tbody"></tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="lab-result" style="margin-top:12px;">
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">📐 SLN per Year (Fixed)</span>
+                                                        <span class="lab-result-val" id="l7-sln-val"></span>
+                                                        <span class="lab-result-label" style="margin-left:12px;">Formula:</span>
+                                                        <span class="lab-result-val" id="l7-sln-formula" style="font-size:12px;"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="lab-chart-wrap" style="margin-top:14px;">
+                                                    <div class="lab-chart-title">📈 DEPRECIATION EXPENSE PER YEAR</div>
+                                                    <svg id="l7-chart" width="520" height="160" viewBox="0 0 520 160"></svg>
+                                                    <div class="lab-legend">
+                                                        <div class="lab-legend-item"><div class="lab-legend-dot" style="background:#6366f1;"></div>SLN</div>
+                                                        <div class="lab-legend-item"><div class="lab-legend-dot" style="background:#f59e0b;"></div>SYD</div>
+                                                        <div class="lab-legend-item"><div class="lab-legend-dot" style="background:#ef4444;"></div>DDB</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="content-ar">
                                         <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
@@ -2983,7 +3518,7 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p><strong>Official Exam Questions &amp; Confirmed Answer Keys:</strong></p>
-                                        <div style="background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #fed7aa; margin-bottom: 15px;">
+                                        <div class="mcq-white-card">
                                             <ul style="list-style-type: decimal; padding-left: 20px;">
                                                 <li style="margin-bottom: 8px;">Spending variance in flexible budget:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (c) Diagnostic</strong></li>
                                                 <li style="margin-bottom: 8px;">To calculate the depreciation expense for using sum of years digits:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (b) SYD</strong></li>
@@ -2993,8 +3528,10 @@
                                                 <li style="margin-bottom: 8px;">Have equal depreciation expenses per year:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (a) SLN</strong></li>
                                                 <li style="margin-bottom: 8px;">Not required period number in its formula / Useful life period is not a requirement in which function:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (a) SLN</strong></li>
                                                 <li style="margin-bottom: 12px;">Having the following values in cells: E2 (Cost) = 40, D2 (Salvage) = 30, B2 (Life) = 10. What will be the result of the function: <code>=SLN(E2,D2,B2)</code><br><strong style="color: #16a34a;">&rarr; Correct Choice: (e) 1</strong>
-                                                    <br><span style="color: #71717a; font-size:13px;">Mathematical verification: $\frac{\text{Cost} - \text{Salvage}}{\text{Life}} = \frac{40 - 30}{10} = \frac{10}{10} = 1$</span>
-                                                </li>
+<br>
+<span style="color: #71717a; font-size: 13px; display: block; margin-top: 4px;">
+    Mathematical verification: \(\frac{\text{Cost} - \text{Salvage}}{\text{Life}} = \frac{40 - 30}{10} = \frac{10}{10} = 1\)
+</span>                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -3273,6 +3810,119 @@
                                             <li><strong>The Slope ($m$):</strong> The number multiplied directly by $x$. It designates the <strong>Variable Cost per Unit</strong>.</li>
                                             <li><strong>The Y-Intercept ($c$):</strong> The constant hardcoded number added at the end. It designates the <strong>Total Fixed Cost</strong>.</li>
                                         </ul>
+
+                                        <!-- ⬇️ INTERACTIVE LAB: Mixed Cost Separator & Scatter Chart -->
+                                        <div class="excel-lab" id="lab-l8-scatter">
+                                            <div class="excel-lab-header">
+                                                <div class="excel-lab-icon" style="background:linear-gradient(135deg,#059669,#10b981)"><i class="fa-solid fa-chart-scatter"></i></div>
+                                                <div>
+                                                    <div class="excel-lab-title">🧪 Mixed Cost Separator & Trendline Lab</div>
+                                                    <div class="excel-lab-sub">INTERACTIVE LAB — Lecture 8 · Scatter Chart · y = mx + c · Cost Decomposition</div>
+                                                </div>
+                                                <span class="lab-badge green">⚡ Exam-Ready</span>
+                                            </div>
+
+                                            <div class="lab-section-title">📝 Monthly Activity & Cost Data</div>
+                                            <p style="font-size:12px;color:#64748b;margin:0 0 10px 0;direction:ltr;">Enter activity level (hours/units) and total mixed cost for each month. Add/remove rows as needed.</p>
+                                            <div style="overflow-x:auto;">
+                                                <table class="lab-table" id="l8-data-tbl">
+                                                    <thead><tr><th>#</th><th>Month</th><th>Activity Level (X)</th><th>Total Mixed Cost (Y)</th><th></th></tr></thead>
+                                                    <tbody id="l8-tbody">
+                                                        <tr>
+                                                            <td style="color:#6366f1;">1</td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="Jan"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="500" type="number"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="4500" type="number"/></td>
+                                                            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#6366f1;">2</td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="Feb"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="700" type="number"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="5600" type="number"/></td>
+                                                            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#6366f1;">3</td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="Mar"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="900" type="number"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="6800" type="number"/></td>
+                                                            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#6366f1;">4</td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="Apr"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="600" type="number"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="5100" type="number"/></td>
+                                                            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#6366f1;">5</td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="May"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="1100" type="number"/></td>
+                                                            <td><input class="lab-input" style="width:90px;padding:5px 8px;" value="8000" type="number"/></td>
+                                                            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="lab-row" style="margin-top:10px;">
+                                                <button class="lab-btn" style="background:rgba(99,102,241,0.25);color:#a5b4fc;box-shadow:none;border:1px solid rgba(99,102,241,0.4);" onclick="l8AddRow()"><i class="fa-solid fa-plus" style="margin-left:6px;"></i>إضافة صف</button>
+                                                <button class="lab-btn green-btn" onclick="runL8Scatter()"><i class="fa-solid fa-chart-line" style="margin-left:6px;"></i>ارسم وافصل التكاليف</button>
+                                            </div>
+
+                                            <div id="l8-result" style="display:none;">
+                                                <hr class="lab-divider">
+                                                <div class="lab-section-title">📐 Linear Regression Results</div>
+                                                <div class="lab-result">
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">📊 TRENDLINE EQUATION</span>
+                                                        <span class="lab-result-val" id="l8-equation" style="font-size:16px;"></span>
+                                                    </div>
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">📦 VARIABLE COST / UNIT (m)</span>
+                                                        <span class="lab-result-val amber-val big" id="l8-m"></span>
+                                                        <span style="font-size:11px;color:#64748b;">= slope = coefficient of X</span>
+                                                    </div>
+                                                    <div class="lab-result-row">
+                                                        <span class="lab-result-label">🏗️ TOTAL FIXED COST (c)</span>
+                                                        <span class="lab-result-val green-val big" id="l8-c"></span>
+                                                        <span style="font-size:11px;color:#64748b;">= y-intercept = constant</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="lab-chart-wrap" style="margin-top:14px;">
+                                                    <div class="lab-chart-title">📈 SCATTER CHART WITH LINEAR TRENDLINE</div>
+                                                    <svg id="l8-chart" width="540" height="220" viewBox="0 0 540 220"></svg>
+                                                    <div class="lab-legend">
+                                                        <div class="lab-legend-item"><div class="lab-legend-dot" style="background:#6ee7b7;"></div>Data Points</div>
+                                                        <div class="lab-legend-item"><div class="lab-legend-dot" style="background:#f59e0b;width:20px;height:3px;border-radius:2px;"></div>Trendline (y=mx+c)</div>
+                                                    </div>
+                                                </div>
+
+                                                <div style="margin-top:12px;padding:12px 16px;background:rgba(16,185,129,0.1);border-radius:10px;border-left:4px solid #10b981;direction:ltr;">
+                                                    <div style="font-size:12px;color:#6ee7b7;font-weight:700;margin-bottom:6px;">🧠 Excel Steps to Reproduce This in Real Excel:</div>
+                                                    <div class="lab-steps" style="margin:0;">
+                                                        <div class="lab-step">
+                                                            <div class="lab-step-num">1</div>
+                                                            <div class="lab-step-text">Select <span class="hi-amber">Activity (X)</span> and <span class="hi-green">Cost (Y)</span> columns → <code>Insert → Charts → Scatter</code></div>
+                                                        </div>
+                                                        <div class="lab-step">
+                                                            <div class="lab-step-num">2</div>
+                                                            <div class="lab-step-text">Click chart → <code>Chart Design → Add Chart Element → Trendline → Linear</code></div>
+                                                        </div>
+                                                        <div class="lab-step">
+                                                            <div class="lab-step-num">3</div>
+                                                            <div class="lab-step-text">Right-click trendline → <code>Format Trendline → ✅ Display Equation on chart</code></div>
+                                                        </div>
+                                                        <div class="lab-step">
+                                                            <div class="lab-step-num">4</div>
+                                                            <div class="lab-step-text">Read the equation: <span class="hi-amber">coefficient of x = Variable Cost/unit</span>, <span class="hi-green">constant = Fixed Cost</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="content-ar">
                                         <div class="content-ar-header"><i class="fa-solid fa-lightbulb"></i> الشرح بالعامية المصرية (الزتونة)</div>
@@ -3323,7 +3973,7 @@
                                 <div class="acc-body-inner">
                                     <div class="content-en">
                                         <p><strong>Official Exam Questions &amp; Confirmed Answer Keys for Lecture 8:</strong></p>
-                                        <div style="background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #fed7aa; margin-bottom: 15px;">
+                                        <div class="mcq-white-card">
                                             <ul style="list-style-type: decimal; padding-left: 20px;">
                                                 <li style="margin-bottom: 10px;">Which of the following menus is used to obtain regression order in excel:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (a) Data</strong> <span style="color: #71717a; font-size:13px;">(Accessible via Data menu &rarr; Data Analysis ToolPak plugin)</span></li>
                                                 <li style="margin-bottom: 10px;">Which of the following menus is used to represent the data with chart / Scatter chart in excel:<br><strong style="color: #16a34a;">&rarr; Correct Choice: (d) Insert</strong></li>
@@ -4169,6 +4819,450 @@ ${fullContent}
         });
         
         renderBookmarks();
+    </script>
+
+    <!-- ═══════════════════════════════════════════════
+         EXCEL INTERACTIVE LABS — JavaScript Engine
+    ═══════════════════════════════════════════════ -->
+    <script>
+    // ──────────────────────────────────────────────────
+    // LAB L5 — Cell Reference Shift Simulator
+    // ──────────────────────────────────────────────────
+    const L5_GRID = {
+        A1:0, B1:3, C1:9, D1:'', E1:'',
+        A2:1, B2:2, C2:'', D2:'', E2:'',
+        A3:'', B3:6, C3:'', D3:'', E3:'',
+        A4:'', B4:'', C4:'', D4:'', E4:'',
+        A5:'', B5:'', C5:'', D5:'', E5:''
+    };
+
+    function l5ColNum(c){ return 'ABCDE'.indexOf(c); }
+    function l5ColLetter(n){ return 'ABCDE'[n]; }
+
+    // parse formula tokens (supports $X$N absolute, XN relative)
+    function l5ParseRefs(formula){
+        const regex = /(\$?)([A-E])(\$?)(\d)/g;
+        const refs=[];
+        let m;
+        while((m=regex.exec(formula))!==null){
+            refs.push({
+                absCol: m[1]==='$',
+                col: m[2],
+                absRow: m[3]==='$',
+                row: parseInt(m[4]),
+                raw: m[0]
+            });
+        }
+        return refs;
+    }
+
+    function l5ShiftFormula(formula, dc, dr){
+        return formula.replace(/(\$?)([A-E])(\$?)(\d)/g, (_, ac, col, ar, row)=>{
+            const newCol = ac ? col : l5ColLetter(l5ColNum(col)+dc);
+            const newRow = ar ? row : (parseInt(row)+dr);
+            return ac+newCol+ar+newRow;
+        });
+    }
+
+    function l5EvalFormula(formula, grid){
+        // replace cell refs with values
+        let expr = formula.replace(/^=/, '');
+        expr = expr.replace(/\$?([A-E])\$?(\d)/g, (_, c, r)=>{
+            const key = c+r;
+            const v = grid[key];
+            return (v==='' || v===undefined) ? '0' : v;
+        });
+        try { return Function('"use strict"; return ('+expr+')')(); }
+        catch(e){ return 'ERR'; }
+    }
+
+    function runL5Sim(){
+        const src = document.getElementById('l5-src').value;
+        const dst = document.getElementById('l5-dst').value;
+        const formula = document.getElementById('l5-formula').value.trim();
+
+        const srcCol = src[0], srcRow = parseInt(src[1]);
+        const dstCol = dst[0], dstRow = parseInt(dst[1]);
+        const dc = l5ColNum(dstCol) - l5ColNum(srcCol);
+        const dr = dstRow - srcRow;
+
+        const newFormula = l5ShiftFormula(formula, dc, dr);
+        const result = l5EvalFormula(newFormula, L5_GRID);
+
+        // Highlight grid cells
+        document.querySelectorAll('.cell-grid-table td').forEach(td=>td.className='');
+        const srcEl = document.getElementById('gc-'+src); if(srcEl) srcEl.className='cell-source';
+        const dstEl = document.getElementById('gc-'+dst); if(dstEl) dstEl.className='cell-dest';
+
+        // highlight shifted refs
+        l5ParseRefs(newFormula).forEach(ref=>{
+            const key = 'gc-'+ref.col+ref.row;
+            const el = document.getElementById(key);
+            if(el) el.className = ref.absCol && ref.absRow ? 'cell-ref-abs' : 'cell-ref';
+        });
+
+        // steps
+        const stepsDiv = document.getElementById('l5-steps');
+        stepsDiv.innerHTML = `
+            <div class="lab-step"><div class="lab-step-num">1</div><div class="lab-step-text">Original formula in <span class="hi-amber">${src}</span>: <code>${formula}</code></div></div>
+            <div class="lab-step"><div class="lab-step-num">2</div><div class="lab-step-text">Moving from <span class="hi-amber">${src}</span> → <span class="hi-green">${dst}</span> means: shift <span class="hi-amber">${dc>0?'+':''}${dc} col${dc!==1?'s':''}</span>, <span class="hi-amber">${dr>0?'+':''}${dr} row${dr!==1?'s':''}</span></div></div>
+            <div class="lab-step"><div class="lab-step-num">3</div><div class="lab-step-text">Absolute refs <code>$</code> are <span class="hi-red">locked</span> (no shift). Relative refs shift by offset.</div></div>
+            <div class="lab-step"><div class="lab-step-num">4</div><div class="lab-step-text">New formula in <span class="hi-green">${dst}</span>: <code>${newFormula}</code></div></div>
+            <div class="lab-step"><div class="lab-step-num">5</div><div class="lab-step-text">Evaluate using grid values → result = <span class="hi-green">${result}</span></div></div>
+        `;
+
+        document.getElementById('l5-shift').textContent = `Cols: ${dc>0?'+':''}${dc}  |  Rows: ${dr>0?'+':''}${dr}`;
+        document.getElementById('l5-newcontent').textContent = newFormula;
+        document.getElementById('l5-newoutput').textContent = result;
+        document.getElementById('l5-result').style.display = 'block';
+    }
+
+    // ──────────────────────────────────────────────────
+    // LAB L6 — IF / SUMIFS Logic Lab
+    // ──────────────────────────────────────────────────
+    const L6_EMPLOYEES = [
+        {name:'Ahmed Hassan',  gender:'m', dept:'Sales',   sales:7200},
+        {name:'Sara Mohamed',  gender:'f', dept:'HR',      sales:4800},
+        {name:'Khaled Ali',    gender:'m', dept:'IT',      sales:9100},
+        {name:'Dina Nasser',   gender:'f', dept:'Sales',   sales:6300},
+        {name:'Omar Youssef',  gender:'m', dept:'Finance', sales:5500},
+        {name:'Rana Ibrahim',  gender:'f', dept:'IT',      sales:8700},
+        {name:'Tarek Salam',   gender:'m', dept:'HR',      sales:3900},
+        {name:'Layla Farouk',  gender:'f', dept:'Finance', sales:7800},
+    ];
+
+    function l6InitTable(){
+        const tb = document.getElementById('l6-tbody');
+        if(!tb || tb.dataset.init) return;
+        tb.dataset.init = '1';
+        L6_EMPLOYEES.forEach(emp=>{
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${emp.name}</td><td>${emp.gender}</td><td>${emp.dept}</td><td>${emp.sales.toLocaleString()}</td><td class="l6-bonus-cell">—</td><td class="l6-match-cell">—</td>`;
+            tb.appendChild(tr);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', l6InitTable);
+    setTimeout(l6InitTable, 500);
+
+    function l6TestVal(empVal, op, testVal){
+        const numTest = parseFloat(testVal);
+        const isNum = !isNaN(numTest);
+        const strTest = testVal.replace(/^"|"$/g,'').toLowerCase();
+        const ev = isNum ? (typeof empVal==='number'?empVal:parseFloat(empVal)) : (empVal+'').toLowerCase();
+        if(op==='=')  return isNum ? ev==numTest : ev==strTest;
+        if(op==='<')  return ev < (isNum?numTest:strTest);
+        if(op==='>')  return ev > (isNum?numTest:strTest);
+        if(op==='<=') return ev <= (isNum?numTest:strTest);
+        if(op==='>=') return ev >= (isNum?numTest:strTest);
+        return false;
+    }
+
+    function runL6IF(){
+        l6InitTable();
+        const col   = document.getElementById('l6-if-col').value;
+        const op    = document.getElementById('l6-if-op').value;
+        const val   = document.getElementById('l6-if-val').value;
+        const trueV = parseFloat(document.getElementById('l6-if-true').value)||0;
+        const falseV= parseFloat(document.getElementById('l6-if-false').value)||0;
+
+        const colMap = {gender:'gender', dept:'dept', sales:'sales'};
+        const colLabel = {gender:'C (Gender)', dept:'D (Dept)', sales:'E (Sales)'};
+        const formulaStr = `=IF(${colLabel[col]}${op}${val}, ${trueV}, ${falseV})`;
+
+        const bonusCells = document.querySelectorAll('#l6-tbody .l6-bonus-cell');
+        let total = 0;
+        L6_EMPLOYEES.forEach((emp,i)=>{
+            const pass = l6TestVal(emp[colMap[col]], op, val);
+            const bonus = pass ? trueV : falseV;
+            total += bonus;
+            bonusCells[i].textContent = 'L.E. '+bonus.toLocaleString();
+            bonusCells[i].className = 'l6-bonus-cell '+(pass?'pass':'fail');
+            bonusCells[i].closest('tr').className = pass?'lab-row-match':'';
+        });
+
+        document.getElementById('l6-if-formula-show').textContent = formulaStr;
+        document.getElementById('l6-if-total').textContent = 'L.E. '+total.toLocaleString();
+        document.getElementById('l6-if-result').style.display = 'block';
+    }
+
+    function runL6SUMIFS(){
+        l6InitTable();
+        const gender = document.getElementById('l6-sumifs-g').value;
+        const dept   = document.getElementById('l6-sumifs-d').value;
+
+        let formula = '=SUMIFS(Sales, ';
+        const conds = [];
+        if(gender!=='any') conds.push(`Gender, "${gender}"`);
+        if(dept!=='any')   conds.push(`Dept, "${dept}"`);
+        formula += conds.join(', ') + ')';
+
+        const matchCells = document.querySelectorAll('#l6-tbody .l6-match-cell');
+        let total = 0, matchCount = 0;
+        L6_EMPLOYEES.forEach((emp,i)=>{
+            const gMatch = gender==='any' || emp.gender===gender;
+            const dMatch = dept==='any'   || emp.dept===dept;
+            const match = gMatch && dMatch;
+            if(match){ total += emp.sales; matchCount++; }
+            matchCells[i].textContent = match ? '✅ Yes' : '—';
+            matchCells[i].className = 'l6-match-cell '+(match?'pass':'');
+            matchCells[i].closest('tr').classList.toggle('lab-row-match', match);
+        });
+
+        document.getElementById('l6-sumifs-formula-show').textContent = formula;
+        document.getElementById('l6-sumifs-total').textContent = 'L.E. '+total.toLocaleString();
+        document.getElementById('l6-sumifs-rows').textContent = matchCount+' row(s)';
+        document.getElementById('l6-sumifs-result').style.display = 'block';
+    }
+
+    // ──────────────────────────────────────────────────
+    // LAB L7 — Depreciation Schedule Simulator
+    // ──────────────────────────────────────────────────
+    function l7SLN(cost, salvage, life){ return (cost - salvage) / life; }
+
+    function l7SYD(cost, salvage, life, per){
+        const dbl = life * (life + 1) / 2;
+        return (cost - salvage) * (life - per + 1) / dbl;
+    }
+
+    function l7DDB(cost, salvage, life, per, factor=2){
+        let bv = cost;
+        for(let y=1; y<=per; y++){
+            const dep = Math.min(bv * factor / life, bv - salvage);
+            if(y===per) return Math.max(dep, 0);
+            bv -= Math.max(dep, 0);
+        }
+        return 0;
+    }
+
+    function runL7Dep(){
+        const cost    = parseFloat(document.getElementById('l7-cost').value)||0;
+        const salvage = parseFloat(document.getElementById('l7-salvage').value)||0;
+        const life    = parseInt(document.getElementById('l7-life').value)||5;
+        if(cost<=salvage||life<1){ alert('القيم غير صالحة: يجب أن يكون التكلفة > قيمة الخردة، والعمر ≥ 1'); return; }
+
+        const sln = l7SLN(cost, salvage, life);
+        document.getElementById('l7-sln-val').textContent = 'L.E. '+sln.toFixed(2);
+        document.getElementById('l7-sln-formula').textContent = `=SLN(${cost}, ${salvage}, ${life})`;
+
+        const tbody = document.getElementById('l7-tbody');
+        tbody.innerHTML = '';
+        let slnBV = cost, sydBV = cost, ddbBV = cost;
+        const slnVals=[], sydVals=[], ddbVals=[];
+
+        for(let y=1; y<=life; y++){
+            const sydDep = l7SYD(cost, salvage, life, y);
+            const ddbDep = l7DDB(cost, salvage, life, y);
+            slnBV -= sln; sydBV -= sydDep; ddbBV -= ddbDep;
+            slnVals.push(sln); sydVals.push(sydDep); ddbVals.push(ddbDep);
+            const isHigh = y===1;
+            const tr = document.createElement('tr');
+            if(isHigh) tr.className='lab-row-hi';
+            tr.innerHTML = `
+                <td style="color:#a5b4fc;font-weight:800;">Year ${y}</td>
+                <td class="formula-cell">=SLN(${cost},${salvage},${life})</td>
+                <td>${sln.toFixed(2)}</td>
+                <td class="formula-cell">=SYD(${cost},${salvage},${life},${y})</td>
+                <td>${sydDep.toFixed(2)}</td>
+                <td class="formula-cell">=DDB(${cost},${salvage},${life},${y})</td>
+                <td>${ddbDep.toFixed(2)}</td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        // SVG Bar chart
+        const svg = document.getElementById('l7-chart');
+        svg.innerHTML='';
+        const W=520, H=160, pad={t:20,r:20,b:30,l:55};
+        const chartW=W-pad.l-pad.r, chartH=H-pad.t-pad.b;
+        const allVals=[...slnVals,...sydVals,...ddbVals];
+        const maxV=Math.max(...allVals);
+        const barGrp=chartW/(life*3+life-1);
+        const bw=barGrp*0.9/3;
+        const colors=['#6366f1','#f59e0b','#ef4444'];
+        const datasets=[slnVals,sydVals,ddbVals];
+        const grpW = chartW / life;
+
+        // Y axis ticks
+        for(let t=0;t<=4;t++){
+            const yv=maxV*t/4;
+            const yp=pad.t+chartH*(1-t/4);
+            const tick=document.createElementNS('http://www.w3.org/2000/svg','line');
+            tick.setAttribute('x1',pad.l); tick.setAttribute('x2',W-pad.r);
+            tick.setAttribute('y1',yp); tick.setAttribute('y2',yp);
+            tick.setAttribute('stroke','rgba(148,163,184,0.1)'); tick.setAttribute('stroke-width','1');
+            svg.appendChild(tick);
+            const lbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+            lbl.setAttribute('x',pad.l-4); lbl.setAttribute('y',yp+4);
+            lbl.setAttribute('text-anchor','end'); lbl.setAttribute('fill','#64748b'); lbl.setAttribute('font-size','9');
+            lbl.textContent=yv>=1000?(yv/1000).toFixed(1)+'k':yv.toFixed(0);
+            svg.appendChild(lbl);
+        }
+
+        for(let y=0;y<life;y++){
+            datasets.forEach((ds,di)=>{
+                const val=ds[y];
+                const bh=(val/maxV)*chartH;
+                const x=pad.l+y*grpW+di*(bw+1);
+                const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+                rect.setAttribute('x',x); rect.setAttribute('y',pad.t+chartH-bh);
+                rect.setAttribute('width',bw); rect.setAttribute('height',bh);
+                rect.setAttribute('fill',colors[di]); rect.setAttribute('rx','2');
+                rect.setAttribute('opacity','0.85');
+                svg.appendChild(rect);
+            });
+            // X label
+            const lbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+            lbl.setAttribute('x',pad.l+(y+0.5)*grpW); lbl.setAttribute('y',H-pad.b+14);
+            lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('fill','#94a3b8'); lbl.setAttribute('font-size','9');
+            lbl.textContent='Y'+(y+1);
+            svg.appendChild(lbl);
+        }
+
+        document.getElementById('l7-result').style.display='block';
+    }
+
+    // ──────────────────────────────────────────────────
+    // LAB L8 — Mixed Cost Separator & Scatter Chart
+    // ──────────────────────────────────────────────────
+    let l8RowCount = 5;
+
+    function l8AddRow(){
+        l8RowCount++;
+        const tbody = document.getElementById('l8-tbody');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td style="color:#6366f1;">${l8RowCount}</td>
+            <td><input class="lab-input" style="width:90px;padding:5px 8px;" placeholder="Month"/></td>
+            <td><input class="lab-input" style="width:90px;padding:5px 8px;" type="number" placeholder="X"/></td>
+            <td><input class="lab-input" style="width:90px;padding:5px 8px;" type="number" placeholder="Y"/></td>
+            <td><button onclick="l8RemoveRow(this)" style="background:rgba(239,68,68,0.2);border:none;color:#fca5a5;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px;">✕</button></td>
+        `;
+        tbody.appendChild(tr);
+    }
+
+    function l8RemoveRow(btn){
+        const tr = btn.closest('tr');
+        tr.remove();
+    }
+
+    function l8GetData(){
+        const rows = document.querySelectorAll('#l8-tbody tr');
+        const points = [];
+        rows.forEach(tr=>{
+            const inputs = tr.querySelectorAll('input');
+            const x = parseFloat(inputs[1].value);
+            const y = parseFloat(inputs[2].value);
+            if(!isNaN(x) && !isNaN(y)) points.push({x,y});
+        });
+        return points;
+    }
+
+    function l8LeastSquares(pts){
+        const n = pts.length;
+        let sumX=0,sumY=0,sumXY=0,sumX2=0;
+        pts.forEach(p=>{ sumX+=p.x; sumY+=p.y; sumXY+=p.x*p.y; sumX2+=p.x*p.x; });
+        const m = (n*sumXY - sumX*sumY) / (n*sumX2 - sumX*sumX);
+        const c = (sumY - m*sumX) / n;
+        return {m, c};
+    }
+
+    function runL8Scatter(){
+        const pts = l8GetData();
+        if(pts.length < 2){ alert('يجب إدخال صفين على الأقل!'); return; }
+        const {m, c} = l8LeastSquares(pts);
+
+        const mStr = m.toFixed(4);
+        const cStr = c.toFixed(2);
+        const eqStr = `y = ${mStr}x + ${cStr}`;
+
+        document.getElementById('l8-equation').textContent = eqStr;
+        document.getElementById('l8-m').textContent = 'L.E. '+parseFloat(m.toFixed(4)).toLocaleString();
+        document.getElementById('l8-c').textContent  = 'L.E. '+parseFloat(c.toFixed(2)).toLocaleString();
+
+        // SVG Scatter Chart
+        const svg = document.getElementById('l8-chart');
+        svg.innerHTML = '';
+        const W=540, H=220, pad={t:20,r:20,b:35,l:60};
+        const chartW=W-pad.l-pad.r, chartH=H-pad.t-pad.b;
+
+        const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
+        const minX=Math.min(...xs), maxX=Math.max(...xs);
+        const minY=Math.min(...ys), maxY=Math.max(...ys);
+        const padX=(maxX-minX)*0.1||50, padY=(maxY-minY)*0.1||500;
+        const rx=(maxX-minX+2*padX), ry=(maxY-minY+2*padY);
+
+        const toSvgX=x=>pad.l+(x-(minX-padX))/rx*chartW;
+        const toSvgY=y=>pad.t+chartH-(y-(minY-padY))/ry*chartH;
+
+        // Grid lines
+        for(let t=0;t<=4;t++){
+            const yv=minY-padY+ry*t/4;
+            const yp=toSvgY(yv);
+            const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+            line.setAttribute('x1',pad.l); line.setAttribute('x2',W-pad.r);
+            line.setAttribute('y1',yp); line.setAttribute('y2',yp);
+            line.setAttribute('stroke','rgba(148,163,184,0.12)'); line.setAttribute('stroke-width','1');
+            svg.appendChild(line);
+            const lbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+            lbl.setAttribute('x',pad.l-6); lbl.setAttribute('y',yp+4);
+            lbl.setAttribute('text-anchor','end'); lbl.setAttribute('fill','#64748b'); lbl.setAttribute('font-size','9');
+            lbl.textContent = yv>=1000?(yv/1000).toFixed(1)+'k':yv.toFixed(0);
+            svg.appendChild(lbl);
+        }
+        for(let t=0;t<=4;t++){
+            const xv=minX-padX+rx*t/4;
+            const xp=toSvgX(xv);
+            const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+            line.setAttribute('x1',xp); line.setAttribute('x2',xp);
+            line.setAttribute('y1',pad.t); line.setAttribute('y2',H-pad.b);
+            line.setAttribute('stroke','rgba(148,163,184,0.08)'); line.setAttribute('stroke-width','1');
+            svg.appendChild(line);
+            const lbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+            lbl.setAttribute('x',xp); lbl.setAttribute('y',H-pad.b+14);
+            lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('fill','#64748b'); lbl.setAttribute('font-size','9');
+            lbl.textContent = xv.toFixed(0);
+            svg.appendChild(lbl);
+        }
+
+        // Trendline
+        const x1t=minX-padX, x2t=maxX+padX;
+        const y1t=m*x1t+c, y2t=m*x2t+c;
+        const tl=document.createElementNS('http://www.w3.org/2000/svg','line');
+        tl.setAttribute('x1',toSvgX(x1t)); tl.setAttribute('y1',toSvgY(y1t));
+        tl.setAttribute('x2',toSvgX(x2t)); tl.setAttribute('y2',toSvgY(y2t));
+        tl.setAttribute('stroke','#f59e0b'); tl.setAttribute('stroke-width','2');
+        tl.setAttribute('stroke-dasharray','5,3');
+        svg.appendChild(tl);
+
+        // Equation label
+        const eqLbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+        eqLbl.setAttribute('x',toSvgX(x2t)-5); eqLbl.setAttribute('y',toSvgY(y2t)-8);
+        eqLbl.setAttribute('text-anchor','end'); eqLbl.setAttribute('fill','#fcd34d'); eqLbl.setAttribute('font-size','10'); eqLbl.setAttribute('font-weight','700');
+        eqLbl.textContent = eqStr;
+        svg.appendChild(eqLbl);
+
+        // Data points
+        pts.forEach(p=>{
+            const cx=toSvgX(p.x), cy=toSvgY(p.y);
+            const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+            circle.setAttribute('cx',cx); circle.setAttribute('cy',cy);
+            circle.setAttribute('r','5'); circle.setAttribute('fill','#6ee7b7');
+            circle.setAttribute('stroke','#059669'); circle.setAttribute('stroke-width','1.5');
+            svg.appendChild(circle);
+        });
+
+        // Axes
+        const axisStyle={stroke:'rgba(148,163,184,0.3)',strokeWidth:1};
+        ['x1','y1','x2','y2'].forEach(()=>{});
+        const xAxis=document.createElementNS('http://www.w3.org/2000/svg','line');
+        xAxis.setAttribute('x1',pad.l); xAxis.setAttribute('y1',H-pad.b); xAxis.setAttribute('x2',W-pad.r); xAxis.setAttribute('y2',H-pad.b);
+        xAxis.setAttribute('stroke','rgba(148,163,184,0.3)'); svg.appendChild(xAxis);
+        const yAxis=document.createElementNS('http://www.w3.org/2000/svg','line');
+        yAxis.setAttribute('x1',pad.l); yAxis.setAttribute('y1',pad.t); yAxis.setAttribute('x2',pad.l); yAxis.setAttribute('y2',H-pad.b);
+        yAxis.setAttribute('stroke','rgba(148,163,184,0.3)'); svg.appendChild(yAxis);
+
+        document.getElementById('l8-result').style.display='block';
+    }
     </script>
 </body>
 
