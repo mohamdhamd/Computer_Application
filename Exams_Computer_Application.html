@@ -3350,22 +3350,7 @@
 
             questionGroups.sort((a, b) => a.indices[0] - b.indices[0]);
 
-            // Reorder activeQuestions to match the sorted group order
-            const sortedQuestions = [];
-            const newGroups = [];
-            questionGroups.forEach(g => {
-                const newIndices = [];
-                g.indices.forEach(oldIdx => {
-                    newIndices.push(sortedQuestions.length);
-                    sortedQuestions.push(activeQuestions[oldIdx]);
-                });
-                newGroups.push({ label: g.label, indices: newIndices });
-            });
-
-            activeQuestions = sortedQuestions;
-            questionGroups = newGroups;
-
-            questionGroupMap = new Array(activeQuestions.length).fill(-1);
+            questionGroupMap = new Array(questions.length).fill(-1);
             questionGroups.forEach((g, gi) => {
                 g.indices.forEach(i => { questionGroupMap[i] = gi; });
             });
@@ -4544,13 +4529,6 @@
                 const label = document.createElement('div');
                 label.className = 'bookmark-q-label';
                 label.textContent = b.examTitle + ' · سؤال ' + (b.qIndex + 1);
-                const originalExam = examsData[b.examId];
-                if (originalExam) {
-                    const qIdx = originalExam.questions.findIndex(q => q.id === b.qId);
-                    if (qIdx >= 0) {
-                        label.textContent = originalExam.title + ' · سؤال ' + (qIdx + 1);
-                    }
-                }
                 labelWrap.appendChild(label);
                 
                 const timeLabel = document.createElement('span');
