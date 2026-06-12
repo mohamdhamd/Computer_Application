@@ -2646,6 +2646,79 @@
         #questions-container .question-block ~ .question-block .fahd-shared-table {
             display: none !important;
         }
+
+        /* Dashboard Bookmark Card */
+        .bookmark-dashboard-card {
+            background: white;
+            border: 2px solid #fcd34d;
+            border-radius: var(--radius-xl);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-md);
+            animation: fadeInUp 0.3s ease forwards;
+        }
+
+        .bookmark-q-label {
+            display: inline-block;
+            background: #fefce8;
+            color: #b45309;
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.35rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #fcd34d;
+        }
+
+        .bookmark-note-display {
+            background: #fffbeb;
+            border-right: 4px solid #f59e0b;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: #b45309;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Dashboard Items List wrappers */
+        .dashboard-items-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 0.25rem;
+            border: 1px solid var(--slate-100);
+            border-radius: var(--radius-xl);
+            background: var(--slate-50);
+        }
+
+        /* Collapsible details for dashboard cards */
+        .card-details-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--slate-600);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+        }
+
+        .card-details-toggle:hover {
+            background: var(--slate-100);
+            color: var(--slate-800);
+        }
+
+        .card-details-body {
+            margin-top: 0.5rem;
+            display: none; /* hidden by default */
+        }
     </style>
 </head>
 
@@ -2949,6 +3022,30 @@
                     </button>
                 </div>
                 <div id="history-list" class="history-list"></div>
+            </div>
+
+            <!-- Saved Bookmarked Questions Widget -->
+            <div id="dashboard-bookmarks-section" class="history-section hidden" style="margin-top: 2rem;">
+                <div class="history-header" style="border-bottom: 2px solid var(--warning); padding-bottom: 0.5rem;">
+                    <h3 style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-bookmark text-amber-500"></i> الأسئلة المحفوظة للمراجعة (<span id="dashboard-bookmarks-count">0</span>)</h3>
+                    <button class="btn btn-sm btn-outline" onclick="clearAllBookmarksDashboard()"
+                        style="color:var(--danger); border-color:var(--danger); font-size: 0.75rem;">
+                        <i class="fa-solid fa-trash-can"></i> مسح المحفوظات
+                    </button>
+                </div>
+                <div id="dashboard-bookmarks-list" class="dashboard-items-list" style="display:flex; flex-direction:column; gap:1rem; margin-top:1rem;"></div>
+            </div>
+
+            <!-- Wrong Questions Widget -->
+            <div id="dashboard-wrongs-section" class="history-section hidden" style="margin-top: 2rem;">
+                <div class="history-header" style="border-bottom: 2px solid var(--danger); padding-bottom: 0.5rem;">
+                    <h3 style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-triangle-exclamation text-red-500"></i> الأسئلة التي أخطأت فيها (<span id="dashboard-wrongs-count">0</span>)</h3>
+                    <button class="btn btn-sm btn-outline" onclick="clearAllWrongQuestionsDashboard()"
+                        style="color:var(--danger); border-color:var(--danger); font-size: 0.75rem;">
+                        <i class="fa-solid fa-trash-can"></i> مسح سجل الأخطاء
+                    </button>
+                </div>
+                <div id="dashboard-wrongs-list" class="dashboard-items-list" style="display:flex; flex-direction:column; gap:1rem; margin-top:1rem;"></div>
             </div>
         </div>
 
@@ -3667,6 +3764,9 @@
             if (isCorrect) {
                 score++;
                 liveScore.textContent = score;
+                removeWrongQuestionIfExists(selectedExamId, q.id);
+            } else {
+                addWrongQuestion(selectedExamId, q, selectedOptId);
             }
 
             const block = document.getElementById('qblock-' + qIndex);
@@ -4012,6 +4112,9 @@
                     if (el) el.textContent = cnt + ' سؤال';
                 }
             }
+            // Re-render bookmarks and wrong questions dashboard on page load
+            renderBookmarksDashboard();
+            renderWrongQuestionsDashboard();
         });
 
         function stripHtmlTags(html) {
@@ -4020,15 +4123,9 @@
             return (tmp.textContent || tmp.innerText || '').trim();
         }
 
-        function openAIChat(qIndex) {
-            const q = activeQuestions[qIndex];
-            if (!q) return;
 
-            const gIndex = questionGroupMap[qIndex];
-            const group = questionGroups[gIndex];
-            const groupLabel = (group && group.label) ? group.label : null;
-            const isGrouped = group && group.label && group.indices.length > 1;
 
+        function getAIChatPrompt(q, examId, groupLabel = null, isGrouped = false, posInGroup = 1, totalInGroup = 1) {
             const qTextPlain = stripHtmlTags(q.text);
             const optionsText = q.options.map(o => stripHtmlTags(o.text)).join('\n');
             const correctOpt = q.options.find(o => o.id === q.correct);
@@ -4036,8 +4133,6 @@
 
             let prompt = '';
             if (groupLabel && isGrouped) {
-                const posInGroup = group.indices.indexOf(qIndex) + 1;
-                const totalInGroup = group.indices.length;
                 prompt += `📌 [سياق المجموعة المترابطة]\n`;
                 prompt += `الموضوع: ${groupLabel}\n`;
                 prompt += `(هذا السؤال ${posInGroup} من ${totalInGroup} في هذه المجموعة)\n\n`;
@@ -4045,8 +4140,11 @@
             prompt += `📝 السؤال:\n${qTextPlain}\n\n`;
             prompt += `الخيارات:\n${optionsText}\n\n`;
             prompt += `✅ الإجابة الصحيحة هي: (${q.correct.toUpperCase()}) ${correctText}\n\n`;
-            prompt += `🎓 المطلوب: اشرح لي بالتفصيل وخطوة بخطوة لماذا هذه الإجابة هي الصحيحة وكيف تم التوصل إليها في محاسبة قطاع البترول، بأسلوب بسيط ومفهوم بالعربي.`;
+            prompt += `🎓 المطلوب: اشرح لي بالتفصيل وخطوة بخطوة لماذا هذه الإجابة هي الصحيحة وكيف تم التوصل إليها في محاسبة وتطبيقات الحاسب، بأسلوب بسيط ومفهوم بالعربي.`;
+            return prompt;
+        }
 
+        function copyAndShowAIOverlay(prompt) {
             const copyPromise = navigator.clipboard ?
                 navigator.clipboard.writeText(prompt) :
                 Promise.reject('no clipboard API');
@@ -4094,6 +4192,30 @@
             setTimeout(() => {
                 document.getElementById('ai-paste-overlay').classList.add('show');
             }, 300);
+        }
+
+        function openAIChat(qIndex) {
+            const q = activeQuestions[qIndex];
+            if (!q) return;
+
+            const gIndex = questionGroupMap[qIndex];
+            const group = questionGroups[gIndex];
+            const groupLabel = (group && group.label) ? group.label : null;
+            const isGrouped = group && group.label && group.indices.length > 1;
+
+            let posInGroup = 1, totalInGroup = 1;
+            if (groupLabel && isGrouped) {
+                posInGroup = group.indices.indexOf(qIndex) + 1;
+                totalInGroup = group.indices.length;
+            }
+
+            const prompt = getAIChatPrompt(q, selectedExamId, groupLabel, isGrouped, posInGroup, totalInGroup);
+            copyAndShowAIOverlay(prompt);
+        }
+
+        function openAIChatDirect(q, examId) {
+            const prompt = getAIChatPrompt(q, examId);
+            copyAndShowAIOverlay(prompt);
         }
 
         function closePasteOverlay() {
@@ -4278,6 +4400,7 @@
         // ================================================================
         renderHistory();
         initRandomQuote();
+        // renderBookmarksDashboard & renderWrongQuestionsDashboard called below after their dependencies are defined
 
         function initRandomQuote() {
             const quotes = [
@@ -4307,6 +4430,357 @@
 
         function saveBookmarks(arr) {
             localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(arr));
+        }
+
+        // ================================================================
+        //  WRONG QUESTIONS PERSISTENCE
+        // ================================================================
+        const WRONG_QUESTIONS_KEY = 'spec_wrong_questions';
+
+        function getWrongQuestions() {
+            try { return JSON.parse(localStorage.getItem(WRONG_QUESTIONS_KEY)) || []; }
+            catch (e) { return []; }
+        }
+
+        function saveWrongQuestions(arr) {
+            localStorage.setItem(WRONG_QUESTIONS_KEY, JSON.stringify(arr));
+        }
+
+        function addWrongQuestion(examId, q, userAnswerId) {
+            let wrongs = getWrongQuestions();
+            const existingIdx = wrongs.findIndex(w => w.qId === q.id && w.examId === examId);
+            const correctOpt = q.options.find(o => o.id === q.correct);
+            const userOpt = q.options.find(o => o.id === userAnswerId);
+            
+            const entry = {
+                examId,
+                examTitle: examsData[examId]?.title || examId,
+                qId: q.id,
+                text: q.text,
+                explanation: q.explanation || '',
+                correct: q.correct,
+                correctText: correctOpt ? correctOpt.text : q.correct,
+                userAnswerId,
+                userAnswerText: userOpt ? userOpt.text : userAnswerId,
+                options: q.options,
+                basmaga: q.basmaga || '',
+                savedAt: new Date().toLocaleString('ar-EG', {
+                    hour: '2-digit', minute: '2-digit',
+                    day: '2-digit', month: '2-digit', year: 'numeric', hour12: true
+                })
+            };
+
+            if (existingIdx >= 0) {
+                wrongs[existingIdx] = entry;
+            } else {
+                wrongs.unshift(entry);
+            }
+            saveWrongQuestions(wrongs);
+            renderWrongQuestionsDashboard();
+        }
+
+        function removeWrongQuestion(examId, qId) {
+            let wrongs = getWrongQuestions();
+            wrongs = wrongs.filter(w => !(w.qId === qId && w.examId === examId));
+            saveWrongQuestions(wrongs);
+            renderWrongQuestionsDashboard();
+        }
+
+        function removeWrongQuestionIfExists(examId, qId) {
+            let wrongs = getWrongQuestions();
+            const filtered = wrongs.filter(w => !(w.qId === qId && w.examId === examId));
+            if (filtered.length !== wrongs.length) {
+                saveWrongQuestions(filtered);
+                renderWrongQuestionsDashboard();
+            }
+        }
+
+        // ================================================================
+        //  DASHBOARD RENDER FUNCTIONS FOR BOOKMARKS & WRONG QUESTIONS
+        // ================================================================
+        function renderBookmarksDashboard() {
+            const section = document.getElementById('dashboard-bookmarks-section');
+            const list = document.getElementById('dashboard-bookmarks-list');
+            const countEl = document.getElementById('dashboard-bookmarks-count');
+            if (!section || !list) return;
+
+            const bookmarks = getBookmarks();
+            if (bookmarks.length === 0) {
+                section.classList.add('hidden');
+                section.style.display = 'none';
+                return;
+            }
+
+            section.classList.remove('hidden');
+            section.style.setProperty('display', 'block', 'important');
+            countEl.textContent = bookmarks.length;
+            list.innerHTML = '';
+
+            bookmarks.forEach((b, idx) => {
+                const card = document.createElement('div');
+                card.className = 'bookmark-dashboard-card';
+
+                const header = document.createElement('div');
+                header.style.cssText = 'display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;';
+                
+                const labelWrap = document.createElement('div');
+                labelWrap.style.cssText = 'display:flex; align-items:center; gap:0.5rem;';
+                
+                const label = document.createElement('div');
+                label.className = 'bookmark-q-label';
+                label.textContent = b.examTitle + ' · سؤال ' + (b.qIndex + 1);
+                labelWrap.appendChild(label);
+                
+                const timeLabel = document.createElement('span');
+                timeLabel.style.cssText = 'font-size:0.7rem; color:var(--slate-400); font-weight:600;';
+                timeLabel.textContent = b.savedAt || '';
+                labelWrap.appendChild(timeLabel);
+                
+                header.appendChild(labelWrap);
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-outline btn-sm';
+                deleteBtn.style.cssText = 'color:var(--danger); border-color:var(--danger); padding:0.25rem 0.5rem; font-size:0.75rem;';
+                deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i> حذف';
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (confirm('هل تريد حذف هذا السؤال من المحفوظات؟')) {
+                        deleteBookmarkDirect(b.examId, b.qId);
+                    }
+                };
+                header.appendChild(deleteBtn);
+                card.appendChild(header);
+
+                if (b.note) {
+                    const noteBox = document.createElement('div');
+                    noteBox.className = 'bookmark-note-display';
+                    noteBox.innerHTML = `<i class="fa-solid fa-pen" style="margin-left:0.35rem;"></i>ملاحظتك: ${b.note}`;
+                    card.appendChild(noteBox);
+                }
+
+                const qText = document.createElement('div');
+                qText.className = 'wrong-q-text';
+                qText.innerHTML = b.qText;
+                card.appendChild(qText);
+
+                const answersRow = document.createElement('div');
+                answersRow.className = 'wrong-answers-row';
+                const correctAns = document.createElement('div');
+                correctAns.className = 'wrong-correct-ans';
+                correctAns.innerHTML = '<strong>الإجابة الصحيحة:</strong> ' + b.correctText;
+                answersRow.appendChild(correctAns);
+                card.appendChild(answersRow);
+
+                const toggle = document.createElement('div');
+                toggle.className = 'card-details-toggle';
+                toggle.innerHTML = `<span><i class="fa-solid fa-circle-info"></i> عرض الشرح والتفكيك</span><i class="fa-solid fa-chevron-down toggle-icon"></i>`;
+                
+                const detailsBody = document.createElement('div');
+                detailsBody.className = 'card-details-body';
+                
+                let explHTML = '';
+                const originalQ = examsData[b.examId]?.questions?.find(q => q.id === b.qId);
+                const basmaga = originalQ ? originalQ.basmaga : '';
+                
+                if (basmaga) {
+                    explHTML += `<div class="basmaga-box"><i class="fa-solid fa-bolt-lightning"></i><div><div class="basmaga-label">زتونة البصمجة ⚡</div><div class="basmaga-text">${basmaga}</div></div></div>`;
+                }
+                explHTML += `<div class="wrong-explanation">${b.explanation || 'لا يوجد شرح متاح.'}</div>`;
+                
+                const aiBtn = document.createElement('button');
+                aiBtn.className = 'btn-ask-ai';
+                aiBtn.style.marginTop = '0.75rem';
+                aiBtn.innerHTML = '<i class="fa-solid fa-robot"></i> اسأل الذكاء الاصطناعي';
+                aiBtn.onclick = () => {
+                    const qObj = originalQ || { text: b.qText, options: [], correct: b.correct };
+                    openAIChatDirect(qObj, b.examId);
+                };
+                
+                detailsBody.innerHTML = explHTML;
+                detailsBody.appendChild(aiBtn);
+                card.appendChild(toggle);
+                card.appendChild(detailsBody);
+
+                toggle.onclick = () => {
+                    const isOpen = detailsBody.style.display === 'block';
+                    detailsBody.style.display = isOpen ? 'none' : 'block';
+                    toggle.querySelector('.toggle-icon').className = isOpen ? 'fa-solid fa-chevron-down toggle-icon' : 'fa-solid fa-chevron-up toggle-icon';
+                    if (!isOpen && typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                        MathJax.typesetPromise([detailsBody]);
+                    }
+                };
+
+                list.appendChild(card);
+            });
+
+            runMathJax();
+        }
+
+        function deleteBookmarkDirect(examId, qId) {
+            let bookmarks = getBookmarks();
+            bookmarks = bookmarks.filter(b => !(b.qId === qId && b.examId === examId));
+            saveBookmarks(bookmarks);
+            renderBookmarksDashboard();
+            showToast('🗑️ تم الحذف من محفوظاتك.');
+            const btn = document.getElementById('exp-bookmark-btn');
+            if (btn && selectedExamId === examId && activeQuestions[currentQuestionIndex]?.id === qId) {
+                btn.classList.remove('saved');
+                btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> احفظ للمراجعة';
+            }
+            const blockIdx = activeQuestions.findIndex(q => q.id === qId);
+            if (blockIdx >= 0) {
+                const block = document.getElementById('qblock-' + blockIdx);
+                if (block) {
+                    const blockBmBtn = block.querySelector('.btn-q-bookmark');
+                    if (blockBmBtn) {
+                        blockBmBtn.innerHTML = '<i class="fa-regular fa-bookmark"></i>';
+                    }
+                }
+            }
+        }
+
+        function clearAllBookmarksDashboard() {
+            if (confirm('هل أنت متأكد من مسح جميع الأسئلة المحفوظة؟')) {
+                saveBookmarks([]);
+                renderBookmarksDashboard();
+                showToast('🗑️ تم مسح جميع المحفوظات.');
+                const btn = document.getElementById('exp-bookmark-btn');
+                if (btn) {
+                    btn.classList.remove('saved');
+                    btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> احفظ للمراجعة';
+                }
+                document.querySelectorAll('.btn-q-bookmark').forEach(b => {
+                    b.innerHTML = '<i class="fa-regular fa-bookmark"></i>';
+                });
+            }
+        }
+
+        function renderWrongQuestionsDashboard() {
+            const section = document.getElementById('dashboard-wrongs-section');
+            const list = document.getElementById('dashboard-wrongs-list');
+            const countEl = document.getElementById('dashboard-wrongs-count');
+            if (!section || !list) return;
+
+            const wrongs = getWrongQuestions();
+            if (wrongs.length === 0) {
+                section.classList.add('hidden');
+                section.style.display = 'none';
+                return;
+            }
+
+            section.classList.remove('hidden');
+            section.style.setProperty('display', 'block', 'important');
+            countEl.textContent = wrongs.length;
+            list.innerHTML = '';
+
+            wrongs.forEach((w, idx) => {
+                const card = document.createElement('div');
+                card.className = 'wrong-answer-card';
+
+                const header = document.createElement('div');
+                header.style.cssText = 'display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;';
+                
+                const labelWrap = document.createElement('div');
+                labelWrap.style.cssText = 'display:flex; align-items:center; gap:0.5rem;';
+                
+                const label = document.createElement('div');
+                label.className = 'wrong-q-label';
+                label.textContent = w.examTitle + ' · سؤال ID: ' + w.qId;
+                const originalExam = examsData[w.examId];
+                if (originalExam) {
+                    const qIdx = originalExam.questions.findIndex(q => q.id === w.qId);
+                    if (qIdx >= 0) {
+                        label.textContent = originalExam.title + ' · سؤال ' + (qIdx + 1);
+                    }
+                }
+                labelWrap.appendChild(label);
+                
+                const timeLabel = document.createElement('span');
+                timeLabel.style.cssText = 'font-size:0.7rem; color:var(--slate-400); font-weight:600;';
+                timeLabel.textContent = w.savedAt || '';
+                labelWrap.appendChild(timeLabel);
+                
+                header.appendChild(labelWrap);
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-outline btn-sm';
+                deleteBtn.style.cssText = 'color:var(--success); border-color:var(--success); padding:0.25rem 0.5rem; font-size:0.75rem;';
+                deleteBtn.innerHTML = '<i class="fa-solid fa-check"></i> تم الاستيعاب';
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    removeWrongQuestion(w.examId, w.qId);
+                    showToast('✅ تم إزالة السؤال من الأخطاء!');
+                };
+                header.appendChild(deleteBtn);
+                card.appendChild(header);
+
+                const qText = document.createElement('div');
+                qText.className = 'wrong-q-text';
+                qText.innerHTML = w.text;
+                card.appendChild(qText);
+
+                const answersRow = document.createElement('div');
+                answersRow.className = 'wrong-answers-row';
+                
+                const yourAns = document.createElement('div');
+                yourAns.className = 'wrong-your-ans';
+                yourAns.innerHTML = '<strong>إجابتك السابقة:</strong> ' + w.userAnswerText;
+                answersRow.appendChild(yourAns);
+
+                const correctAns = document.createElement('div');
+                correctAns.className = 'wrong-correct-ans';
+                correctAns.innerHTML = '<strong>الإجابة الصحيحة:</strong> ' + w.correctText;
+                answersRow.appendChild(correctAns);
+                card.appendChild(answersRow);
+
+                const toggle = document.createElement('div');
+                toggle.className = 'card-details-toggle';
+                toggle.innerHTML = `<span><i class="fa-solid fa-circle-info"></i> عرض الشرح والتفكيك</span><i class="fa-solid fa-chevron-down toggle-icon"></i>`;
+                
+                const detailsBody = document.createElement('div');
+                detailsBody.className = 'card-details-body';
+                
+                let explHTML = '';
+                if (w.basmaga) {
+                    explHTML += `<div class="basmaga-box"><i class="fa-solid fa-bolt-lightning"></i><div><div class="basmaga-label">زتونة البصمجة ⚡</div><div class="basmaga-text">${w.basmaga}</div></div></div>`;
+                }
+                explHTML += `<div class="wrong-explanation">${w.explanation || 'لا يوجد شرح متاح.'}</div>`;
+                
+                const aiBtn = document.createElement('button');
+                aiBtn.className = 'btn-ask-ai';
+                aiBtn.style.marginTop = '0.75rem';
+                aiBtn.innerHTML = '<i class="fa-solid fa-robot"></i> اسأل الذكاء الاصطناعي';
+                aiBtn.onclick = () => {
+                    const qObj = { text: w.text, options: w.options || [], correct: w.correct };
+                    openAIChatDirect(qObj, w.examId);
+                };
+                
+                detailsBody.innerHTML = explHTML;
+                detailsBody.appendChild(aiBtn);
+                card.appendChild(toggle);
+                card.appendChild(detailsBody);
+
+                toggle.onclick = () => {
+                    const isOpen = detailsBody.style.display === 'block';
+                    detailsBody.style.display = isOpen ? 'none' : 'block';
+                    toggle.querySelector('.toggle-icon').className = isOpen ? 'fa-solid fa-chevron-down toggle-icon' : 'fa-solid fa-chevron-up toggle-icon';
+                    if (!isOpen && typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                        MathJax.typesetPromise([detailsBody]);
+                    }
+                };
+
+                list.appendChild(card);
+            });
+
+            runMathJax();
+        }
+
+        function clearAllWrongQuestionsDashboard() {
+            if (confirm('هل أنت متأكد من مسح جميع الأسئلة التي أخطأت فيها؟')) {
+                saveWrongQuestions([]);
+                renderWrongQuestionsDashboard();
+                showToast('🗑️ تم مسح جميع الأخطاء.');
+            }
         }
 
         function openBookmarkModal() {
@@ -4368,6 +4842,7 @@
             }
             saveBookmarks(bookmarks);
             closeBookmarkModal();
+            renderBookmarksDashboard();
 
             const btn = document.getElementById('exp-bookmark-btn');
             if (btn) {
@@ -4393,6 +4868,7 @@
             bookmarks = bookmarks.filter(b => !(b.qId === pendingBookmarkData.qId && b.examId === pendingBookmarkData.examId));
             saveBookmarks(bookmarks);
             closeBookmarkModal();
+            renderBookmarksDashboard();
 
             const btn = document.getElementById('exp-bookmark-btn');
             if (btn) {
